@@ -133,13 +133,27 @@ export default function Home() {
           </Hero>
           <ReserveCard>
             <Column css={{ gap: 40, fontWeight: 900 }}>
-              <Text size={12} transform="uppercase" color="orange">
+              <Text
+                size={12}
+                transform="uppercase"
+                color="orange"
+                className="subtitle-text"
+                css={{ zIndex: 1, transition: "all .2s ease" }}
+                as="h4"
+              >
                 25th march 2023
               </Text>
               <Text
-                css={{ fontSize: 40, zIndex: 1 }}
+                css={{
+                  fontSize: 40,
+                  zIndex: 1,
+                  fontWeight: 900,
+                  transition: "all .2s ease",
+                }}
                 transform="uppercase"
                 color="primary"
+                className="main-text"
+                as="h3"
               >
                 RESERVE A SPOT
               </Text>
@@ -206,12 +220,13 @@ export default function Home() {
               className={inter.className}
               color="grey"
               css={{
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: 400,
                 maxWidth: "25ch",
                 alignSelf: "center",
                 justifySelf: "center",
                 gridArea: "extract",
+                lineHeight: 1.4,
                 "@sm": {
                   alignSelf: "initial",
                   justifySelf: "initial",
@@ -457,15 +472,25 @@ export default function Home() {
           <BrandGrid>
             {brands_list.map((brand, index) => (
               <BrandCard key={index}>
-                <img src={`/images/brands/brand-${index}.png`} alt="" />
+                <img
+                  src={`/images/brands/brand-${index}.png`}
+                  alt=""
+                  style={{ zIndex: 1, transition: "all .2s ease" }}
+                />
               </BrandCard>
             ))}
             <DarkReserveCard>
-              <Column css={{ gap: 40, fontWeight: 900 }}>
+              <Column css={{ gap: 40 }}>
                 <Text
                   color="white"
-                  css={{ fontSize: 30 }}
+                  css={{
+                    fontSize: 30,
+                    fontWeight: 900,
+                    zIndex: 1,
+                    transition: "all .2s ease",
+                  }}
                   transform="uppercase"
+                  as="h3"
                 >
                   SPONSORSHIP PLANS
                 </Text>
@@ -568,6 +593,13 @@ const Hero = styled("div", {
   },
 });
 
+const Arrow = styled("img", {
+  position: "absolute",
+  right: "0.125rem",
+  top: "0.1rem",
+  transition: "all .2s ease",
+});
+
 const ReserveCard = styled("div", {
   position: "relative",
   top: "-80px",
@@ -592,6 +624,16 @@ const ReserveCard = styled("div", {
     "&::before": {
       transform: "translate3D(0, 0%, 0)",
     },
+    [`& ${Arrow}`]: {
+      filter:
+        "invert(100%) sepia(33%) saturate(836%) hue-rotate(176deg) brightness(103%) contrast(82%)",
+    },
+    "& h3": {
+      color: "#E7E8E8",
+    },
+    "& h4": {
+      color: "#373B49",
+    },
   },
 
   "&::before": {
@@ -614,7 +656,7 @@ const DarkReserveCard = styled(ReserveCard, {
   backgroundColor: "rgba(243, 243, 243, 0.1)",
   border: "1px solid #6F6E6F",
   height: "max-content",
-  paddingTop: 68,
+  paddingTop: 78,
   gridColumnStart: -3,
   gridColumnEnd: -1,
   backdropFilter: "blur(22px)",
@@ -628,6 +670,13 @@ const DarkReserveCard = styled(ReserveCard, {
     "&::before": {
       transform: "translate3D(0, 0%, 0)",
     },
+    [`& ${Arrow}`]: {
+      filter:
+        "invert(100%) sepia(33%) saturate(836%) hue-rotate(176deg) brightness(103%) contrast(82%)",
+    },
+    "& h3": {
+      color: "#1A1B1F",
+    },
   },
 
   "&::before": {
@@ -637,18 +686,12 @@ const DarkReserveCard = styled(ReserveCard, {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(243, 243, 243, 0.15)",
+    backgroundColor: "#F3F3F3",
     transform: "translate3D(0, 101%, 0)",
     transformOrigin: "top left",
     transition: "transform .2s cubic-bezier(0.215, 0.61, 0.335, 1)",
     zIndex: 0,
   },
-});
-
-const Arrow = styled("img", {
-  position: "absolute",
-  right: "0.625rem",
-  top: "0.5rem",
 });
 
 const RightArrow = styled("div", {
@@ -726,7 +769,7 @@ const LocationCard = styled("div", {
 const ActivitiesGrid = styled("div", {
   display: "grid",
   gap: 20,
-  gridTemplateColumns: "2fr 1fr 3fr",
+  gridTemplateColumns: "1.7fr 1.3fr 2.5fr",
   paddingTop: 48,
   "@sm": {
     gridTemplateColumns: "unset",
@@ -780,14 +823,41 @@ const BrandGrid = styled("div", {
 });
 
 const BrandCard = styled("figure", {
+  position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   borderRadius: "0px 20px 20px 20px",
   border: "1px solid $ash",
   height: 332,
+  overflow: "hidden",
+  cursor: "pointer",
+
   "@sm": {
     height: 170,
+  },
+
+  "&:hover": {
+    "& img": {
+      transform: "scale(90%)",
+    },
+    "&::before": {
+      transform: "translate3D(0, 0%, 0)",
+    },
+  },
+
+  "&::before": {
+    content: `''`,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgb(21, 22, 26)",
+    transform: "translate3D(0, 101%, 0)",
+    transformOrigin: "top left",
+    transition: "transform .2s cubic-bezier(0.215, 0.61, 0.335, 1)",
+    zIndex: 0,
   },
 });
 

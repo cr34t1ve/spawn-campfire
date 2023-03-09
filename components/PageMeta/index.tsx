@@ -5,7 +5,7 @@ import React from "react";
 
 export function PageMeta({
   title = "Spawn Campfire",
-  image = "https://uploads-ssl.webflow.com/637f643d4e36527b45571b80/63c44c5bcff8189621075df8_OpenGraph.png",
+  image = "https://uploads-ssl.webflow.com/637f643d4e36527b45571b80/6409e9b48f17ec01128d6cbb_OpenGraph.png",
   gif = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWVmMWY1ZjQxMmFlYjY4ZmVjZmZhYzlkMmU1MDlhYjBkYTkxNWJlMyZjdD1z/zbnKJalVlLtXxcUsaA/giphy.gif",
   children,
 }: {
@@ -25,33 +25,27 @@ export function PageMeta({
         />
         {/* <meta charset="utf-8" /> */}
         {/* <link rel="icon" href="/favicon32.png" />
-        <meta name="theme-color" content="#F8F8F8" />
-        <link rel="apple-touch-icon" href="/favicon192.png" />
-        <meta property="og:image" content={image} />
+          <meta name="theme-color" content="#F8F8F8" />
+          <link rel="apple-touch-icon" href="/favicon192.png" />
+          <meta property="og:image" content={image} />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:site_name" content="AuctionPapa" />
-        <meta property="og:description" content={title} />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={title} />
+          <meta property="og:site_name" content="AuctionPapa" />
+          <meta property="og:description" content={title} />
 
-        <meta property="twitter:card" content={title} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={title} />
-        <meta property="twitter:image" content={image} /> */}
+          <meta property="twitter:card" content={title} />
+          <meta property="twitter:title" content={title} />
+          <meta property="twitter:description" content={title} />
+          <meta property="twitter:image" content={image} /> */}
         <meta property="fb:app_id" content="406655189415060" />
         <meta property="og:site_name" content="Giphy" />
-        <meta
-          property="og:url"
-          content="http://giphy.com/gifs/rhuber-test-djeEV9Xji6zjgLXBxug"
-        />
+        <meta property="og:url" content={gif} />
         <meta property="og:title" content="Animated GIF" />
         <meta property="og:description" content="The best GIFs are on Giphy" />
 
         <meta property="og:type" content="video.other" />
-        <meta
-          property="og:image"
-          content="http://media.giphy.com/media/djeEV9Xji6zjgLXBxug/giphy.gif"
-        />
+        <meta property="og:image" content={gif} />
         <meta property="og:image:width" content="912" />
         <meta property="og:image:height" content="382" />
 
