@@ -132,7 +132,11 @@ export default function Home() {
               <Text size={12} transform="uppercase" color="orange">
                 25th march 2023
               </Text>
-              <Text css={{ fontSize: 40 }} transform="uppercase">
+              <Text
+                css={{ fontSize: 40, zIndex: 1 }}
+                transform="uppercase"
+                color="primary"
+              >
                 RESERVE A SPOT
               </Text>
             </Column>
@@ -174,7 +178,13 @@ export default function Home() {
                 gridArea: "location",
               }}
             >
-              <Row css={{ gridArea: "location" }}>
+              <Row css={{ gridArea: "location", gap: 10 }}>
+                <Image
+                  src="/images/icons/Show.svg"
+                  alt=""
+                  width={38}
+                  height={38}
+                />
                 <Text
                   transform="uppercase"
                   color="whiteLightShade"
@@ -248,6 +258,9 @@ export default function Home() {
           <FakeBG />
         </LightSection>
         <DarkSection>
+          <LeftArrow>
+            <Image src="/images/bottom-left-arrow.svg" alt="" fill={true} />
+          </LeftArrow>
           <Text color="white" transform="uppercase" align="right" size={21}>
             Special <br /> Invitations
           </Text>
@@ -470,6 +483,28 @@ const ReserveCard = styled("div", {
   padding: "14px 11px 11px 24px",
   backgroundColor: "#F3F3F3",
   cursor: "pointer",
+  overflow: "hidden",
+  isolation: "isolate",
+
+  "&:hover": {
+    "&::before": {
+      transform: "translate3D(0, 0%, 0)",
+    },
+  },
+
+  "&::before": {
+    content: `''`,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "$orange",
+    transform: "translate3D(0, 101%, 0)",
+    transformOrigin: "top left",
+    transition: "transform .2s cubic-bezier(0.215, 0.61, 0.335, 1)",
+    zIndex: 0,
+  },
 });
 
 const DarkReserveCard = styled(ReserveCard, {
@@ -482,6 +517,26 @@ const DarkReserveCard = styled(ReserveCard, {
   gridColumnEnd: -1,
   backdropFilter: "blur(22px)",
   boxShadow: " 0px 4px 34px rgba(0, 0, 0, 0.05)",
+
+  "&:hover": {
+    "&::before": {
+      transform: "translate3D(0, 0%, 0)",
+    },
+  },
+
+  "&::before": {
+    content: `''`,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(243, 243, 243, 0.15)",
+    transform: "translate3D(0, 101%, 0)",
+    transformOrigin: "top left",
+    transition: "transform .2s cubic-bezier(0.215, 0.61, 0.335, 1)",
+    zIndex: 0,
+  },
 });
 
 const Arrow = styled("img", {
@@ -493,9 +548,16 @@ const Arrow = styled("img", {
 const RightArrow = styled("div", {
   position: "absolute",
   right: 0,
-  top: "10vw",
+  top: "20vw",
   width: "20rem",
   height: "30rem",
+});
+
+const LeftArrow = styled(RightArrow, {
+  // top: "unset",
+  top: "20rem",
+  left: 0,
+  width: "30rem",
 });
 
 const HorizontalOverflow = styled("div", {
@@ -524,6 +586,7 @@ const LocationCard = styled("div", {
   justifyContent: "center",
   alignItems: "flex-end",
   borderRadius: 20,
+  cursor: "pointer",
 });
 
 const ActivitiesGrid = styled("div", {
