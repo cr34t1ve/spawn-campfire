@@ -128,6 +128,9 @@ export const Text = styled("p", {
       white: {
         color: "$white",
       },
+      whiteLightShade: {
+        color: "$whiteLightShade",
+      },
       silver: {
         color: "$silver",
       },
@@ -143,14 +146,14 @@ export const Text = styled("p", {
       paleGreen: {
         color: "$paleGreen",
       },
-      landingSilver: {
-        color: "$landingSilver",
-      },
       grey: {
         color: "$grey",
       },
       orange: {
         color: "$orange",
+      },
+      green: {
+        color: "$green",
       },
     },
   },
