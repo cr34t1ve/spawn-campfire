@@ -40,12 +40,18 @@ export function PageMeta({
           <meta property="twitter:image" content={image} /> */}
         <meta property="fb:app_id" content="406655189415060" />
         <meta property="og:site_name" content="Giphy" />
-        <meta property="og:url" content={gif} />
+        <meta
+          property="og:url"
+          content="http://giphy.com/gifs/rhuber-test-djeEV9Xji6zjgLXBxug"
+        />
         <meta property="og:title" content="Animated GIF" />
         <meta property="og:description" content="The best GIFs are on Giphy" />
 
         <meta property="og:type" content="video.other" />
-        <meta property="og:image" content={gif} />
+        <meta
+          property="og:image"
+          content="http://media.giphy.com/media/djeEV9Xji6zjgLXBxug/giphy.gif"
+        />
         <meta property="og:image:width" content="912" />
         <meta property="og:image:height" content="382" />
 
