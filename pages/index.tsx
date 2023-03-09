@@ -121,7 +121,11 @@ export default function Home() {
             <Text
               as="h1"
               color="primary"
-              css={{ fontSize: "9.8vw", fontWeight: 900 }}
+              css={{
+                fontSize: "$oneFifty",
+                fontWeight: 900,
+                "@sm": { fontSize: "15.1vw", wordWrap: "initial" },
+              }}
             >
               PROMOTING <span> ESPORT AS THE FUTURE </span>
               OF COMPETITIVE SPORTS FOR THE YOUNGER GENERATION
@@ -165,6 +169,9 @@ export default function Home() {
                 lineHeight: "0.8",
                 alignSelf: "end",
                 gridArea: "inspiring",
+                "@sm": {
+                  fontSize: "35vw",
+                },
               }}
             >
               Inspi
@@ -205,6 +212,11 @@ export default function Home() {
                 alignSelf: "center",
                 justifySelf: "center",
                 gridArea: "extract",
+                "@sm": {
+                  alignSelf: "initial",
+                  justifySelf: "initial",
+                  paddingTop: 64,
+                },
               }}
             >
               Talks, networking, activities, and parties. Learn from global
@@ -221,6 +233,9 @@ export default function Home() {
                 lineHeight: "0.8",
                 alignSelf: "end",
                 fontWeight: 900,
+                "@sm": {
+                  fontSize: "31.4vw",
+                },
               }}
             >
               EXPERI
@@ -238,6 +253,9 @@ export default function Home() {
                   backgroundClip: "text",
                   fontSize: 150,
                   fontWeight: 900,
+                  "@sm": {
+                    fontSize: "15.1vw",
+                  },
                 }}
                 transform="uppercase"
               >
@@ -262,14 +280,28 @@ export default function Home() {
             <Image src="/images/bottom-left-arrow.svg" alt="" fill={true} />
           </LeftArrow>
           <Text color="white" transform="uppercase" align="right" size={21}>
+            {" "}
             Special <br /> Invitations
           </Text>
-          <Column css={{ gap: 38, paddingTop: 98 }}>
+          <Column
+            css={{
+              gap: 38,
+              paddingTop: 98,
+              "@sm": { flexDirection: "row", gap: 10 },
+            }}
+          >
             <Row
               css={{
                 gap: 20,
                 justifyContent: "flex-start",
                 paddingLeft: "20rem",
+                "@md": {
+                  paddingLeft: "2rem",
+                },
+                "@sm": {
+                  flexDirection: "column",
+                  paddingLeft: "0",
+                },
               }}
             >
               {invitations_list.slice(0, 2).map((invitation, index) => (
@@ -285,9 +317,21 @@ export default function Home() {
                     alignItems: "flex-start",
                     justifyContent: "flex-end",
                     padding: 30,
+                    "@sm": {
+                      width: "100%",
+                      height: 237,
+                      flex: "unset",
+                      borderRadius: "0px 20px 20px 20px",
+                    },
                   }}
                 >
-                  <Text color="white" as="h3" size={17} transform="uppercase">
+                  <Text
+                    color="white"
+                    as="h3"
+                    size={17}
+                    transform="uppercase"
+                    css={{ "@sm": { fontSize: "5vw" } }}
+                  >
                     {invitation.name}
                   </Text>
                   <Text
@@ -306,6 +350,16 @@ export default function Home() {
                 justifyContent: "flex-start",
                 paddingRight: "35rem",
                 paddingLeft: "8rem",
+                "@md": {
+                  paddingLeft: "1rem",
+                  paddingRight: "3rem",
+                },
+                "@sm": {
+                  paddingLeft: "0",
+                  paddingRight: "0",
+                  paddingTop: 40,
+                  flexDirection: "column",
+                },
               }}
             >
               {invitations_list.slice(2, 4).map((invitation, index) => (
@@ -321,9 +375,22 @@ export default function Home() {
                     alignItems: "flex-start",
                     justifyContent: "flex-end",
                     padding: 30,
+
+                    "@sm": {
+                      width: "100%",
+                      height: 237,
+                      flex: "unset",
+                      borderRadius: "0px 20px 20px 20px",
+                    },
                   }}
                 >
-                  <Text color="white" as="h3" size={17} transform="uppercase">
+                  <Text
+                    color="white"
+                    as="h3"
+                    size={17}
+                    transform="uppercase"
+                    css={{ "@sm": { fontSize: "5vw" } }}
+                  >
                     {invitation.name}
                   </Text>
                   <Text
@@ -337,16 +404,22 @@ export default function Home() {
               ))}
             </Row>
           </Column>
-          <HorizontalOverflow css={{ paddingTop: 340 }}>
+          <HorizontalOverflow
+            css={{ paddingTop: 340, "@sm": { paddingTop: 140 } }}
+          >
             <Text
               size="22"
               transform="uppercase"
-              css={{ color: "$ash", whiteSpace: "nowrap" }}
+              css={{
+                color: "$ash",
+                whiteSpace: "nowrap",
+                "@sm": { fontSize: "17.4vw" },
+              }}
             >
               Stay Tuned &nbsp;Stay Tuned
             </Text>
           </HorizontalOverflow>
-          <Column css={{ marginTop: 130, gap: 27 }}>
+          <Column css={{ marginTop: 130, gap: 27, "@sm": { marginTop: 50 } }}>
             <Text
               color="white"
               css={{ fontSize: 18 }}
@@ -377,7 +450,7 @@ export default function Home() {
             size={21}
             color="white"
             transform="uppercase"
-            css={{ marginTop: 300 }}
+            css={{ marginTop: 300, "@sm": { marginTop: 150 } }}
           >
             Brands <br /> Attending
           </Text>
@@ -400,7 +473,14 @@ export default function Home() {
               <Arrow src="/images/icons/arrow-right-grey.svg" alt="" />
             </DarkReserveCard>
           </BrandGrid>
-          <Row css={{ marginTop: 210, maxWidth: 1069, marginInline: "auto" }}>
+          <Row
+            css={{
+              marginTop: 210,
+              maxWidth: 1069,
+              marginInline: "auto",
+              "@sm": { marginTop: 125 },
+            }}
+          >
             <Text color="white" css={{ fontSize: 56 }}>
               Align yourself with the spawn community and position your brand as
               a key player in the gaming industry.
@@ -408,7 +488,12 @@ export default function Home() {
           </Row>
           <Row
             className={inter.className}
-            css={{ fontSize: 18, justifyContent: "flex-end", marginTop: 50 }}
+            css={{
+              fontSize: 18,
+              justifyContent: "flex-end",
+              marginTop: 50,
+              "@sm": { flexDirection: "column", alignItems: "flex-end" },
+            }}
           >
             <Text color="white">WEBSITE BY :</Text>
             <Text
@@ -422,13 +507,16 @@ export default function Home() {
           <Footer>
             <Text
               css={{
-                fontSize: 220,
+                fontSize: "19vw",
                 fontWeight: 900,
                 color: "$white",
                 textAlign: "center",
                 lineHeight: 0.9,
                 paddingTop: 315,
                 maxWidth: "9ch",
+                "@sm": {
+                  paddingTop: 150,
+                },
               }}
             >
               THANK YOU FOR YOUR SUPPORT
@@ -455,12 +543,19 @@ const LightSection = styled("section", {
   overflow: "hidden",
   background: "$primaryBackground",
   padding: "21px 40px 0px 40px",
+  "@sm": {
+    padding: "63px 16px 0px 16px",
+  },
 });
 
 const DarkSection = styled(LightSection, {
   background: "$secondaryBackground",
   paddingTop: 480,
   paddingBottom: 230,
+  "@sm": {
+    paddingTop: 380,
+    paddingBottom: 100,
+  },
 });
 
 const Hero = styled("div", {
@@ -485,6 +580,13 @@ const ReserveCard = styled("div", {
   cursor: "pointer",
   overflow: "hidden",
   isolation: "isolate",
+
+  "@md": {
+    marginTop: 75,
+    marginLeft: "unset",
+    top: "unset",
+    width: "100%",
+  },
 
   "&:hover": {
     "&::before": {
@@ -517,6 +619,10 @@ const DarkReserveCard = styled(ReserveCard, {
   gridColumnEnd: -1,
   backdropFilter: "blur(22px)",
   boxShadow: " 0px 4px 34px rgba(0, 0, 0, 0.05)",
+
+  "@md": {
+    marginTop: "unset",
+  },
 
   "&:hover": {
     "&::before": {
@@ -551,13 +657,26 @@ const RightArrow = styled("div", {
   top: "20vw",
   width: "20rem",
   height: "30rem",
+  "@md": {
+    width: "7rem",
+  },
+  "@sm": {
+    display: "none",
+  },
 });
 
 const LeftArrow = styled(RightArrow, {
-  // top: "unset",
-  top: "20rem",
+  top: "2rem",
   left: 0,
   width: "30rem",
+  "@md": {
+    width: "15rem",
+  },
+  "@sm": {
+    top: 0,
+    width: "12rem",
+    display: "initial",
+  },
 });
 
 const HorizontalOverflow = styled("div", {
@@ -576,6 +695,16 @@ const LocationGrid = styled("div", {
   "extract extract extract extract experience experience experience experience experience experience experience experience"
   `,
   paddingTop: 180,
+  "@sm": {
+    gridTemplateColumns: "unset",
+    gridTemplateRows: "auto",
+    gridTemplateAreas: `
+    "location"
+    "inspiring"
+    "experience"
+    "extract"
+    `,
+  },
 });
 
 const LocationCard = styled("div", {
@@ -587,6 +716,11 @@ const LocationCard = styled("div", {
   alignItems: "flex-end",
   borderRadius: 20,
   cursor: "pointer",
+  "@sm": {
+    height: 270,
+    alignItems: "center",
+    paddingBottom: "unset",
+  },
 });
 
 const ActivitiesGrid = styled("div", {
@@ -594,6 +728,10 @@ const ActivitiesGrid = styled("div", {
   gap: 20,
   gridTemplateColumns: "2fr 1fr 3fr",
   paddingTop: 48,
+  "@sm": {
+    gridTemplateColumns: "unset",
+    gridTemplateRows: "223px 153px 290px",
+  },
 });
 
 const FakeBG = styled("div", {
@@ -603,6 +741,9 @@ const FakeBG = styled("div", {
   position: "absolute",
   bottom: 0,
   marginLeft: -40,
+  "@sm": {
+    marginLeft: -16,
+  },
 });
 
 const ActivityCard = styled("figure", {
@@ -610,6 +751,9 @@ const ActivityCard = styled("figure", {
   borderBottomLeftRadius: 20,
   height: 450,
   zIndex: 1,
+  "@sm": {
+    height: "100%",
+  },
 });
 
 const SocialCircle = styled("div", {
@@ -627,6 +771,12 @@ const BrandGrid = styled("div", {
   gridTemplateColumns: "repeat(4, 1fr)",
   gap: "30px 20px",
   paddingTop: 38,
+  "@md": {
+    gridTemplateColumns: "repeat(3, 1fr)",
+  },
+  "@sm": {
+    gridTemplateColumns: "repeat(2, 1fr)",
+  },
 });
 
 const BrandCard = styled("figure", {
@@ -636,6 +786,9 @@ const BrandCard = styled("figure", {
   borderRadius: "0px 20px 20px 20px",
   border: "1px solid $ash",
   height: 332,
+  "@sm": {
+    height: 170,
+  },
 });
 
 const Footer = styled("footer", {
@@ -646,11 +799,19 @@ const Footer = styled("footer", {
 
 const SpawnLogo = styled("div", {
   position: "absolute",
-  bottom: -100,
-  right: 0,
-  left: 900,
+  bottom: -900,
+  right: 90,
   marginLeft: "auto",
   marginRight: "auto",
-  width: 300,
-  height: 337,
+  width: "calc(19vw * 1.1)",
+  height: "stretch",
+  "@md": {
+    bottom: -800,
+    width: "calc(19vw * 1.1)",
+  },
+  "@sm": {
+    bottom: -300,
+    right: 20,
+    width: "calc(19vw * 1.1)",
+  },
 });

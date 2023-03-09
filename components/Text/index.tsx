@@ -90,6 +90,9 @@ export const Text = styled("p", {
       21: {
         fontSize: "$oneFifty",
         fontWeight: "$black",
+        "@sm": {
+          fontSize: "15.1vw",
+        },
       },
       22: {
         fontSize: "$twoSeventy",

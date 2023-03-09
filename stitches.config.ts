@@ -58,7 +58,7 @@ export const { styled, getCssText, keyframes, css } = createStitches({
       forty: "40px",
       sixtyFour: "64px",
       oneTwentySeven: "127px",
-      oneFifty: "150px",
+      oneFifty: "9.8vw",
       twoSeventy: "270px",
     },
     fontWeights: {
