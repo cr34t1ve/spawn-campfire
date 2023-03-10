@@ -111,7 +111,7 @@ export default function Home() {
   const darkSection = useRef(null);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("submitted");
+  >("landing");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
@@ -169,7 +169,11 @@ export default function Home() {
       <>
         <main className={helvetica.className}>
           {processStep === "landing" && (
-            <HomePage main={main} darkSection={darkSection} />
+            <HomePage
+              main={main}
+              darkSection={darkSection}
+              handleClick={() => setProcessStep("fullName")}
+            />
           )}
           {processStep === "fullName" && (
             <FullName
@@ -502,9 +506,11 @@ function Submitted({
 function HomePage({
   main,
   darkSection,
+  handleClick,
 }: {
   main: HTMLElement | any;
   darkSection: HTMLElement | any;
+  handleClick: () => void;
 }) {
   return (
     <>
@@ -526,7 +532,7 @@ function HomePage({
             OF COMPETITIVE SPORTS FOR THE YOUNGER GENERATION
           </Text>
         </Hero>
-        <ReserveCard>
+        <ReserveCard onClick={handleClick}>
           <Column css={{ gap: 40, fontWeight: 900 }}>
             <Text
               size={12}
@@ -556,7 +562,12 @@ function HomePage({
           <Arrow src="/images/icons/arrow-right.svg" alt="" />
         </ReserveCard>
         <RightArrow>
-          <Image src="/images/top-right-arrow.svg" alt="" fill={true} />
+          <Image
+            src="/images/top-right-arrow.svg"
+            alt=""
+            fill={true}
+            priority
+          />
         </RightArrow>
         <HorizontalOverflow>
           <Text
@@ -716,6 +727,7 @@ function HomePage({
               "@sm": {
                 flexDirection: "column",
                 paddingLeft: "0",
+                flex: 1,
               },
             }}
           >
@@ -739,6 +751,7 @@ function HomePage({
                     width: "100%",
                     height: 237,
                     flex: "unset",
+                    padding: "10px 14px",
                     borderRadius: "0px 20px 20px 20px",
                   },
                 }}
@@ -748,7 +761,7 @@ function HomePage({
                   as="h3"
                   size={17}
                   transform="uppercase"
-                  css={{ "@sm": { fontSize: "5vw" } }}
+                  css={{ "@sm": { fontSize: 20 } }}
                 >
                   {invitation.name}
                 </Text>
@@ -756,8 +769,9 @@ function HomePage({
                   color="whiteLightShade"
                   size={11}
                   className={inter.className}
+                  css={{ "@sm": { fontSize: 10 } }}
                 >
-                  {invitation.name}
+                  {invitation.title}
                 </Text>
               </ActivityCard>
             ))}
@@ -777,6 +791,7 @@ function HomePage({
                 paddingRight: "0",
                 paddingTop: 40,
                 flexDirection: "column",
+                flex: 1,
               },
             }}
           >
@@ -798,6 +813,7 @@ function HomePage({
                   },
                   "@sm": {
                     width: "100%",
+                    padding: "10px 14px",
                     height: 237,
                     flex: "unset",
                     borderRadius: "0px 20px 20px 20px",
@@ -809,7 +825,7 @@ function HomePage({
                   as="h3"
                   size={17}
                   transform="uppercase"
-                  css={{ "@sm": { fontSize: "5vw" } }}
+                  css={{ "@sm": { fontSize: 20 } }}
                 >
                   {invitation.name}
                 </Text>
@@ -817,6 +833,7 @@ function HomePage({
                   color="whiteLightShade"
                   size={11}
                   className={inter.className}
+                  css={{ "@sm": { fontSize: 10 } }}
                 >
                   {invitation.name}
                 </Text>
@@ -1030,7 +1047,7 @@ const Arrow = styled("img", {
 
 const ReserveCard = styled("div", {
   position: "relative",
-  top: "-80px",
+  marginTop: 30,
   marginLeft: "auto",
   width: "calc((100vw - 3.375rem) * 4/14 + 1.875rem)",
   borderRadius: 20,
@@ -1042,7 +1059,7 @@ const ReserveCard = styled("div", {
   isolation: "isolate",
 
   "@md": {
-    marginTop: 75,
+    marginTop: 130,
     marginLeft: "unset",
     top: "unset",
     width: "100%",
@@ -1125,7 +1142,7 @@ const DarkReserveCard = styled(ReserveCard, {
 const RightArrow = styled("div", {
   position: "absolute",
   right: 0,
-  top: "20vw",
+  top: "21.495vw",
   width: "20rem",
   height: "30rem",
   "@md": {
