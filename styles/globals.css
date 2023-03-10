@@ -11,6 +11,20 @@
   box-sizing: border-box;
 }
 
+#preloader {
+  position: fixed;
+  z-index: 999 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column;
+  background: #fbfbfb !important;
+}
+
 /*
   2. Remove default margin
 */

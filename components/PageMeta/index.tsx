@@ -1,7 +1,8 @@
 /** @format */
 
 import Head from "next/head";
-import React from "react";
+import Script from "next/script";
+import React, { useEffect } from "react";
 
 export function PageMeta({
   title = "Spawn Campfire",
@@ -14,6 +15,15 @@ export function PageMeta({
   gif?: string;
   children: React.ReactNode;
 }) {
+  // useEffect(() => {
+
+  //   window.addEventListener("load", function () {
+  //     const preloaderEle = document.getElementById("preloader");
+  //     preloaderEle.className += " hidden";
+  //     console.log("done here");
+  //   });
+  // }, [])
+
   return (
     <>
       <Head>
@@ -24,21 +34,21 @@ export function PageMeta({
           content="width=device-width, initial-scale=1, maximum-scale=1.0"
         />
         {/* <meta charset="utf-8" /> */}
-        {/* <link rel="icon" href="/favicon32.png" />
-          <meta name="theme-color" content="#F8F8F8" />
-          <link rel="apple-touch-icon" href="/favicon192.png" />
-          <meta property="og:image" content={image} />
+        <link rel="icon" href="/favicon32.png" />
+        <meta name="theme-color" content="#F8F8F8" />
+        <link rel="apple-touch-icon" href="/favicon192.png" />
+        <meta property="og:image" content={image} />
 
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content={title} />
-          <meta property="og:site_name" content="AuctionPapa" />
-          <meta property="og:description" content={title} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:site_name" content="AuctionPapa" />
+        <meta property="og:description" content={title} />
 
-          <meta property="twitter:card" content={title} />
-          <meta property="twitter:title" content={title} />
-          <meta property="twitter:description" content={title} />
-          <meta property="twitter:image" content={image} /> */}
-        <meta property="fb:app_id" content="406655189415060" />
+        <meta property="twitter:card" content={title} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={title} />
+        <meta property="twitter:image" content={image} />
+        {/* <meta property="fb:app_id" content="406655189415060" />
         <meta property="og:site_name" content="Giphy" />
         <meta
           property="og:url"
@@ -98,9 +108,15 @@ export function PageMeta({
           content="https://giphy.com/embed/djeEV9Xji6zjgLXBxug/twitter/iframe"
         />
         <meta name="twitter:player:width" content="435" />
-        <meta name="twitter:player:height" content="182" />
+        <meta name="twitter:player:height" content="182" /> */}
+        <Script id="preloader">{``}</Script>
       </Head>
-      {children}
+      <>
+        {/* <div id="preloader">
+          <img src="/favicon192.png" className="loader" />
+        </div> */}
+        {children}
+      </>
     </>
   );
 }

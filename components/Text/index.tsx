@@ -50,6 +50,9 @@ export const Text = styled("p", {
       11: {
         fontSize: "$eighteen",
         fontWeight: "$regular",
+        "@xl": {
+          fontSize: "1.190vw",
+        },
       },
       12: {
         fontSize: "$twenty",
@@ -74,6 +77,9 @@ export const Text = styled("p", {
       17: {
         fontSize: "$forty",
         fontWeight: "$black",
+        "@xl": {
+          fontSize: "2.646vw",
+        },
       },
       18: {
         fontSize: "$10",

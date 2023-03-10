@@ -7,9 +7,9 @@ import { Column, PageMeta, Row, Text } from "@/components";
 import Link from "next/link";
 
 const activities_list = [
-  { image: "/images/hero-image.png" },
-  { image: "/images/hero-image.png" },
-  { image: "/images/hero-image.png" },
+  { image: "/images/activities/activity-1.png" },
+  { image: "/images/activities/activity-2.png" },
+  { image: "/images/activities/activity-3.png" },
 ];
 
 const invitations_list = [
@@ -96,462 +96,476 @@ const brands_list = [
 export default function Home() {
   return (
     <PageMeta>
-      <main className={helvetica.className}>
-        <LightSection>
-          <Header>
-            <Text as="h5" color="orange" size={12} transform="uppercase">
-              Accra
-            </Text>
-            <Row css={{ gap: 70 }}>
+      <>
+        <main className={helvetica.className}>
+          <LightSection>
+            <Header>
               <Text as="h5" color="orange" size={12} transform="uppercase">
-                Venue
+                Accra
               </Text>
-              <Text
-                as={Link}
-                href="http://www.google.com"
-                color="orange"
-                size={12}
-                transform="uppercase"
-              >
-                Contact Us
-              </Text>
-            </Row>
-          </Header>
-          <Hero>
-            <Text
-              as="h1"
-              color="primary"
-              css={{
-                fontSize: "$oneFifty",
-                fontWeight: 900,
-                "@sm": { fontSize: "15.1vw", wordWrap: "initial" },
-              }}
-            >
-              PROMOTING <span> ESPORT AS THE FUTURE </span>
-              OF COMPETITIVE SPORTS FOR THE YOUNGER GENERATION
-            </Text>
-          </Hero>
-          <ReserveCard>
-            <Column css={{ gap: 40, fontWeight: 900 }}>
-              <Text
-                size={12}
-                transform="uppercase"
-                color="orange"
-                className="subtitle-text"
-                css={{ zIndex: 1, transition: "all .2s ease" }}
-                as="h4"
-              >
-                25th march 2023
-              </Text>
-              <Text
-                css={{
-                  fontSize: 40,
-                  zIndex: 1,
-                  fontWeight: 900,
-                  transition: "all .2s ease",
-                }}
-                transform="uppercase"
-                color="primary"
-                className="main-text"
-                as="h3"
-              >
-                RESERVE A SPOT
-              </Text>
-            </Column>
-            <Arrow src="/images/icons/arrow-right.svg" alt="" />
-          </ReserveCard>
-          <RightArrow>
-            <Image src="/images/top-right-arrow.svg" alt="" fill={true} />
-          </RightArrow>
-          <HorizontalOverflow>
-            <Text
-              size="17"
-              css={{ whiteSpace: "nowrap", gridArea: "inspiring" }}
-            >
-              #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA
-              #SCFACCRA #SCFACCRA #SCFACCRA
-            </Text>
-          </HorizontalOverflow>
-          <LocationGrid>
-            <Text
-              as="h1"
-              transform="uppercase"
-              color="orange"
-              css={{
-                fontSize: "17vw",
-                fontWeight: 900,
-                lineHeight: "0.8",
-                alignSelf: "end",
-                gridArea: "inspiring",
-                "@sm": {
-                  fontSize: "35vw",
-                },
-              }}
-            >
-              Inspi
-              <br />
-              ring
-            </Text>
-            <LocationCard
-              css={{
-                background:
-                  "linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(/images/hero-image.png) no-repeat top/cover",
-                gridArea: "location",
-              }}
-            >
-              <Row css={{ gridArea: "location", gap: 10 }}>
-                <Image
-                  src="/images/icons/Show.svg"
-                  alt=""
-                  width={38}
-                  height={38}
-                />
+              <Row css={{ gap: 70 }}>
+                <Text as="h5" color="orange" size={12} transform="uppercase">
+                  Venue
+                </Text>
                 <Text
+                  as={Link}
+                  href="http://www.google.com"
+                  color="orange"
+                  size={12}
                   transform="uppercase"
-                  color="whiteLightShade"
-                  className={inter.className}
-                  css={{ fontSize: 18, fontWeight: 400 }}
                 >
-                  Explore Location
+                  Contact Us
                 </Text>
               </Row>
-            </LocationCard>
-            <Text
-              className={inter.className}
-              color="grey"
-              css={{
-                fontSize: 20,
-                fontWeight: 400,
-                maxWidth: "25ch",
-                alignSelf: "center",
-                justifySelf: "center",
-                gridArea: "extract",
-                lineHeight: 1.4,
-                "@sm": {
-                  alignSelf: "initial",
-                  justifySelf: "initial",
-                  paddingTop: 64,
-                },
-              }}
-            >
-              Talks, networking, activities, and parties. Learn from global
-              experts, connect with like-minded professionals, and move the
-              industry forward together.
-            </Text>
-            <Text
-              transform="uppercase"
-              color="green"
-              as="h1"
-              css={{
-                gridArea: "experience",
-                fontSize: "17vw",
-                lineHeight: "0.8",
-                alignSelf: "end",
-                fontWeight: 900,
-                "@sm": {
-                  fontSize: "31.4vw",
-                },
-              }}
-            >
-              EXPERI
-              <br />
-              ENCE
-            </Text>
-          </LocationGrid>
-          <Column>
-            <Row css={{ marginTop: 330 }}>
+            </Header>
+            <Hero>
               <Text
+                as="h1"
+                color="primary"
                 css={{
-                  color: "transparent",
-                  background:
-                    "linear-gradient(89.16deg, #0D2F65 -11.12%, #DF6F53 32.51%, #599C9B 71.83%)",
-                  backgroundClip: "text",
-                  fontSize: 150,
+                  fontSize: "$oneFifty",
                   fontWeight: 900,
-                  "@sm": {
-                    fontSize: "15.1vw",
-                  },
+                  "@sm": { fontSize: "15.1vw", wordWrap: "initial" },
                 }}
-                transform="uppercase"
               >
-                Activities
+                PROMOTING <span> ESPORT AS THE FUTURE </span>
+                OF COMPETITIVE SPORTS FOR THE YOUNGER GENERATION
               </Text>
-            </Row>
-            <ActivitiesGrid>
-              {activities_list.map((activity, index) => (
-                <ActivityCard
-                  key={index}
-                  css={{
-                    background: `linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(${activity.image}) no-repeat top/cover`,
-                  }}
-                ></ActivityCard>
-              ))}
-            </ActivitiesGrid>
-          </Column>
-          <FakeBG />
-        </LightSection>
-        <DarkSection>
-          <LeftArrow>
-            <Image src="/images/bottom-left-arrow.svg" alt="" fill={true} />
-          </LeftArrow>
-          <Text color="white" transform="uppercase" align="right" size={21}>
-            {" "}
-            Special <br /> Invitations
-          </Text>
-          <Column
-            css={{
-              gap: 38,
-              paddingTop: 98,
-              "@sm": { flexDirection: "row", gap: 10 },
-            }}
-          >
-            <Row
-              css={{
-                gap: 20,
-                justifyContent: "flex-start",
-                paddingLeft: "20rem",
-                "@md": {
-                  paddingLeft: "2rem",
-                },
-                "@sm": {
-                  flexDirection: "column",
-                  paddingLeft: "0",
-                },
-              }}
-            >
-              {invitations_list.slice(0, 2).map((invitation, index) => (
-                <ActivityCard
-                  key={index}
-                  css={{
-                    display: "flex",
-                    flexDirection: "column",
-                    background: `linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(${invitation.image}) no-repeat center/cover`,
-                    flex: invitation.basis,
-                    borderRadius:
-                      index === 0 ? `0px 20px 20px 20px` : `20px 20px 0px 20px`,
-                    alignItems: "flex-start",
-                    justifyContent: "flex-end",
-                    padding: 30,
-                    "@sm": {
-                      width: "100%",
-                      height: 237,
-                      flex: "unset",
-                      borderRadius: "0px 20px 20px 20px",
-                    },
-                  }}
-                >
-                  <Text
-                    color="white"
-                    as="h3"
-                    size={17}
-                    transform="uppercase"
-                    css={{ "@sm": { fontSize: "5vw" } }}
-                  >
-                    {invitation.name}
-                  </Text>
-                  <Text
-                    color="whiteLightShade"
-                    size={11}
-                    className={inter.className}
-                  >
-                    {invitation.name}
-                  </Text>
-                </ActivityCard>
-              ))}
-            </Row>
-            <Row
-              css={{
-                gap: 20,
-                justifyContent: "flex-start",
-                paddingRight: "35rem",
-                paddingLeft: "8rem",
-                "@md": {
-                  paddingLeft: "1rem",
-                  paddingRight: "3rem",
-                },
-                "@sm": {
-                  paddingLeft: "0",
-                  paddingRight: "0",
-                  paddingTop: 40,
-                  flexDirection: "column",
-                },
-              }}
-            >
-              {invitations_list.slice(2, 4).map((invitation, index) => (
-                <ActivityCard
-                  key={index}
-                  css={{
-                    display: "flex",
-                    flexDirection: "column",
-                    background: `linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(${invitation.image}) no-repeat center/cover`,
-                    flex: invitation.basis,
-                    borderRadius:
-                      index === 0 ? `0px 20px 20px 20px` : `20px 20px 0px 20px`,
-                    alignItems: "flex-start",
-                    justifyContent: "flex-end",
-                    padding: 30,
-
-                    "@sm": {
-                      width: "100%",
-                      height: 237,
-                      flex: "unset",
-                      borderRadius: "0px 20px 20px 20px",
-                    },
-                  }}
-                >
-                  <Text
-                    color="white"
-                    as="h3"
-                    size={17}
-                    transform="uppercase"
-                    css={{ "@sm": { fontSize: "5vw" } }}
-                  >
-                    {invitation.name}
-                  </Text>
-                  <Text
-                    color="whiteLightShade"
-                    size={11}
-                    className={inter.className}
-                  >
-                    {invitation.name}
-                  </Text>
-                </ActivityCard>
-              ))}
-            </Row>
-          </Column>
-          <HorizontalOverflow
-            css={{ paddingTop: 340, "@sm": { paddingTop: 140 } }}
-          >
-            <Text
-              size="22"
-              transform="uppercase"
-              css={{
-                color: "$ash",
-                whiteSpace: "nowrap",
-                "@sm": { fontSize: "17.4vw" },
-              }}
-            >
-              Stay Tuned &nbsp;Stay Tuned
-            </Text>
-          </HorizontalOverflow>
-          <Column css={{ marginTop: 130, gap: 27, "@sm": { marginTop: 50 } }}>
-            <Text
-              color="white"
-              css={{ fontSize: 18 }}
-              className={inter.className}
-            >
-              Follow Us
-            </Text>
-            <Row css={{ gap: 20 }}>
-              <SocialCircle>
-                <Image
-                  src="/images/icons/instagram.svg"
-                  alt=""
-                  width={24}
-                  height={24}
-                />
-              </SocialCircle>
-              <SocialCircle>
-                <Image
-                  src="/images/icons/twitter.svg"
-                  alt=""
-                  width={24}
-                  height={24}
-                />
-              </SocialCircle>
-            </Row>
-          </Column>
-          <Text
-            size={21}
-            color="white"
-            transform="uppercase"
-            css={{ marginTop: 300, "@sm": { marginTop: 150 } }}
-          >
-            Brands <br /> Attending
-          </Text>
-          <BrandGrid>
-            {brands_list.map((brand, index) => (
-              <BrandCard key={index}>
-                <img
-                  src={`/images/brands/brand-${index}.png`}
-                  alt=""
-                  style={{ zIndex: 1, transition: "all .2s ease" }}
-                />
-              </BrandCard>
-            ))}
-            <DarkReserveCard>
-              <Column css={{ gap: 40 }}>
+            </Hero>
+            <ReserveCard>
+              <Column css={{ gap: 40, fontWeight: 900 }}>
                 <Text
-                  color="white"
+                  size={12}
+                  transform="uppercase"
+                  color="orange"
+                  className="subtitle-text"
+                  css={{ zIndex: 1, transition: "all .2s ease" }}
+                  as="h4"
+                >
+                  25th march 2023
+                </Text>
+                <Text
                   css={{
-                    fontSize: 30,
-                    fontWeight: 900,
+                    fontSize: 40,
                     zIndex: 1,
+                    fontWeight: 900,
                     transition: "all .2s ease",
                   }}
                   transform="uppercase"
+                  color="primary"
+                  className="main-text"
                   as="h3"
                 >
-                  SPONSORSHIP PLANS
+                  RESERVE A SPOT
                 </Text>
               </Column>
-              <Arrow src="/images/icons/arrow-right-grey.svg" alt="" />
-            </DarkReserveCard>
-          </BrandGrid>
-          <Row
-            css={{
-              marginTop: 210,
-              maxWidth: 1069,
-              marginInline: "auto",
-              "@sm": { marginTop: 125 },
-            }}
-          >
-            <Text color="white" css={{ fontSize: 56 }}>
-              Align yourself with the spawn community and position your brand as
-              a key player in the gaming industry.
+              <Arrow src="/images/icons/arrow-right.svg" alt="" />
+            </ReserveCard>
+            <RightArrow>
+              <Image src="/images/top-right-arrow.svg" alt="" fill={true} />
+            </RightArrow>
+            <HorizontalOverflow>
+              <Text
+                size="17"
+                css={{ whiteSpace: "nowrap", gridArea: "inspiring" }}
+              >
+                #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA
+                #SCFACCRA #SCFACCRA #SCFACCRA
+              </Text>
+            </HorizontalOverflow>
+            <LocationGrid>
+              <Text
+                as="h1"
+                transform="uppercase"
+                color="orange"
+                css={{
+                  fontSize: "17vw",
+                  fontWeight: 900,
+                  lineHeight: "0.8",
+                  alignSelf: "end",
+                  gridArea: "inspiring",
+                  "@sm": {
+                    fontSize: "35vw",
+                  },
+                }}
+              >
+                Inspi
+                <br />
+                ring
+              </Text>
+              <LocationCard
+                css={{
+                  background:
+                    "linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(/images/hero-image.png) no-repeat top/cover",
+                  gridArea: "location",
+                }}
+              >
+                <Row css={{ gridArea: "location", gap: 10 }}>
+                  <Image
+                    src="/images/icons/Show.svg"
+                    alt=""
+                    width={38}
+                    height={38}
+                  />
+                  <Text
+                    transform="uppercase"
+                    color="whiteLightShade"
+                    className={inter.className}
+                    css={{ fontSize: 18, fontWeight: 400 }}
+                  >
+                    Explore Location
+                  </Text>
+                </Row>
+              </LocationCard>
+              <Text
+                className={inter.className}
+                color="grey"
+                css={{
+                  fontSize: 20,
+                  fontWeight: 400,
+                  maxWidth: "25ch",
+                  alignSelf: "center",
+                  justifySelf: "center",
+                  gridArea: "extract",
+                  lineHeight: 1.4,
+                  "@xl": {
+                    fontSize: "1.150vw",
+                  },
+                  "@sm": {
+                    alignSelf: "initial",
+                    justifySelf: "initial",
+                    paddingTop: 64,
+                  },
+                }}
+              >
+                Talks, networking, activities, and parties. Learn from global
+                experts, connect with like-minded professionals, and move the
+                industry forward together.
+              </Text>
+              <Text
+                transform="uppercase"
+                color="green"
+                as="h1"
+                css={{
+                  gridArea: "experience",
+                  fontSize: "17vw",
+                  lineHeight: "0.8",
+                  alignSelf: "end",
+                  fontWeight: 900,
+                  "@sm": {
+                    fontSize: "31.4vw",
+                  },
+                }}
+              >
+                EXPERI
+                <br />
+                ENCE
+              </Text>
+            </LocationGrid>
+            <Column>
+              <Row css={{ marginTop: 330 }}>
+                <Text
+                  css={{
+                    color: "transparent",
+                    background:
+                      "linear-gradient(89.16deg, #0D2F65 -11.12%, #DF6F53 32.51%, #599C9B 71.83%)",
+                    backgroundClip: "text",
+                    fontSize: 150,
+                    fontWeight: 900,
+                    "@sm": {
+                      fontSize: "15.1vw",
+                    },
+                  }}
+                  transform="uppercase"
+                >
+                  Activities
+                </Text>
+              </Row>
+              <ActivitiesGrid>
+                {activities_list.map((activity, index) => (
+                  <ActivityCard
+                    key={index}
+                    css={{
+                      background: `linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(${activity.image}) no-repeat top/cover`,
+                    }}
+                  ></ActivityCard>
+                ))}
+              </ActivitiesGrid>
+            </Column>
+            <FakeBG />
+          </LightSection>
+          <DarkSection>
+            <LeftArrow>
+              <Image src="/images/bottom-left-arrow.svg" alt="" fill={true} />
+            </LeftArrow>
+            <Text color="white" transform="uppercase" align="right" size={21}>
+              {" "}
+              Special <br /> Invitations
             </Text>
-          </Row>
-          <Row
-            className={inter.className}
-            css={{
-              fontSize: 18,
-              justifyContent: "flex-end",
-              marginTop: 50,
-              "@sm": { flexDirection: "column", alignItems: "flex-end" },
-            }}
-          >
-            <Text color="white">WEBSITE BY :</Text>
-            <Text
-              color="white"
-              as={Link}
-              href="https://raregoodsonly.webflow.io"
-            >
-              Rare Goods Only
-            </Text>
-          </Row>
-          <Footer>
-            <Text
+            <Column
               css={{
-                fontSize: "19vw",
-                fontWeight: 900,
-                color: "$white",
-                textAlign: "center",
-                lineHeight: 0.9,
-                paddingTop: 315,
-                maxWidth: "9ch",
-                "@sm": {
-                  paddingTop: 150,
-                },
+                gap: 38,
+                paddingTop: 98,
+                "@sm": { flexDirection: "row", gap: 10 },
               }}
             >
-              THANK YOU FOR YOUR SUPPORT
+              <Row
+                css={{
+                  gap: 20,
+                  justifyContent: "flex-start",
+                  paddingLeft: "20rem",
+                  "@md": {
+                    paddingLeft: "2rem",
+                  },
+                  "@sm": {
+                    flexDirection: "column",
+                    paddingLeft: "0",
+                  },
+                }}
+              >
+                {invitations_list.slice(0, 2).map((invitation, index) => (
+                  <ActivityCard
+                    key={index}
+                    css={{
+                      display: "flex",
+                      flexDirection: "column",
+                      background: `linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(${invitation.image}) no-repeat center/cover`,
+                      flex: invitation.basis,
+                      borderRadius:
+                        index === 0
+                          ? `0px 20px 20px 20px`
+                          : `20px 20px 0px 20px`,
+                      alignItems: "flex-start",
+                      justifyContent: "flex-end",
+                      padding: 30,
+                      "@xl": {
+                        height: "29.696vw",
+                      },
+                      "@sm": {
+                        width: "100%",
+                        height: 237,
+                        flex: "unset",
+                        borderRadius: "0px 20px 20px 20px",
+                      },
+                    }}
+                  >
+                    <Text
+                      color="white"
+                      as="h3"
+                      size={17}
+                      transform="uppercase"
+                      css={{ "@sm": { fontSize: "5vw" } }}
+                    >
+                      {invitation.name}
+                    </Text>
+                    <Text
+                      color="whiteLightShade"
+                      size={11}
+                      className={inter.className}
+                    >
+                      {invitation.name}
+                    </Text>
+                  </ActivityCard>
+                ))}
+              </Row>
+              <Row
+                css={{
+                  gap: 20,
+                  justifyContent: "flex-start",
+                  paddingRight: "35rem",
+                  paddingLeft: "8rem",
+                  "@md": {
+                    paddingLeft: "1rem",
+                    paddingRight: "3rem",
+                  },
+                  "@sm": {
+                    paddingLeft: "0",
+                    paddingRight: "0",
+                    paddingTop: 40,
+                    flexDirection: "column",
+                  },
+                }}
+              >
+                {invitations_list.slice(2, 4).map((invitation, index) => (
+                  <ActivityCard
+                    key={index}
+                    css={{
+                      display: "flex",
+                      flexDirection: "column",
+                      background: `linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(${invitation.image}) no-repeat center/cover`,
+                      flex: invitation.basis,
+                      borderRadius:
+                        index === 0
+                          ? `0px 20px 20px 20px`
+                          : `20px 20px 0px 20px`,
+                      alignItems: "flex-start",
+                      justifyContent: "flex-end",
+                      padding: 30,
+                      "@xl": {
+                        height: "29.696vw",
+                      },
+                      "@sm": {
+                        width: "100%",
+                        height: 237,
+                        flex: "unset",
+                        borderRadius: "0px 20px 20px 20px",
+                      },
+                    }}
+                  >
+                    <Text
+                      color="white"
+                      as="h3"
+                      size={17}
+                      transform="uppercase"
+                      css={{ "@sm": { fontSize: "5vw" } }}
+                    >
+                      {invitation.name}
+                    </Text>
+                    <Text
+                      color="whiteLightShade"
+                      size={11}
+                      className={inter.className}
+                    >
+                      {invitation.name}
+                    </Text>
+                  </ActivityCard>
+                ))}
+              </Row>
+            </Column>
+            <HorizontalOverflow
+              css={{ paddingTop: 340, "@sm": { paddingTop: 140 } }}
+            >
+              <Text
+                size="22"
+                transform="uppercase"
+                css={{
+                  color: "$ash",
+                  whiteSpace: "nowrap",
+                  "@sm": { fontSize: "17.4vw" },
+                }}
+              >
+                Stay Tuned &nbsp;Stay Tuned
+              </Text>
+            </HorizontalOverflow>
+            <Column css={{ marginTop: 130, gap: 27, "@sm": { marginTop: 50 } }}>
+              <Text
+                color="white"
+                css={{ fontSize: 18 }}
+                className={inter.className}
+              >
+                Follow Us
+              </Text>
+              <Row css={{ gap: 20 }}>
+                <SocialCircle>
+                  <Image
+                    src="/images/icons/instagram.svg"
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
+                </SocialCircle>
+                <SocialCircle>
+                  <Image
+                    src="/images/icons/twitter.svg"
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
+                </SocialCircle>
+              </Row>
+            </Column>
+            <Text
+              size={21}
+              color="white"
+              transform="uppercase"
+              css={{ marginTop: 300, "@sm": { marginTop: 150 } }}
+            >
+              Brands <br /> Attending
             </Text>
-            <SpawnLogo>
-              <Image alt="" fill={true} src="/images/spawn-logo.svg" />
-            </SpawnLogo>
-          </Footer>
-        </DarkSection>
-      </main>
+            <BrandGrid>
+              {brands_list.map((brand, index) => (
+                <BrandCard key={index}>
+                  <img
+                    src={`/images/brands/brand-${index}.png`}
+                    alt=""
+                    style={{ zIndex: 1, transition: "all .2s ease" }}
+                  />
+                </BrandCard>
+              ))}
+              <DarkReserveCard>
+                <Column css={{ gap: 40 }}>
+                  <Text
+                    color="white"
+                    css={{
+                      fontSize: 30,
+                      fontWeight: 900,
+                      zIndex: 1,
+                      transition: "all .2s ease",
+                    }}
+                    transform="uppercase"
+                    as="h3"
+                  >
+                    SPONSORSHIP PLANS
+                  </Text>
+                </Column>
+                <Arrow src="/images/icons/arrow-right-grey.svg" alt="" />
+              </DarkReserveCard>
+            </BrandGrid>
+            <Row
+              css={{
+                marginTop: 210,
+                maxWidth: 1069,
+                marginInline: "auto",
+                "@sm": { marginTop: 125 },
+              }}
+            >
+              <Text color="white" css={{ fontSize: 56 }}>
+                Align yourself with the spawn community and position your brand
+                as a key player in the gaming industry.
+              </Text>
+            </Row>
+            <Row
+              className={inter.className}
+              css={{
+                fontSize: 18,
+                justifyContent: "flex-end",
+                marginTop: 50,
+                "@sm": { flexDirection: "column", alignItems: "flex-end" },
+              }}
+            >
+              <Text color="white">WEBSITE BY :</Text>
+              <Text
+                color="white"
+                as={Link}
+                href="https://raregoodsonly.webflow.io"
+              >
+                Rare Goods Only
+              </Text>
+            </Row>
+            <Footer>
+              <Text
+                css={{
+                  fontSize: "19vw",
+                  fontWeight: 900,
+                  color: "$white",
+                  textAlign: "center",
+                  lineHeight: 0.9,
+                  paddingTop: 315,
+                  maxWidth: "9ch",
+                  "@sm": {
+                    paddingTop: 150,
+                  },
+                }}
+              >
+                THANK YOU FOR YOUR SUPPORT
+              </Text>
+              <SpawnLogo>
+                <Image alt="" fill={true} src="/images/spawn-logo.svg" />
+              </SpawnLogo>
+            </Footer>
+          </DarkSection>
+        </main>
+      </>
     </PageMeta>
   );
 }
@@ -753,7 +767,8 @@ const LocationGrid = styled("div", {
 const LocationCard = styled("div", {
   display: "flex",
   width: "100%",
-  height: 574,
+  // height: 574,
+  height: "34.696vw",
   paddingBottom: 57,
   justifyContent: "center",
   alignItems: "flex-end",
@@ -771,6 +786,9 @@ const ActivitiesGrid = styled("div", {
   gap: 20,
   gridTemplateColumns: "1.7fr 1.3fr 2.5fr",
   paddingTop: 48,
+  "@xl": {
+    gridTemplateColumns: "30.688vw 22.685vw 38.690vw",
+  },
   "@sm": {
     gridTemplateColumns: "unset",
     gridTemplateRows: "223px 153px 290px",
@@ -832,6 +850,9 @@ const BrandCard = styled("figure", {
   height: 332,
   overflow: "hidden",
   cursor: "pointer",
+  "@xl": {
+    height: "21.958vw",
+  },
 
   "@sm": {
     height: 170,
