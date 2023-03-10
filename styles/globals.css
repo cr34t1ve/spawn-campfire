@@ -40,6 +40,10 @@ body {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /*
   Typographic tweaks!
   4. Add accessible line-height
@@ -99,4 +103,18 @@ h1 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 1px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: #eb6a4b;
+  border: 2px solid #eb6a4b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #eb6a4b;
 }
