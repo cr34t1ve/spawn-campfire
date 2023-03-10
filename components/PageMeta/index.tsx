@@ -2,7 +2,7 @@
 
 import Head from "next/head";
 import Script from "next/script";
-import React, { useEffect } from "react";
+import React from "react";
 
 export function PageMeta({
   title = "Spawn Campfire",
@@ -16,13 +16,12 @@ export function PageMeta({
   children: React.ReactNode;
 }) {
   // useEffect(() => {
-
   //   window.addEventListener("load", function () {
   //     const preloaderEle = document.getElementById("preloader");
-  //     preloaderEle.className += " hidden";
+  //     preloaderEle!.className += " hidden";
   //     console.log("done here");
   //   });
-  // }, [])
+  // }, []);
 
   return (
     <>

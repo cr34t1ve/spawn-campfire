@@ -22,6 +22,7 @@ export const Text = styled("p", {
       4: {
         fontSize: "$2",
         fontWeight: "400",
+        lineHeight: 1.1,
       },
       5: {
         fontSize: "$3",
