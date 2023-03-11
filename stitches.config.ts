@@ -73,6 +73,6 @@ export const { styled, getCssText, keyframes, css } = createStitches({
     xm: "(max-width: 425px)",
     sm: "(max-width: 725px)",
     md: "(max-width: 1024px)",
-    xl: "(min-width: 1440px)",
+    xl: "(min-width: 1441px)",
   },
 });

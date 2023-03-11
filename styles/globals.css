@@ -118,15 +118,10 @@ h1 {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #eb6a4b;
 }
-
-.hero-text {
-  transform: translateY(115px);
-  transition: transform 0.5s;
-}
-.column {
+/* .column {
   height: 120vh;
   padding-top: 200px;
-}
+} */
 
 .box {
   padding: 50px;

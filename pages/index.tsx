@@ -56,53 +56,73 @@ const invitations_list = [
 const brands_list = [
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Sunami Games",
+    link: "https://www.sunamigames.com/",
+    width: 157,
+    height: 43,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Squad Wipeout",
+    link: "https://www.instagram.com/squad_wipeout/",
+    width: 121,
+    height: 111,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Leaf PHP",
+    link: "https://leafphp.dev/",
+    width: 162,
+    height: 56,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Smart Delivery",
+    link: "https://www.instagram.com/smartdelivery.gh/",
+    width: 140,
+    height: 51,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "The Jnk Mag",
+    link: "https://www.instagram.com/thejnkmag/",
+    width: 128,
+    height: 53,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Panda Esports",
+    link: "https://www.instagram.com/thejnkmag/",
+    width: 190,
+    height: 133,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Filmonga",
+    link: "https://www.instagram.com/filmongaa/?hl=en",
+    width: 134,
+    height: 134,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Impulse GG",
+    link: "https://www.instagram.com/impulse.ggg/",
+    width: 163,
+    height: 41,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Rare Goods Only",
+    link: "https://raregood sonly.webflow.io/",
+    width: 143,
+    height: 63,
   },
   {
     image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    name: "Hilmen Gaming",
+    link: "https://raregoodsonly.webflow.io/",
+    width: 140,
+    height: 103,
   },
 ];
 
@@ -514,7 +534,7 @@ function HomePage({
 }) {
   return (
     <>
-      <LightSection ref={main} className="light-section">
+      <LightSection className="light-section">
         <Header />
         <Hero>
           <Text
@@ -866,7 +886,7 @@ function HomePage({
             Follow Us
           </Text>
           <Row css={{ gap: 20 }}>
-            <SocialCircle>
+            <SocialCircle href="https://instagram.com/scfaccra?igshid=YmMyMTA2M2Y=">
               <Image
                 src="/images/icons/instagram.svg"
                 alt=""
@@ -874,7 +894,7 @@ function HomePage({
                 height={24}
               />
             </SocialCircle>
-            <SocialCircle>
+            <SocialCircle href="https://twitter.com/spawnesportteam?s=11&t=NKM0cENVw_CuA15l2rK_hw">
               <Image
                 src="/images/icons/twitter.svg"
                 alt=""
@@ -894,12 +914,25 @@ function HomePage({
         </Text>
         <BrandGrid>
           {brands_list.map((brand, index) => (
-            <BrandCard key={index}>
-              <img
-                src={`/images/brands/brand-${index}.png`}
-                alt=""
-                style={{ zIndex: 1, transition: "all .2s ease" }}
-              />
+            <BrandCard
+              key={index}
+              href={brand?.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Row
+                css={{
+                  width: brand.width,
+                  height: brand.height,
+                  "@sm": { width: 90 },
+                }}
+              >
+                <img
+                  src={`/images/brands/brand-${index}.png`}
+                  alt={brand.name}
+                  style={{ zIndex: 1, transition: "all .2s ease" }}
+                />
+              </Row>
             </BrandCard>
           ))}
           <DarkReserveCard>
@@ -1047,7 +1080,7 @@ const Arrow = styled("img", {
 
 const ReserveCard = styled("div", {
   position: "relative",
-  marginTop: 30,
+  marginTop: -70,
   marginLeft: "auto",
   width: "calc((100vw - 3.375rem) * 4/14 + 1.875rem)",
   borderRadius: 20,
@@ -1059,7 +1092,7 @@ const ReserveCard = styled("div", {
   isolation: "isolate",
 
   "@md": {
-    marginTop: 130,
+    marginTop: 70,
     marginLeft: "unset",
     top: "unset",
     width: "100%",
@@ -1106,10 +1139,7 @@ const DarkReserveCard = styled(ReserveCard, {
   gridColumnEnd: -1,
   backdropFilter: "blur(22px)",
   boxShadow: " 0px 4px 34px rgba(0, 0, 0, 0.05)",
-
-  "@md": {
-    marginTop: "unset",
-  },
+  marginTop: 0,
 
   "&:hover": {
     "&::before": {
@@ -1142,10 +1172,14 @@ const DarkReserveCard = styled(ReserveCard, {
 const RightArrow = styled("div", {
   position: "absolute",
   right: 0,
-  top: "21.495vw",
+  top: "12.495vw",
   width: "20rem",
   height: "30rem",
+  "@xl": {
+    top: "22.495vw",
+  },
   "@md": {
+    top: "15.495vw",
     width: "7rem",
   },
   "@sm": {
@@ -1248,7 +1282,7 @@ const ActivityCard = styled("figure", {
   },
 });
 
-const SocialCircle = styled("div", {
+const SocialCircle = styled(Link, {
   width: 80,
   height: 80,
   display: "flex",
@@ -1271,7 +1305,7 @@ const BrandGrid = styled("div", {
   },
 });
 
-const BrandCard = styled("figure", {
+const BrandCard = styled(Link, {
   position: "relative",
   display: "flex",
   justifyContent: "center",
