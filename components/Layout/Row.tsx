@@ -20,6 +20,9 @@ export const Row = styled("div", {
       center: {
         alignItems: "center",
       },
+      baseline: {
+        alignItems: "baseline",
+      },
     },
     justifyContent: {
       spaceBetween: {

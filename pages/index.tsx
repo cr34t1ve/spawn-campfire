@@ -261,11 +261,7 @@ function FullName({
             Next
           </Button>
         </Form>
-        <Row justifyContent="center">
-          <Text className={className} size={4} color="primary">
-            We are cooking your ticket
-          </Text>
-        </Row>
+        <TicketCooking className={className} />
       </LightSection>
     </>
   );
@@ -300,11 +296,7 @@ function Email({
             Next
           </Button>
         </Form>
-        <Row justifyContent="center">
-          <Text className={className} size={4} color="primary">
-            We are cooking your ticket
-          </Text>
-        </Row>
+        <TicketCooking className={className} />
       </LightSection>
     </>
   );
@@ -339,11 +331,7 @@ function Phone({
             Get ticket
           </Button>
         </Form>
-        <Row justifyContent="center">
-          <Text className={className} size={4} color="primary">
-            We are cooking your ticket
-          </Text>
-        </Row>
+        <TicketCooking className={className} />
       </LightSection>
     </>
   );
@@ -486,9 +474,16 @@ function Submitted({
                   </Text>
                 </Row>
               </div>
-              <div
-                style={{ width: 200, height: 200, backgroundColor: "grey" }}
-              ></div>
+              <Row
+                css={{
+                  width: 200,
+                  height: 200,
+                  marginBottom: 30,
+                  "@md": { marginBottom: "unset" },
+                }}
+              >
+                <img src="/images/fire.gif" alt="fire gif" />
+              </Row>
             </Row>
           </InvitationCard>
           <Row
@@ -1055,6 +1050,24 @@ function Header() {
   );
 }
 
+function TicketCooking({ className }: { className: string }) {
+  return (
+    <Row justifyContent="center" alignItems="center" css={{ gap: 10 }}>
+      <Row css={{ width: 47, height: 47 }}>
+        <img src="/images/fire.gif" alt="fire gif" />
+      </Row>
+      <Text
+        className={className}
+        size={4}
+        color="primary"
+        css={{ marginTop: 20 }}
+      >
+        We are cooking your ticket
+      </Text>
+    </Row>
+  );
+}
+
 // ~~~ Styles ~~~
 
 const HeaderWrapper = styled("header", {
@@ -1412,6 +1425,10 @@ const Form = styled(Column, {
   maxWidth: 519,
   gap: 28,
   marginBottom: 300,
+  "@sm": {
+    marginTop: 240,
+    marginBottom: 200,
+  },
 });
 
 const InvitationCard = styled("div", {
