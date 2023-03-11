@@ -16,6 +16,7 @@ import {
 } from "react";
 import SplitType from "split-type";
 import { Button } from "@/components/Button";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -532,6 +533,19 @@ function HomePage({
   darkSection: HTMLElement | any;
   handleClick: () => void;
 }) {
+  // const prefersReducedMotion = usePrefersReducedMotion();
+
+  // function handleScrollClick(ev: any) {
+  //   // Disable the default anchor-clicking behavior
+  //   // of scrolling to the element
+  //   ev.preventDefault();
+
+  //   const target = document?.querySelector(`#${location}`);
+  //   target?.scrollIntoView({
+  //     behavior: prefersReducedMotion ? "auto" : "smooth",
+  //   });
+  // }
+
   return (
     <>
       <LightSection className="light-section">
@@ -600,7 +614,7 @@ function HomePage({
             #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA #SCFACCRA
           </Text>
         </HorizontalOverflow>
-        <LocationGrid>
+        <LocationGrid as="section" id="location">
           <Text
             as="h1"
             transform="uppercase"
@@ -621,11 +635,9 @@ function HomePage({
             ring
           </Text>
           <LocationCard
-            css={{
-              background:
-                "linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(/images/hero-image.png) no-repeat top/cover",
-              gridArea: "location",
-            }}
+            href="https://goo.gl/maps/fH3PLGmzBTtg836v8"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <Row css={{ gridArea: "location", gap: 10 }}>
               <Image
@@ -1014,15 +1026,27 @@ function Header() {
         Accra
       </Text>
       <Row css={{ gap: 70 }}>
-        <Text as="h5" color="orange" size={12} transform="uppercase">
+        <Text
+          as={Link}
+          href="https://goo.gl/maps/fH3PLGmzBTtg836v8"
+          color="orange"
+          size={12}
+          transform="uppercase"
+        >
           Venue
         </Text>
         <Text
           as={Link}
-          href="http://www.google.com"
+          href="https://discord.gg/h9QmsFYp"
           color="orange"
           size={12}
           transform="uppercase"
+          css={{
+            transition: "all .2s ease",
+            "&:hover": {
+              textDecoration: "underline",
+            },
+          }}
         >
           Contact Us
         </Text>
@@ -1229,7 +1253,7 @@ const LocationGrid = styled("div", {
   },
 });
 
-const LocationCard = styled("div", {
+const LocationCard = styled(Link, {
   display: "flex",
   width: "100%",
   // height: 574,
@@ -1239,10 +1263,20 @@ const LocationCard = styled("div", {
   alignItems: "flex-end",
   borderRadius: 20,
   cursor: "pointer",
+  background:
+    "linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(/images/hero-image.png)",
+  gridArea: "location",
+  backgroundSize: "100%",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  transition: "background-size .2s ease",
   "@sm": {
     height: 270,
     alignItems: "center",
     paddingBottom: "unset",
+  },
+  "&:hover": {
+    backgroundSize: "110%",
   },
 });
 
@@ -1400,4 +1434,6 @@ const CircularDivider = styled("div", {
   backgroundColor: "rgba(0, 0, 0, 0.7)",
 });
 
-const Download = styled(Image, {});
+const Download = styled(Image, {
+  // content: `""`
+});
