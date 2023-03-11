@@ -17,6 +17,7 @@ import {
 import SplitType from "split-type";
 import { Button } from "@/components/Button";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import useMousePosition from "@/hooks/useMousePosition";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -132,7 +133,7 @@ export default function Home() {
   const darkSection = useRef(null);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("landing");
+  >("submitted");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
@@ -348,6 +349,8 @@ function Submitted({
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: () => void;
 }) {
+  const mousePosition = useMousePosition();
+
   return (
     <>
       <LightSection
@@ -373,7 +376,15 @@ function Submitted({
             "@md": { flexDirection: "column" },
           }}
         >
-          <InvitationCard>
+          <InvitationCard
+            id="ticket"
+            css={{
+              transformStyle: "preserve-3d",
+              transform: `perspective(1000px) rotateX(${
+                mousePosition.x! * -0.02
+              }deg) rotateY(${mousePosition.y! * -0.02}deg)`,
+            }}
+          >
             <Row
               css={{
                 gap: 78,
@@ -1439,6 +1450,8 @@ const InvitationCard = styled("div", {
   border: "1px solid black",
   background: "rgba(243, 243, 243, 0.8)",
   backdropFilter: "blur(22px)",
+  transition: "transform 0.2s",
+  willChange: "transform",
   "@md": {
     padding: "50px 20px",
   },
