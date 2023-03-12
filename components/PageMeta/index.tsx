@@ -11,6 +11,7 @@ export function PageMeta({
   gifPage = "https://giphy.com/gifs/POnf57xNb61o4WuoBm",
   mp4 = "https://media.giphy.com/media/I0eDKcJcs5KfdmXDot/giphy.mp4",
   description = "Promoting Esports as the future of competitive sports for the younger generation",
+  url = "https://www.scfaccra.com",
   children,
 }: {
   title?: string;
@@ -18,6 +19,7 @@ export function PageMeta({
   gif?: string;
   gifPage?: string;
   mp4?: string;
+  url?: string;
   description?: string | undefined;
   children: React.ReactNode;
 }) {
@@ -44,19 +46,7 @@ export function PageMeta({
         <link rel="icon" href="/favicon32.png" />
         <meta name="theme-color" content="#F8F8F8" />
         {/* <meta charset="utf-8" /> */}
-        {/* 
-
-        <meta property="og:site_name" content={title} />
-        <meta property="og:description" content={title} />
-
-        <meta property="twitter:card" content={title} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={title} />
-        <meta property="twitter:image" content={image} />
-        <meta property="fb:app_id" content="406655189415060" /> */}
-        {/* <meta property="og:site_name" content="Giphy" /> */}
         <meta property="og:url" content={gifPage} />
-        {/* <meta property="og:title" content="Animated GIF" /> */}
         <meta property="og:description" content={description} />
 
         <meta property="og:type" content="video.other" />
@@ -84,7 +74,7 @@ export function PageMeta({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image:src" content={image} />
         <meta name="twitter:image" content={image} />
-        <meta name="twitter:domain" content="giphy.com" />
+        <meta name="twitter:domain" content={url} />
 
         <meta
           name="twitter:player"
