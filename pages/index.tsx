@@ -18,6 +18,7 @@ import SplitType from "split-type";
 import { Button } from "@/components/Button";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import useMousePosition from "@/hooks/useMousePosition";
+import { request } from "@/helpers/axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -156,6 +157,26 @@ export default function Home() {
     });
   }
 
+  function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!submissionForm.phone) {
+      return;
+    }
+
+    setSubmissionState("submitting");
+    request
+      .post("/register", submissionForm)
+      .then(function (response) {
+        setSubmissionState("submitted");
+        setProcessStep("submitted");
+      })
+      .catch(function (error) {
+        const { errors } = error;
+        setSubmissionState("idle");
+        console.log(errors);
+      });
+  }
+
   // useLayoutEffect(() => {
   //   const ctx = gsap.context((self: any) => {
   //     const box = self?.selector(".horizontal-overflow-1")!;
@@ -202,7 +223,11 @@ export default function Home() {
               className={inter.className}
               value={submissionForm.name}
               handleChange={handleChange}
-              handleSubmit={() => setProcessStep("email")}
+              handleSubmit={(e) => {
+                e?.preventDefault();
+
+                submissionForm.name ? setProcessStep("email") : null;
+              }}
             />
           )}
           {processStep === "email" && (
@@ -210,7 +235,9 @@ export default function Home() {
               className={inter.className}
               value={submissionForm.email}
               handleChange={handleChange}
-              handleSubmit={() => setProcessStep("phone")}
+              handleSubmit={() => {
+                submissionForm.email ? setProcessStep("phone") : null;
+              }}
             />
           )}
           {processStep === "phone" && (
@@ -218,7 +245,8 @@ export default function Home() {
               className={inter.className}
               value={submissionForm.phone}
               handleChange={handleChange}
-              handleSubmit={() => setProcessStep("submitted")}
+              handleSubmit={handleSubmit}
+              submissionState={submissionState}
             />
           )}
           {processStep === "submitted" && (
@@ -244,7 +272,7 @@ function FullName({
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
+  handleSubmit: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <>
@@ -277,7 +305,7 @@ function Email({
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
+  handleSubmit: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <>
@@ -308,11 +336,13 @@ function Phone({
   className,
   handleChange,
   handleSubmit,
+  submissionState,
 }: {
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
+  handleSubmit: (e: ChangeEvent<HTMLInputElement>) => void;
+  submissionState: string;
 }) {
   return (
     <>
@@ -328,7 +358,12 @@ function Phone({
             value={value}
             onChange={handleChange}
           />
-          <Button type="submit" onClick={handleSubmit}>
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            disabledState={submissionState === "submitting"}
+            disabled={submissionState === "submitting"}
+          >
             Get ticket
           </Button>
         </Form>
