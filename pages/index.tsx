@@ -252,7 +252,7 @@ export default function Home() {
           {processStep === "submitted" && (
             <Submitted
               className={inter.className}
-              value={submissionForm.phone}
+              value={submissionForm.name}
               handleChange={handleChange}
               handleSubmit={() => setProcessStep("submitted")}
             />
@@ -449,7 +449,7 @@ function Submitted({
                     />
                   </Row>
                   <Text className={className} transform="uppercase" size={4}>
-                    Sebastian Livingstone
+                    {value}
                   </Text>
                 </Row>
                 <Text
