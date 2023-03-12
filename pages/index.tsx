@@ -22,6 +22,26 @@ import { request } from "@/helpers/axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const Loading = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#191919",
+        position: "fixed",
+        inset: 0,
+        zIndex: 999,
+      }}
+    >
+      <div style={{ width: "40%" }}>
+        <h1 style={{ textAlign: "center", color: "white" }}>Loading...</h1>
+      </div>
+    </div>
+  );
+};
+
 const activities_list = [
   { image: "/images/activities/activity-1.png" },
   { image: "/images/activities/activity-2.png" },
@@ -150,6 +170,19 @@ export default function Home() {
     phone: "",
   });
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("load", function () {
+      setLoading(false);
+      console.log(2);
+    });
+    return () =>
+      document.removeEventListener("load", function () {
+        setLoading(false);
+      });
+  }, []);
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSubmissionForm({
       ...submissionForm,
@@ -210,6 +243,7 @@ export default function Home() {
   return (
     <PageMeta>
       <>
+        {loading && <Loading />}
         <main className={helvetica.className}>
           {processStep === "landing" && (
             <HomePage
