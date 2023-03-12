@@ -157,7 +157,7 @@ export default function Home() {
     });
   }
 
-  function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
+  function handleSubmit(e: any) {
     e.preventDefault();
     if (!submissionForm.phone) {
       return;
@@ -223,7 +223,7 @@ export default function Home() {
               className={inter.className}
               value={submissionForm.name}
               handleChange={handleChange}
-              handleSubmit={(e) => {
+              handleSubmit={(e: any) => {
                 e?.preventDefault();
 
                 submissionForm.name ? setProcessStep("email") : null;
@@ -272,7 +272,7 @@ function FullName({
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: any;
 }) {
   return (
     <>
@@ -305,7 +305,7 @@ function Email({
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: any;
 }) {
   return (
     <>
@@ -341,7 +341,7 @@ function Phone({
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: any;
   submissionState: string;
 }) {
   return (
@@ -359,7 +359,7 @@ function Phone({
             onChange={handleChange}
           />
           <Button
-            type="submit"
+            type="button"
             onClick={handleSubmit}
             disabledState={submissionState === "submitting"}
             disabled={submissionState === "submitting"}
