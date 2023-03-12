@@ -133,7 +133,7 @@ export default function Home() {
   const darkSection = useRef(null);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("submitted");
+  >("landing");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
