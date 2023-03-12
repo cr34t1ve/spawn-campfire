@@ -173,14 +173,13 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.addEventListener("load", function () {
+    // window.addEventListener("load", function () {
+    //   setLoading(false);
+    //   console.log(2);
+    // });
+    window.onload = function () {
       setLoading(false);
-      console.log(2);
-    });
-    return () =>
-      document.removeEventListener("load", function () {
-        setLoading(false);
-      });
+    };
   }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
