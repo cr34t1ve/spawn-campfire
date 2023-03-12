@@ -19,6 +19,7 @@ import { Button } from "@/components/Button";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import useMousePosition from "@/hooks/useMousePosition";
 import { request } from "@/helpers/axios";
+import domtoimage from "dom-to-image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -154,7 +155,7 @@ export default function Home() {
   const darkSection = useRef(null);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("landing");
+  >("submitted");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
@@ -173,14 +174,37 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // window.addEventListener("load", function () {
-    //   setLoading(false);
-    //   console.log(2);
-    // });
     window.onload = function () {
       setLoading(false);
     };
   }, []);
+
+  function printDiv(divName: string) {
+    console.log("here");
+    var printContents = document.getElementById(divName)!.innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+  }
+
+  function printDom() {
+    var node = document.getElementById("my-node");
+
+    // domtoimage
+    //   .toPng(node!)
+    //   .then(function (dataUrl) {
+    //     var img: HTMLImageElement = new (Image() as any);
+    //     img.src = dataUrl;
+    //     document.body.appendChild(img);
+    //   })
+    //   .catch(function (error) {
+    //     console.error("oops, something went wrong!", error);
+    //   });
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSubmissionForm({
@@ -243,7 +267,7 @@ export default function Home() {
     <PageMeta>
       <>
         {loading && <Loading />}
-        <main className={helvetica.className}>
+        <main className={helvetica.className} id="here">
           {processStep === "landing" && (
             <HomePage
               main={main}
@@ -287,7 +311,7 @@ export default function Home() {
               className={inter.className}
               value={submissionForm.phone}
               handleChange={handleChange}
-              handleSubmit={() => setProcessStep("submitted")}
+              handleClick={() => printDiv("here")}
             />
           )}
         </main>
@@ -410,12 +434,12 @@ function Submitted({
   value,
   className,
   handleChange,
-  handleSubmit,
+  handleClick,
 }: {
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
+  handleClick: any;
 }) {
   const mousePosition = useMousePosition();
 
@@ -584,6 +608,7 @@ function Submitted({
                 },
               },
             }}
+            onClick={handleClick}
           >
             <Download
               src="/images/icons/download.svg"
