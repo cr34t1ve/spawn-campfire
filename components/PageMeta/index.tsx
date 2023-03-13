@@ -23,14 +23,6 @@ export function PageMeta({
   description?: string | undefined;
   children: React.ReactNode;
 }) {
-  // useEffect(() => {
-  //   window.addEventListener("load", function () {
-  //     const preloaderEle = document.getElementById("preloader");
-  //     preloaderEle!.className += " hidden";
-  //     console.log("done here");
-  //   });
-  // }, []);
-
   return (
     <>
       <Head>

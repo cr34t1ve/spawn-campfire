@@ -31,15 +31,15 @@ const activities_list = [
 
 const invitations_list = [
   {
-    image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    image: "/images/invites/invite-1.jpeg",
+    name: "Ebenezer Gasonoo",
+    title: "Co-Founder,GGN",
     basis: 2,
   },
   {
-    image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    image: "/images/invites/invite-2.jpeg",
+    name: "Dabi Diamond",
+    title: "Yetra Gaming",
     basis: 3,
   },
   {
@@ -590,6 +590,9 @@ function Submitted({ value, className }: { value: any; className: string }) {
               backgroundColor: "$primaryBackground",
               transition: "all .2s ease",
               cursor: "pointer",
+              "@sm": {
+                display: "none",
+              },
               "&:hover": {
                 transform: "scale(0.95)",
                 backgroundColor: "$secondaryBackground",
@@ -956,7 +959,7 @@ function HomePage({
                   className={inter.className}
                   css={{ "@sm": { fontSize: 10 } }}
                 >
-                  {invitation.name}
+                  {invitation.title}
                 </Text>
               </ActivityCard>
             ))}
