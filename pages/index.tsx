@@ -136,7 +136,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("landing");
+  >("submitted");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
@@ -590,9 +590,9 @@ function Submitted({ value, className }: { value: any; className: string }) {
               backgroundColor: "$primaryBackground",
               transition: "all .2s ease",
               cursor: "pointer",
-              "@sm": {
-                display: "none",
-              },
+              // "@sm": {
+              //   display: "none",
+              // },
               "&:hover": {
                 transform: "scale(0.95)",
                 backgroundColor: "$secondaryBackground",
