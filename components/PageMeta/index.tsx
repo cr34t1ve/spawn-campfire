@@ -46,7 +46,7 @@ export function PageMeta({
         <link rel="icon" href="/favicon32.png" />
         <meta name="theme-color" content="#F8F8F8" />
         {/* <meta charset="utf-8" /> */}
-        <meta property="og:url" content={gifPage} />
+        <meta property="og:url" content={url} />
         <meta property="og:description" content={description} />
 
         <meta property="og:type" content="video.other" />
