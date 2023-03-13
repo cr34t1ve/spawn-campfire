@@ -180,8 +180,21 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
+    window!.onload = function () {
+      setLoading(false);
+      const timer = setTimeout(() => {
+        const preloader1 = document.getElementById("preloader1");
+        const preloader2 = document.getElementById("preloader2");
+        const preloader3 = document.getElementById("preloader3");
+        preloader1!.style.display = "none";
+        preloader2!.style.display = "none";
+        preloader3!.style.display = "none";
+      }, 3000);
+      return () => clearTimeout(timer);
+    };
+    return () => {
+      setLoading(false);
+    };
   }, []);
 
   // useLayoutEffect(() => {
@@ -217,6 +230,25 @@ export default function Home() {
   return (
     <PageMeta>
       <>
+        <>
+          <div
+            className="preloader-3"
+            id="preloader3"
+            style={{
+              animationName: loading ? "unset" : "slide-out",
+            }}
+          ></div>
+          <div
+            className="preloader"
+            id="preloader1"
+            style={{ animationName: loading ? "unset" : "slide-out" }}
+          ></div>
+          <div
+            className="preloader-2"
+            id="preloader2"
+            style={{ animationName: loading ? "unset" : "slide-out" }}
+          ></div>
+        </>
         <main className={helvetica.className}>
           {processStep === "landing" && (
             <HomePage
@@ -261,7 +293,6 @@ export default function Home() {
               className={inter.className}
               value={submissionForm.name}
               handleChange={handleChange}
-              // handleSubmit={() => setProcessStep("submitted")}
             />
           )}
         </main>
@@ -384,12 +415,10 @@ function Submitted({
   value,
   className,
   handleChange,
-}: // handleSubmit,
-{
+}: {
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  // handleSubmit: () => void;
 }) {
   const mousePosition = useMousePosition();
   const ref = useRef<HTMLDivElement>(null);
