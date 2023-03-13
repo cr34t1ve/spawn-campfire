@@ -136,7 +136,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("submitted");
+  >("landing");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
@@ -292,7 +292,6 @@ export default function Home() {
             <Submitted
               className={inter.className}
               value={submissionForm.name}
-              handleChange={handleChange}
             />
           )}
         </main>
@@ -411,15 +410,7 @@ function Phone({
   );
 }
 
-function Submitted({
-  value,
-  className,
-  handleChange,
-}: {
-  value: any;
-  className: string;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-}) {
+function Submitted({ value, className }: { value: any; className: string }) {
   const mousePosition = useMousePosition();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -439,7 +430,7 @@ function Submitted({
 
       const downloadLink = document.createElement("a");
       downloadLink.href = image;
-      downloadLink.download = "screenshot.png";
+      downloadLink.download = "campfire.png";
 
       document.body.appendChild(downloadLink);
       downloadLink.click();
@@ -514,7 +505,12 @@ function Submitted({
                     />
                   </Row>
 
-                  <Text className={className} id="user-name" transform="uppercase" size={4}>
+                  <Text
+                    className={className}
+                    id="user-name"
+                    transform="uppercase"
+                    size={4}
+                  >
                     {value}
                   </Text>
                 </Row>
