@@ -19,6 +19,7 @@ import { Button } from "@/components/Button";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import useMousePosition from "@/hooks/useMousePosition";
 import { request } from "@/helpers/axios";
+import html2canvas from "html2canvas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -132,9 +133,10 @@ const brands_list = [
 export default function Home() {
   const main = useRef(null);
   const darkSection = useRef(null);
+  const [loading, setLoading] = useState(true);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("landing");
+  >("submitted");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
@@ -176,6 +178,11 @@ export default function Home() {
         console.log(errors);
       });
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // useLayoutEffect(() => {
   //   const ctx = gsap.context((self: any) => {
@@ -254,7 +261,7 @@ export default function Home() {
               className={inter.className}
               value={submissionForm.phone}
               handleChange={handleChange}
-              handleSubmit={() => setProcessStep("submitted")}
+              // handleSubmit={() => setProcessStep("submitted")}
             />
           )}
         </main>
@@ -377,14 +384,42 @@ function Submitted({
   value,
   className,
   handleChange,
-  handleSubmit,
-}: {
+}: // handleSubmit,
+{
   value: any;
   className: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
+  // handleSubmit: () => void;
 }) {
   const mousePosition = useMousePosition();
+  const ref = useRef<HTMLDivElement>(null);
+
+  const [screenshot, setScreenshot] = useState<string | null>(null);
+
+  const takeScreenshot = (): void => {
+    const element = ref.current;
+    if (!element) return;
+
+    element.style.transform = "none";
+    const userName = document.getElementById("user-name")!;
+    userName.style.transform = "translateY(-30%)";
+
+    html2canvas(element, { backgroundColor: null }).then((canvas) => {
+      const image = canvas.toDataURL();
+      setScreenshot(image);
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = image;
+      downloadLink.download = "screenshot.png";
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      element.style.transform = "revert";
+      userName.style.transform = "unset";
+    });
+  };
 
   return (
     <>
@@ -412,6 +447,7 @@ function Submitted({
           }}
         >
           <InvitationCard
+            ref={ref}
             id="ticket"
             css={{
               transformStyle: "preserve-3d",
@@ -441,14 +477,19 @@ function Submitted({
                       padding: "11px 15px",
                     }}
                   >
-                    <Image
+                    <img
                       src="/images/finger.svg"
                       alt="finger emoji"
-                      width={23}
+                      width={25}
                       height={33}
                     />
                   </Row>
-                  <Text className={className} transform="uppercase" size={4}>
+                  <Text
+                    className={className}
+                    id="user-name"
+                    transform="uppercase"
+                    size={4}
+                  >
                     Sebastian Livingstone
                   </Text>
                 </Row>
@@ -464,25 +505,10 @@ function Submitted({
                 >
                   HAS RESERVED A SPOT FOR
                 </Text>
-                <Text
-                  transform="uppercase"
-                  css={{
-                    color: "transparent",
-                    background:
-                      "linear-gradient(89.16deg, #0D2F65 -11.12%, #DF6F53 32.51%, #599C9B 71.83%)",
-                    backgroundClip: "text",
-                    paddingTop: 10,
-                    fontSize: 100,
-                    fontWeight: 900,
-                    "@sm": {
-                      fontSize: 60,
-                    },
-                  }}
-                >
-                  Spawn <br />
-                  Campfire
-                </Text>
-                <Row css={{ gap: 10, alignItems: "center", marginTop: 10 }}>
+                <Row css={{ paddingTop: 10, "@md": { width: "85%" } }}>
+                  <img src="/images/SPAWN CAMPFIRE.svg" alt="Spawn Campfire" />
+                </Row>
+                <Row css={{ gap: 10, alignItems: "unset", marginTop: 10 }}>
                   <Text
                     className={className}
                     size={4}
@@ -533,6 +559,7 @@ function Submitted({
             </Row>
           </InvitationCard>
           <Row
+            onClick={takeScreenshot}
             justifyContent="center"
             alignItems="center"
             css={{
@@ -1493,6 +1520,8 @@ const InvitationCard = styled("div", {
 });
 
 const CircularDivider = styled("div", {
+  position: "relative",
+  top: 6,
   width: 4,
   height: 4,
   borderRadius: "10%",
