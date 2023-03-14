@@ -165,11 +165,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("landing");
+  >("phone");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
-  >("idle");
+  >("submitting");
 
   const [submissionForm, setSubmissionForm] = useState<{
     name: string;
@@ -429,8 +429,19 @@ function Phone({
             onClick={handleSubmit}
             disabledState={submissionState === "submitting"}
             disabled={submissionState === "submitting"}
+            css={{ display: "flex" }}
           >
-            Get ticket
+            {submissionState === "submitting" ? (
+              <Image
+                src="/images/fire.gif"
+                alt="fire emoji"
+                width="20"
+                height="20"
+                style={{ marginLeft: 27, marginRight: 27 }}
+              />
+            ) : (
+              "Get ticket"
+            )}
           </Button>
         </Form>
         <TicketCooking className={className} />
