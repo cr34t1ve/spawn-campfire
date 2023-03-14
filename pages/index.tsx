@@ -24,9 +24,9 @@ import html2canvas from "html2canvas";
 gsap.registerPlugin(ScrollTrigger);
 
 const activities_list = [
-  { image: "/images/activities/activity-1.png" },
-  { image: "/images/activities/activity-2.png" },
-  { image: "/images/activities/activity-3.png" },
+  { image: "/images/activities/activity-1.png", name: "Board Games" },
+  { image: "/images/activities/activity-2.png", name: "Barbecue" },
+  { image: "/images/activities/activity-3.png", name: "Vibes on Vibes" },
 ];
 
 const invitations_list = [
@@ -39,19 +39,19 @@ const invitations_list = [
   {
     image: "/images/invites/invite-2.jpeg",
     name: "Dabi Diamond",
-    title: "Yetra Gaming",
+    title: "CEO of Panda Esports",
     basis: 3,
   },
   {
-    image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    image: "/images/invites/invite-3.jpeg",
+    name: "Gamergirlnica",
+    title: "",
     basis: 2,
   },
   {
-    image: "/images/hero-image.png",
-    name: "Samuel Darko",
-    title: "CEO of Panda Esports",
+    image: "/images/invites/invite-4.jpeg",
+    name: "Kwesi Hayford",
+    title: "President, Esports Association, Ghana",
     basis: 3,
   },
 ];
@@ -127,6 +127,34 @@ const brands_list = [
     link: "https://raregoodsonly.webflow.io/",
     width: 140,
     height: 103,
+  },
+  {
+    image: "/images/hero-image.png",
+    name: "Play Province",
+    link: "https://www.instagram.com/playprovince/",
+    width: 204,
+    height: 61,
+  },
+  {
+    image: "/images/hero-image.png",
+    name: "Gasbros Gaming Network",
+    link: "https://gasbrosgamingnetwork.com/",
+    width: 164,
+    height: 108,
+  },
+  {
+    image: "/images/hero-image.png",
+    name: "Games With Friends",
+    link: "https://www.youtube.com/channel/UCsBnHolVh2XXmSImRQsk7aQ",
+    width: 118,
+    height: 93,
+  },
+  {
+    image: "/images/hero-image.png",
+    name: "Skate Nation Ghana",
+    link: "https://www.instagram.com/skatenationghana/",
+    width: 121,
+    height: 93,
   },
 ];
 
@@ -819,7 +847,17 @@ function HomePage({
                 css={{
                   background: `linear-gradient(13.78deg, #1D212D -0.25%, rgba(55, 59, 73, 0.3) 99.3%), url(${activity.image}) no-repeat top/cover`,
                 }}
-              ></ActivityCard>
+              >
+                <Text
+                  color="white"
+                  as="h3"
+                  size={17}
+                  transform="uppercase"
+                  css={{ "@sm": { fontSize: 20 } }}
+                >
+                  {activity.name}
+                </Text>
+              </ActivityCard>
             ))}
           </ActivitiesGrid>
         </Column>
@@ -1417,6 +1455,9 @@ const FakeBG = styled("div", {
 });
 
 const ActivityCard = styled("figure", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   borderTopRightRadius: 20,
   borderBottomLeftRadius: 20,
   height: 450,
