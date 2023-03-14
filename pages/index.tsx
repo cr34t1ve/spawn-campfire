@@ -20,6 +20,7 @@ import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import useMousePosition from "@/hooks/useMousePosition";
 import { request } from "@/helpers/axios";
 import html2canvas from "html2canvas";
+import { saveAs } from "file-saver";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -666,6 +667,12 @@ function HomePage({
   //   });
   // }
 
+  const downloadPDF = async (url: string, filename: string) => {
+    // const response = await fetch(url);
+    // const blob = await response.blob();
+    saveAs(url);
+  };
+
   return (
     <>
       <LightSection className="light-section">
@@ -1077,7 +1084,14 @@ function HomePage({
               </Row>
             </BrandCard>
           ))}
-          <DarkReserveCard>
+          <DarkReserveCard
+            onClick={() =>
+              downloadPDF(
+                "https://strung-instruments.000webhostapp.com/Sponsorship.pdf",
+                "scholarship.pdf"
+              )
+            }
+          >
             <Column css={{ gap: 40 }}>
               <Text
                 color="white"
