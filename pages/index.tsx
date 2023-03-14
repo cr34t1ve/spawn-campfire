@@ -1306,11 +1306,11 @@ const DarkReserveCard = styled(ReserveCard, {
 const RightArrow = styled("div", {
   position: "absolute",
   right: 0,
-  top: "12.495vw",
+  top: "calc(12.495vw * 0.8)",
   width: "20rem",
   height: "30rem",
   "@xl": {
-    top: "22.495vw",
+    top: "15.495vw",
   },
   "@md": {
     top: "15.495vw",
