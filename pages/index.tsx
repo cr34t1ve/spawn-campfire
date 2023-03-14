@@ -165,11 +165,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("phone");
+  >("landing");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
-  >("submitting");
+  >("idle");
 
   const [submissionForm, setSubmissionForm] = useState<{
     name: string;
