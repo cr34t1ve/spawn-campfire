@@ -118,14 +118,14 @@ const brands_list = [
   {
     image: "/images/hero-image.png",
     name: "Rare Goods Only",
-    link: "https://raregood sonly.webflow.io/",
+    link: "https://raregoodsonly.webflow.io/",
     width: 143,
     height: 63,
   },
   {
     image: "/images/hero-image.png",
     name: "Hilmen Gaming",
-    link: "https://raregoodsonly.webflow.io/",
+    link: "https://www.instagram.com/hillmen.gg/",
     width: 140,
     height: 103,
   },
@@ -1144,7 +1144,13 @@ function HomePage({
           }}
         >
           <Text color="white">WEBSITE BY :</Text>
-          <Text color="white" as={Link} href="https://raregoodsonly.webflow.io">
+          <Text
+            color="white"
+            as={Link}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://raregoodsonly.webflow.io"
+          >
             Rare Goods Only
           </Text>
         </Row>
