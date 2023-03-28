@@ -704,7 +704,7 @@ function HomePage({
             OF COMPETITIVE SPORTS FOR THE YOUNGER GENERATION
           </Text>
         </Hero>
-        <ReserveCard onClick={handleClick}>
+        <ReserveCard>
           <Column css={{ gap: 40, fontWeight: 900 }}>
             <Text
               size={12}
