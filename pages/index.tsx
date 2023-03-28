@@ -728,7 +728,7 @@ function HomePage({
               className="main-text"
               as="h3"
             >
-              RESERVE A SPOT
+              THANKS FOR VISITING!
             </Text>
           </Column>
           <Arrow src="/images/icons/arrow-right.svg" alt="" />
