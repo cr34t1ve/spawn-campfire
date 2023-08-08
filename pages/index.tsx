@@ -23,7 +23,11 @@ export default function Home() {
               Spawn <br />
               Campfire
             </Text>
-            <Button css={{ "@sm": { display: "none" } }}>
+            <Button
+              css={{ "@sm": { display: "none" } }}
+              as={Link}
+              href="https://drive.google.com/file/d/1_UahrQIjdVmSeuVUWHllxDAb_APMHrPs/view?usp=sharing"
+            >
               Season 01 Review
               <Link21 color="#C0B1D6" size={24} />
             </Button>
@@ -36,11 +40,15 @@ export default function Home() {
             </HeroText>
           </Row>
           <Column css={{ marginTop: 53, gap: 16, "@sm": { marginTop: 36 } }}>
-            <Button css={{ display: "none", "@sm": { display: "flex" } }}>
+            <Button
+              css={{ display: "none", "@sm": { display: "flex" } }}
+              as={Link}
+              href="https://drive.google.com/file/d/1_UahrQIjdVmSeuVUWHllxDAb_APMHrPs/view?usp=sharing"
+            >
               Season 01 Review
               <Link21 color="#C0B1D6" size={24} />
             </Button>
-            <Button filled>
+            <Button filled disabled>
               Registration opens in 15 days
               <StyledCaledarAdd color="#C0B1D6" />
             </Button>
