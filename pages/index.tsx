@@ -1,9 +1,8 @@
 /** @format */
 
-import Image from "next/image";
 import { styled } from "@/stitches.config";
-import { inter, helvetica, SFProCondensed, Forza } from "@/fonts/fonts";
-import { Column, PageMeta, Row, Text, Input } from "@/components";
+import { SFProCondensed, Forza } from "@/fonts/fonts";
+import { Column, PageMeta, Row, Text } from "@/components";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { CalendarAdd, Link21 } from "iconsax-react";
@@ -13,7 +12,7 @@ export default function Home() {
   return (
     <PageMeta>
       <>
-        <Wrapper className={helvetica.className}>
+        <Wrapper className={SFProCondensed.className}>
           <Row justifyContent="spaceBetween">
             <Text
               className={SFProCondensed.className}
@@ -29,7 +28,7 @@ export default function Home() {
               <Link21 color="#C0B1D6" size={24} />
             </Button>
           </Row>
-          <Row as="section" css={{ marginTop: 120 }}>
+          <Row as="section" css={{ marginTop: 120, "@sm": { marginTop: 50 } }}>
             <HeroText className={Forza.className}>
               Bringing a new age of{" "}
               <span>excitement to the younger generations</span> of creatives,
