@@ -61,6 +61,8 @@ export default function Home() {
 
 // ~~~ Styles ~~~
 const Wrapper = styled("main", {
+  maxWidth: 1440,
+  marginInline: "auto",
   padding: "50px 70px",
   "@sm": {
     padding: "32px 16px",
