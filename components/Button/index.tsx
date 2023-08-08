@@ -4,29 +4,50 @@ import { styled } from "@/stitches.config";
 
 export const Button = styled("button", {
   all: "unset",
-  borderRadius: 4,
-  border: "1px solid $primaryText",
-  padding: "14px 30px",
+  display: "flex",
+  alignItems: "center",
+  gap: 40,
+  border: "1px solid $purpleText",
+  color: "$purpleText",
+  padding: "16px 14px 16px 17px",
+  fontSize: 16,
   width: "max-content",
   cursor: "pointer",
   transition: "all .2s ease",
+
+  "@sm": {
+    width: "calc(100% - 40px - 2px)",
+    padding: "32px 20px",
+    justifyContent: "space-between",
+    gap: 0,
+    fontSize: 16,
+  },
+
   variants: {
-    disabledState: {
+    filled: {
       true: {
-        border: "1px solid $grey",
-        pointerEvents: "none",
-        cursor: "not-allowed",
-        color: "$grey",
-        "&:hover": {
-          color: "$primaryBackground",
-          background: "transparent",
+        border: "none",
+        justifyContent: "space-between",
+        backgroundColor: "#1A0F2B",
+        padding: "49px 40px",
+        fontSize: 24,
+        gap: 250,
+        "@sm": {
+          width: "calc(100% -  - 2px)",
+          padding: "32px 20px",
+          gap: 0,
+          fontSize: 16,
         },
+        // "&:hover": {
+        //   color: "$primaryBackground",
+        //   background: "transparent",
+        // },
       },
     },
   },
 
-  "&:hover": {
-    color: "$primaryBackground",
-    background: "$primaryText",
-  },
+  // "&:hover": {
+  //   color: "$primaryBackground",
+  //   background: "$primaryText",
+  // },
 });

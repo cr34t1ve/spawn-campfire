@@ -126,44 +126,8 @@ export const Text = styled("p", {
       },
     },
     color: {
-      primary: {
-        color: "$primaryText",
-      },
-      secondary: {
-        color: "$secondaryText",
-      },
-      hyperlink: {
-        color: "$hyperlink",
-      },
-      white: {
-        color: "$white",
-      },
-      whiteLightShade: {
-        color: "$whiteLightShade",
-      },
-      silver: {
-        color: "$silver",
-      },
-      danger: {
-        color: "$red",
-      },
-      brightRed: {
-        color: "$brightRed",
-      },
-      lightGreen: {
-        color: "$lightGreen",
-      },
-      paleGreen: {
-        color: "$paleGreen",
-      },
-      grey: {
-        color: "$grey",
-      },
-      orange: {
-        color: "$orange",
-      },
-      green: {
-        color: "$green",
+      purple: {
+        color: "$purpleText",
       },
     },
   },

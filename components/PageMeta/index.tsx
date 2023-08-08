@@ -36,7 +36,7 @@ export function PageMeta({
         <meta property="og:site_name" content={title} />
         <link rel="apple-touch-icon" href="/favicon192.png" />
         <link rel="icon" href="/favicon32.png" />
-        <meta name="theme-color" content="#F8F8F8" />
+        <meta name="theme-color" content="#140A23" />
         {/* <meta charset="utf-8" /> */}
         <meta property="og:url" content={url} />
         <meta property="og:description" content={description} />
