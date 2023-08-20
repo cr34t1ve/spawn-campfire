@@ -23,6 +23,10 @@ export const Button = styled("button", {
     fontSize: 16,
   },
 
+  "&:disabled": {
+    cursor: "not-allowed",
+  },
+
   variants: {
     filled: {
       true: {
