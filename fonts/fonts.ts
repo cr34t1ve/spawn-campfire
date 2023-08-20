@@ -28,6 +28,11 @@ export const Forza = localFont({
       style: "normal",
     },
     {
+      path: "./Forza-Bold.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
       path: "./Forza-Black.woff2",
       weight: "450",
       style: "normal",

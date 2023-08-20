@@ -150,6 +150,7 @@ h1 {
 #root,
 #__next {
   isolation: isolate;
+  min-height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -159,11 +160,11 @@ h1 {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 100px;
-  background-color: #eb6a4b;
-  border: 2px solid #eb6a4b;
+  background-color: #916bc8;
+  border: 2px solid #916bc8;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #eb6a4b;
+  background-color: #916bc8;
 }
 /* .column {
   height: 120vh;

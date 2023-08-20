@@ -12,6 +12,7 @@ export function PageMeta({
   mp4 = "https://media.giphy.com/media/I0eDKcJcs5KfdmXDot/giphy.mp4",
   description = "Promoting Esports as the future of competitive sports for the younger generation",
   url = "https://www.scfaccra.com",
+  themeColor = "#140A23",
   children,
 }: {
   title?: string;
@@ -21,7 +22,8 @@ export function PageMeta({
   mp4?: string;
   url?: string;
   description?: string | undefined;
-  children: React.ReactNode;
+  themeColor?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <>
@@ -36,7 +38,7 @@ export function PageMeta({
         <meta property="og:site_name" content={title} />
         <link rel="apple-touch-icon" href="/favicon192.png" />
         <link rel="icon" href="/favicon32.png" />
-        <meta name="theme-color" content="#140A23" />
+        <meta name="theme-color" content={themeColor} />
         {/* <meta charset="utf-8" /> */}
         <meta property="og:url" content={url} />
         <meta property="og:description" content={description} />
