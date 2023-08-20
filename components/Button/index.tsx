@@ -15,6 +15,10 @@ export const Button = styled("button", {
   cursor: "pointer",
   transition: "all .2s ease",
 
+  "&:disabled": {
+    cursor: "not-allowed",
+  },
+
   "@sm": {
     width: "calc(100% - 40px - 2px)",
     padding: "32px 20px",
