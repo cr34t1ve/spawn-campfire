@@ -6,9 +6,12 @@ import { Column, PageMeta, Row, Text } from "@/components";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { CalendarAdd, Link21 } from "iconsax-react";
+import dayjs from "dayjs";
 
 export default function Home() {
-  const daysLeft = new Date("2021-10-31").getTime() - new Date().getTime();
+  const targetDate = dayjs("2023-09-05");
+  const diff = targetDate.diff(dayjs(), "day");
+
   return (
     <PageMeta>
       <>
@@ -49,7 +52,7 @@ export default function Home() {
               <Link21 color="#C0B1D6" size={24} />
             </Button>
             <Button filled disabled>
-              Registration opens in 15 days
+              Registration opens in {diff} days
               <StyledCaledarAdd color="#C0B1D6" />
             </Button>
           </Column>
