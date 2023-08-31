@@ -7,7 +7,9 @@ import { ArrowRight } from "iconsax-react";
 import Link from "next/link";
 
 const LIST = [1, 2, 3, 4];
-const BRAND_LIST = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18];
+const BRAND_LIST = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20,
+];
 
 export default function Registration() {
   return (

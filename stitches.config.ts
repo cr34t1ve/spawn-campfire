@@ -42,6 +42,7 @@ export const { styled, getCssText, keyframes, css } = createStitches({
       semiBold: 600,
       bold: 700,
       black: 900,
+      forzaBook: 325,
       forzaMedium: 350,
       forzaBold: 400,
       forzaBlack: 450,

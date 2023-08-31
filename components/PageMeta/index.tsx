@@ -1,12 +1,11 @@
 /** @format */
 
 import Head from "next/head";
-import Script from "next/script";
 import React from "react";
 
 export function PageMeta({
   title = "Spawn Campfire",
-  image = "https://uploads-ssl.webflow.com/637f643d4e36527b45571b80/6409e9b48f17ec01128d6cbb_OpenGraph.png",
+  image = "https://uploads-ssl.webflow.com/629166b425175b832b8179fe/64f0beb4dd1075a0f4b7270c_OpenGraph.jpg",
   gif = "https://media.giphy.com/media/I0eDKcJcs5KfdmXDot/giphy.gif",
   gifPage = "https://giphy.com/gifs/POnf57xNb61o4WuoBm",
   mp4 = "https://media.giphy.com/media/I0eDKcJcs5KfdmXDot/giphy.mp4",
@@ -76,14 +75,8 @@ export function PageMeta({
         />
         <meta name="twitter:player:width" content="435" />
         <meta name="twitter:player:height" content="182" />
-        {/* <Script id="preloader">{``}</Script> */}
       </Head>
-      <>
-        {/* <div id="preloader">
-          <img src="/favicon192.png" className="loader" />
-        </div> */}
-        {children}
-      </>
+      <>{children}</>
     </>
   );
 }

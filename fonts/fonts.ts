@@ -23,6 +23,11 @@ export const SFProCondensed = localFont({
 export const Forza = localFont({
   src: [
     {
+      path: "./Forza-Book.woff2",
+      weight: "325",
+      style: "normal",
+    },
+    {
       path: "./Forza-Medium.woff2",
       weight: "350",
       style: "normal",

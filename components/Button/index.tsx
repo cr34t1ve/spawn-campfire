@@ -48,6 +48,15 @@ export const Button = styled("button", {
         // },
       },
     },
+    unstyled: {
+      true: {
+        border: "none",
+        justifyContent: "space-between",
+        backgroundColor: "transparent",
+        padding: "unset",
+        width: "max-content",
+      },
+    },
   },
 
   // "&:hover": {
