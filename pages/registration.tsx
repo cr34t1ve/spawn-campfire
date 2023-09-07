@@ -76,7 +76,7 @@ export default function Registration() {
               src="/images/Respawn-Banner.png"
               fill
               style={{
-                objectFit: "cover",
+                objectFit: "contain",
               }}
             />
           </BannerWrapper>
@@ -91,18 +91,14 @@ export default function Registration() {
               },
             }}
           >
-            <RegistrationButton>
-              Regular Ticket
+            <RegistrationButton as={Link} href="/ticket">
+              Reserve a spot
               <ArrowRight color="#E7DEBF" />
-            </RegistrationButton>
-            <RegistrationButton outline>
-              All Access Ticket
-              <ArrowRight color="#140A23" />
             </RegistrationButton>
           </Row>
           <ForzaText size="85Black">
-            For a more exciting future, we need to{" "}
-            <span> revisit the past</span> in Retro Style.
+            <span> Celebrating Gamers and Creatives</span> <br /> with a taste
+            of Nostalgia. Redefining the past.
           </ForzaText>
           <ForzaText size="24Black" css={{ marginTop: 40 }}>
             A community Event for Gamers and Creatives.
@@ -133,6 +129,7 @@ export default function Registration() {
                 <BorderedImage
                   key={index}
                   css={{
+                    border: "none",
                     gridArea: `act${item}`,
                     backgroundImage: `url('/images/activities/act0${
                       index + 1
@@ -148,21 +145,18 @@ export default function Registration() {
           <Column as="section" css={{ marginTop: 120, gap: 20 }}>
             <ForzaText size="24Black">Spacial invitations</ForzaText>
             <InviteGrid>
-              {LIST.map((item, index) => (
-                <BorderedImage
-                  key={index}
-                  css={{
-                    gridArea: `invite${item}`,
-                    backgroundImage: `url('/images/invites/invite0${
-                      index + 1
-                    }.png')`,
-                    backgroundPosition: "100% 20%",
-                    "@sm": {
-                      gridArea: "initial",
-                    },
-                  }}
-                />
-              ))}
+              <BorderedImage
+                css={{
+                  backgroundImage: `url('/images/invites/invite0${1}.png')`,
+                  backgroundPosition: "100% 20%",
+                }}
+              />
+              <BorderedImage
+                css={{
+                  backgroundImage: `url('/images/invites/invite0${4}.png')`,
+                  backgroundPosition: "100% 20%",
+                }}
+              />
             </InviteGrid>
           </Column>
           <Column as="section" css={{ marginTop: 120, gap: 20 }}>
@@ -212,7 +206,6 @@ export default function Registration() {
 const Wrapper = styled("main", {
   position: "relative",
   width: "100%",
-  //   height: "100vh",
   backgroundColor: "$backroundPrimary",
   paddingBottom: "250px",
 });
@@ -235,13 +228,12 @@ const TVFrame = styled("div", {
 });
 
 const ContentWrapper = styled("article", {
-  maxWidth: "58.563rem",
-  // margin: '0 auto',
-  // padding: '0 1.5rem',
-  paddingLeft: "9.125rem",
-  paddingTop: "10.375rem",
+  maxWidth: "68vw",
+  paddingLeft: "10vw",
+  paddingTop: "11vh",
 
   "@sm": {
+    maxWidth: "58.563rem",
     padding: "80px 50px",
   },
 });
@@ -256,19 +248,19 @@ const ForzaText = styled("p", {
   variants: {
     size: {
       "24Black": {
-        fontSize: "1.5rem",
+        fontSize: "1.5vw",
         fontWeight: "$forzaBlack",
 
         "@sm": {
-          fontSize: 12,
+          fontSize: "0.75rem",
         },
       },
       "85Black": {
-        fontSize: "5.313rem",
+        fontSize: "5.313vw",
         fontWeight: "$forzaBlack",
 
         "@sm": {
-          fontSize: 28,
+          fontSize: "2.8rem",
         },
       },
     },
@@ -320,6 +312,10 @@ const RegistrationButton = styled(Button, {
   border: "1px solid $darkPurple",
   color: "$backroundPrimary",
 
+  "@sm": {
+    maxWidth: "calc(100% - 80px)",
+  },
+
   variants: {
     outline: {
       true: {
@@ -362,17 +358,25 @@ const ActivityGrid = styled("div", {
 });
 
 const InviteGrid = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "repeat(5, 1fr)",
-  gridTemplateRows: "repeat(2, 225px)",
-  gap: "22px 32px",
-  gridTemplateAreas: `
-        "invite1 invite1 invite2 invite2 invite2 "
-        "invite3 invite3 invite3 invite4 invite4"
-    `,
+  display: "flex",
+  gap: 32,
+  height: 425,
+
   "@sm": {
-    gridTemplateColumns: "1fr",
-    gridTemplateRows: "repeat(4, 180px)",
-    gridTemplateAreas: "unset",
+    flexDirection: "column",
+    height: 400,
   },
+  // display: "grid",
+  // gridTemplateColumns: "repeat(5, 1fr)",
+  // gridTemplateRows: "repeat(2, 225px)",
+  // gap: "22px 32px",
+  // gridTemplateAreas: `
+  //       "invite1 invite1 invite2 invite2 invite2 "
+  //       "invite3 invite3 invite3 invite4 invite4"
+  //   `,
+  // "@sm": {
+  //   gridTemplateColumns: "1fr",
+  //   gridTemplateRows: "repeat(4, 180px)",
+  //   gridTemplateAreas: "unset",
+  // },
 });

@@ -27,8 +27,9 @@ export default function TicketPage() {
             Back
           </Button>
           <Row
-            justifyContent="spaceBetween"
             css={{
+              justifyContent: "center",
+              gap: 70,
               "@sm": {
                 flexDirection: "column-reverse",
               },
@@ -90,13 +91,12 @@ const Wrapper = styled("main", {
 });
 
 const ContentWrapper = styled("article", {
-  maxWidth: "58.563rem",
-  // margin: '0 auto',
-  // padding: '0 1.5rem',
-  paddingLeft: "9.125rem",
-  paddingTop: "10.375rem",
+  maxWidth: "68vw",
+  paddingLeft: "10vw",
+  paddingTop: "14vh",
 
   "@sm": {
+    maxWidth: "58.563rem",
     padding: "80px 50px",
   },
 });
@@ -118,60 +118,6 @@ const TVFrame = styled("div", {
   },
 });
 
-const ForzaText = styled("p", {
-  color: "$darkPurple",
-  lineHeight: 1,
-
-  "& span": {
-    color: "$primaryPurple",
-  },
-  variants: {
-    size: {
-      "24Black": {
-        fontSize: "1.5rem",
-        fontWeight: "$forzaBlack",
-
-        "@sm": {
-          fontSize: 12,
-        },
-      },
-      "85Black": {
-        fontSize: "5.313rem",
-        fontWeight: "$forzaBlack",
-
-        "@sm": {
-          fontSize: 28,
-        },
-      },
-    },
-    color: {
-      darkPurple: {
-        color: "$darkPurple",
-      },
-      purpleText: {
-        color: "$purpleText",
-      },
-      primaryPurple: {
-        color: "$primaryPurple",
-      },
-      blackPrimary: {
-        color: "$blackPrimary",
-      },
-      backgroundPrimary: {
-        color: "$backgroundPrimary",
-      },
-    },
-    transform: {
-      uppercase: {
-        textTransform: "uppercase",
-      },
-      capitalize: {
-        textTransform: "capitalize",
-      },
-    },
-  },
-});
-
 const RegisterButton = styled("button", {
   all: "unset",
   display: "flex",
@@ -181,11 +127,15 @@ const RegisterButton = styled("button", {
   backgroundColor: "$primaryPurple",
   padding: "24px 20px",
   fontSize: 18,
-  width: "calc(100% - 40px)",
+  width: "100%",
   maxWidth: 363,
   cursor: "pointer",
   transition: "all .2s ease",
   color: "#E7DEBF",
+
+  "@sm": {
+    width: "calc(100% - 40px)",
+  },
 
   "&:disabled": {
     cursor: "not-allowed",
