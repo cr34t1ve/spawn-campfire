@@ -5,16 +5,16 @@ import { styled } from "@/stitches.config";
 export const Input = styled("input", {
   $$offset: "14px",
   all: "unset",
-  borderRadius: 10,
+  borderRadius: 8,
   height: "calc(100% - 40px)",
   width: "100%",
   maxWidth: 363,
-  backgroundColor: "transparent",
-  border: "1px solid $blackPrimary",
-  padding: 20,
-  fontSize: 19,
-  // fontWeight: "$medium",
-  color: "$blackPrimary",
+  backgroundColor: "#251B2F",
+  // border: "1px solid $blackPrimary",
+  padding: "24px 16px",
+  fontSize: 16,
+  fontWeight: "$forzaMedium",
+  color: "#A89E90",
   "@xm": {
     maxWidth: "calc(100% - 40px)",
   },
@@ -26,9 +26,9 @@ export const Input = styled("input", {
   },
 
   "&::placeholder": {
-    fontSize: "$twenty",
-    // fontWeight: "$medium",
-    color: "#716D5E",
+    fontSize: 16,
+    fontWeight: "$forzaMedium",
+    color: "#A89E90",
     letterSpacing: 0,
   },
 
@@ -37,9 +37,9 @@ export const Input = styled("input", {
     cursor: "pointer",
   },
 
-  "& input::before": {
-    content: "",
-  },
+  // "& input::before": {
+  //   content: "",
+  // },
 
   "&:active": {
     border: "1px solid $blackPrimary",

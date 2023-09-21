@@ -20,12 +20,7 @@ export default function TicketPage() {
     <>
       <PageMeta themeColor="#916BC8" />
       <Wrapper className={Forza.className}>
-        <TVFrame />
         <ContentWrapper>
-          <Button unstyled css={{ gap: 10, color: "Black" }}>
-            <ArrowLeft />
-            Back
-          </Button>
           <Row
             css={{
               justifyContent: "center",
@@ -35,45 +30,6 @@ export default function TicketPage() {
               },
             }}
           >
-            <form>
-              <Column css={{ gap: 16 }}>
-                <Input
-                  name="firstName"
-                  placeholder="First Name"
-                  type="text"
-                  inputMode="text"
-                  value={ticketInput.firstName}
-                  onChange={handleTicketInput}
-                />
-                <Input
-                  name="email"
-                  placeholder="Email"
-                  type="email"
-                  inputMode="email"
-                  value={ticketInput.email}
-                  onChange={handleTicketInput}
-                />
-                <Input
-                  name="phoneNumber"
-                  placeholder="Phone Number"
-                  type="tel"
-                  inputMode="tel"
-                  value={ticketInput.phoneNumber}
-                  onChange={handleTicketInput}
-                />
-              </Column>
-              <RegisterButton
-                disabled={
-                  !ticketInput.firstName ||
-                  !ticketInput.email ||
-                  !ticketInput.phoneNumber
-                }
-                css={{ marginTop: 36 }}
-              >
-                Get Ticket
-                <ArrowRight />
-              </RegisterButton>
-            </form>
             <TicketCard name={ticketInput.firstName} />
           </Row>
         </ContentWrapper>
@@ -86,7 +42,6 @@ const Wrapper = styled("main", {
   position: "relative",
   width: "100%",
   minHeight: "100vh",
-  backgroundColor: "$backroundPrimary",
   paddingBottom: "250px",
 });
 

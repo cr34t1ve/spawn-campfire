@@ -24,7 +24,7 @@ export const { styled, getCssText, keyframes, css } = createStitches({
       7: "30px",
       8: "32px",
       9: "34px",
-      10: "42px",
+      10: "41px",
       11: "56px",
       12: "72px",
       ten: "10px",

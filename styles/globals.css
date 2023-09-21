@@ -1,16 +1,9 @@
-/** @format */
-
-/*  */
-
-/*
-  1. Use a more-intuitive box-sizing model.
-*/
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
+/* 
 .preloader {
   position: fixed;
   top: 0%;
@@ -52,7 +45,7 @@
   animation-duration: 1.5s;
   animation-fill-mode: both;
   background-color: #589b9a;
-}
+} */
 
 @keyframes slide-out {
   0% {

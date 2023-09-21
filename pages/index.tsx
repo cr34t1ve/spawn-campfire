@@ -1,100 +1,115 @@
 /** @format */
 
 import { styled } from "@/stitches.config";
-import { SFProCondensed, Forza } from "@/fonts/fonts";
-import { Column, PageMeta, Row, Text } from "@/components";
+import { Forza } from "@/fonts/fonts";
+import { Column, Input, PageMeta, Row, Text } from "@/components";
 import Link from "next/link";
 import { Button } from "@/components/Button";
-import { CalendarAdd, Link21 } from "iconsax-react";
+import { ArrowDown2 } from "iconsax-react";
 import dayjs from "dayjs";
+import Image from "next/image";
 
 export default function Home() {
   const targetDate = dayjs("2023-09-05");
-  const diff = targetDate.diff(dayjs(), "day");
 
   return (
     <PageMeta>
       <>
-        <Wrapper className={SFProCondensed.className}>
-          <Row justifyContent="spaceBetween">
-            <Text
-              className={SFProCondensed.className}
-              transform="uppercase"
-              color="purple"
-              css={{ fontSize: 24 }}
-            >
-              Spawn <br />
-              Campfire
+        <Wrapper className={Forza.className}>
+          <Column>
+            <Row alignItems="baseline">
+              <Text size={18} transform="uppercase" css={{ color: "#8C6CBC" }}>
+                Open
+              </Text>
+              <Image
+                alt="spawn campfire logo"
+                src="/images/Fire_Without_Wood.gif"
+                width={87}
+                height={87}
+              />
+            </Row>
+            <Text size={18} transform="uppercase" css={{ color: "#8C6CBC" }}>
+              Reservations
             </Text>
-            <Button
-              css={{ "@sm": { display: "none" } }}
-              as={Link}
-              href="https://drive.google.com/file/d/1_UahrQIjdVmSeuVUWHllxDAb_APMHrPs/view?usp=sharing"
-            >
-              Season 01 Review
-              <Link21 color="#C0B1D6" size={24} />
-            </Button>
-          </Row>
-          <Row as="section" css={{ marginTop: 120, "@sm": { marginTop: 50 } }}>
-            <HeroText className={Forza.className}>
-              Bringing a new age of{" "}
-              <span>excitement to the younger generations</span> of creatives,
-              through gaming.
-            </HeroText>
-          </Row>
-          <Column css={{ marginTop: 53, gap: 16, "@sm": { marginTop: 36 } }}>
-            <Button
-              css={{ display: "none", "@sm": { display: "flex" } }}
-              as={Link}
-              href="https://drive.google.com/file/d/1_UahrQIjdVmSeuVUWHllxDAb_APMHrPs/view?usp=sharing"
-            >
-              Season 01 Review
-              <Link21 color="#C0B1D6" size={24} />
-            </Button>
-            <Button filled disabled>
-              Registration opens in {diff} days
-              <StyledCaledarAdd color="#C0B1D6" />
-            </Button>
           </Column>
+
+          <Column as="form" css={{ gap: 30 }}>
+            <Input placeholder="Full name" />
+            <Row css={{ gap: 10 }}>
+              <Row
+                css={{
+                  borderRadius: 8,
+                  padding: "20px 14px 20px 19px",
+                  backgroundColor: "#251B2F",
+                  gap: 26,
+                }}
+              >
+                <p>Tw</p>
+                <ArrowDown2 />
+              </Row>
+              <Input placeholder="@username" />
+            </Row>
+            <Button filled>Claim my invitation</Button>
+          </Column>
+          <Row
+            wide
+            justifyContent="center"
+            css={{
+              marginTop: 70,
+            }}
+          >
+            <SnapchatButton href="https://t.snapchat.com/2jL8s3wL">
+              <Image
+                alt="snapchat icon"
+                src="/images/icons/snap.svg"
+                width={45}
+                height={45}
+              />
+            </SnapchatButton>
+          </Row>
         </Wrapper>
       </>
     </PageMeta>
   );
 }
 
-// ~~~ Styles ~~~
 const Wrapper = styled("main", {
-  padding: "50px 70px",
+  padding: "70px 16px",
   "@sm": {
     padding: "32px 16px",
   },
 });
 
-const HeroText = styled("h1", {
-  fontSize: 108,
-  fontWeight: 450,
-  textTransform: "capitalize",
-  color: "$purpleText",
-  lineHeight: 0.97,
+const SnapchatButton = styled(Link, {
+  all: "unset",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  width: 97,
+  height: 97,
+  borderRadius: "50%",
+  backgroundColor: "#DECF44",
 
-  "@sm": { fontSize: 46 },
-
-  "& span": {
-    color: "$primaryPurple",
+  "&::before": {
+    content: "",
+    transform: "translate(-12.5%, -12.5%)",
+    position: "absolute",
+    borderRadius: "50%",
+    inset: 0,
+    width: 129,
+    height: 129,
+    backgroundColor: "rgba(222, 207, 68, 0.10)",
   },
-});
 
-const StyledCaledarAdd = styled(CalendarAdd, {
-  width: 30,
-  height: 30,
-
-  "& path": {
-    width: 30,
-    height: 30,
-  },
-
-  "@sm": {
-    width: 24,
-    height: 24,
+  "&::after": {
+    content: "",
+    transform: "translate(-8.5%, -8.5%)",
+    position: "absolute",
+    borderRadius: "50%",
+    inset: 0,
+    width: 117,
+    height: 117,
+    backgroundColor: "rgba(222, 207, 68, 0.10)",
   },
 });
