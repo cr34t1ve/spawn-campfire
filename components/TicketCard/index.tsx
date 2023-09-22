@@ -1,9 +1,10 @@
 import { styled } from "@/stitches.config";
 import { Column, Row } from "../Layout";
+import Image from "next/image";
 
 export function TicketCard({ name }: { name: string }) {
   return (
-    <Wrapper>
+    <Wrapper id="ticket">
       <ForzaText size="36Book">{name || "Name"}</ForzaText>
       <Row style={{ gap: 46, marginTop: 10 }}>
         <ForzaText>
@@ -17,8 +18,25 @@ export function TicketCard({ name }: { name: string }) {
       </Row>
       <Column alignItems="center" style={{ marginTop: 100 }}>
         <ForzaText size="14Bold">4:00 PM till Midnight</ForzaText>
-        <ForzaText size="207Black">23</ForzaText>
-        <ForzaText size="51Black" css={{ marginTop: -30 }}>
+        <Row
+          wide
+          css={{
+            position: "relative",
+            height: 200,
+          }}
+        >
+          <Image
+            alt="Spawn Campfire"
+            src="/images/icons/23.svg"
+            fill
+            style={{
+              marginTop: 10,
+              marginBottom: 5,
+            }}
+          />
+        </Row>
+        {/* <ForzaText size="207Black">23</ForzaText> */}
+        <ForzaText size="51Black" css={{}}>
           September
         </ForzaText>
         <ForzaText size="14Medium" css={{ textAlign: "center", marginTop: 12 }}>
@@ -43,8 +61,8 @@ const Wrapper = styled("div", {
   padding: "32px 36px 17px 36px",
 
   "@sm": {
-    transform: "scale(0.75)",
-    marginTop: -40,
+    // transform: "scale(100vw / 375px )",
+    // marginTop: -70,
   },
 });
 
@@ -89,6 +107,7 @@ const ForzaText = styled("p", {
       "207Black": {
         fontSize: "12.938rem",
         fontWeight: "$forzaBlack",
+        lineHeight: "unset",
       },
     },
     transform: {

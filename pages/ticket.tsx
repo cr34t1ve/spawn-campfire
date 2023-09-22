@@ -1,38 +1,64 @@
-import { Column, Input, PageMeta, Row, TicketCard } from "@/components";
+import { Column, PageMeta, Row, TicketCard } from "@/components";
 import { Button } from "@/components/Button";
 import { Forza } from "@/fonts/fonts";
 import { styled } from "@/stitches.config";
-import { ArrowLeft, ArrowRight } from "iconsax-react";
+import { ArrowLeft2 } from "iconsax-react";
 import { useState } from "react";
+import html2canvas from "html2canvas";
 
 export default function TicketPage() {
-  const [ticketInput, setTicketInput] = useState({
-    firstName: "",
-    email: "",
-    phoneNumber: "",
-  });
-
-  function handleTicketInput(e: any) {
-    setTicketInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  function handleDownload() {
+    const element = document.getElementById("ticket");
+    if (element) {
+      html2canvas(element, {
+        allowTaint: true,
+        useCORS: true,
+        scrollX: 0,
+        scrollY: -window.scrollY,
+      }).then((canvas) => {
+        const link = document.createElement("a");
+        link.download = "ticket.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    }
   }
 
   return (
     <>
       <PageMeta themeColor="#916BC8" />
       <Wrapper className={Forza.className}>
-        <ContentWrapper>
-          <Row
-            css={{
-              justifyContent: "center",
-              gap: 70,
-              "@sm": {
-                flexDirection: "column-reverse",
-              },
-            }}
-          >
-            <TicketCard name={ticketInput.firstName} />
+        <Column
+          css={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 70,
+          }}
+        >
+          <TicketCard name={"Desmond Sofua"} />
+          <Row wide css={{ maxWidth: 356, gap: 20 }}>
+            <Button
+              unstyled
+              css={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 20,
+                borderRadius: 8,
+                backgroundColor: "#251B2F",
+              }}
+            >
+              <ArrowLeft2 />
+            </Button>
+            <Button
+              onClick={handleDownload}
+              css={{ width: "100%", padding: 22, color: "#8C6CBC" }}
+            >
+              Download Invitation
+            </Button>
           </Row>
-        </ContentWrapper>
+        </Column>
       </Wrapper>
     </>
   );
@@ -41,59 +67,5 @@ export default function TicketPage() {
 const Wrapper = styled("main", {
   position: "relative",
   width: "100%",
-  minHeight: "100vh",
-  paddingBottom: "250px",
-});
-
-const ContentWrapper = styled("article", {
-  maxWidth: "68vw",
-  paddingLeft: "10vw",
-  paddingTop: "14vh",
-
-  "@sm": {
-    maxWidth: "58.563rem",
-    padding: "80px 50px",
-  },
-});
-
-const TVFrame = styled("div", {
-  position: "fixed",
-  zIndex: 1,
-  inset: 0,
-  width: "100%",
-  height: "100%",
-  background: "url('images/tv-frame.png') no-repeat ",
-  backgroundSize: "100% 100%",
-  userSelect: "none",
-  pointerEvents: "none",
-
-  "@sm": {
-    background: "url('images/mobile-frame.png') no-repeat ",
-    backgroundSize: "100% 100%",
-  },
-});
-
-const RegisterButton = styled("button", {
-  all: "unset",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  borderRadius: 10,
-  backgroundColor: "$primaryPurple",
-  padding: "24px 20px",
-  fontSize: 18,
-  width: "100%",
-  maxWidth: 363,
-  cursor: "pointer",
-  transition: "all .2s ease",
-  color: "#E7DEBF",
-
-  "@sm": {
-    width: "calc(100% - 40px)",
-  },
-
-  "&:disabled": {
-    cursor: "not-allowed",
-    backgroundColor: "$blackPrimary",
-  },
+  padding: "70px 16px",
 });

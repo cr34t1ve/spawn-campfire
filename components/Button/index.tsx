@@ -4,26 +4,31 @@ import { styled } from "@/stitches.config";
 
 export const Button = styled("button", {
   all: "unset",
+  boxSizing: "border-box",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  height: "calc(100% - 2px)",
   gap: 40,
-  border: "1px solid $purpleText",
+  border: "1px solid #8C6CBC",
   backgroundColor: "#1A0F2B",
   color: "#D1CFD5",
   padding: 24,
   borderRadius: 8,
   fontSize: 16,
   fontWeight: "$forzaMedium",
-  width: "100%",
+  width: "auto",
   cursor: "pointer",
   transition: "all .2s ease",
 
-  "@sm": {
-    width: "calc(100% - 40px - 2px)",
-  },
+  // "@sm": {
+  //   width: "calc(100% - 40px - 2px)",
+  // },
 
   "&:disabled": {
+    backgroundColor: "#1A0F2B",
+    color: "#D1CFD5",
+    opacity: 0.5,
     cursor: "not-allowed",
   },
 

@@ -10,13 +10,12 @@ export const Input = styled("input", {
   width: "100%",
   maxWidth: 363,
   backgroundColor: "#251B2F",
-  // border: "1px solid $blackPrimary",
   padding: "24px 16px",
   fontSize: 16,
   fontWeight: "$forzaMedium",
-  color: "#A89E90",
+  color: "#D1CFD5",
   "@xm": {
-    maxWidth: "calc(100% - 40px)",
+    maxWidth: "calc(100% - 34px)",
   },
   "&:read-only": {
     backgroundColor: "$secondaryButton",
@@ -36,10 +35,6 @@ export const Input = styled("input", {
     opacity: 0,
     cursor: "pointer",
   },
-
-  // "& input::before": {
-  //   content: "",
-  // },
 
   "&:active": {
     border: "1px solid $blackPrimary",

@@ -5,3 +5,4 @@ export * from "./Text";
 export * from "./Layout";
 export * from "./Input";
 export * from "./TicketCard";
+export * from "./Radix";
