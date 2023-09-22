@@ -30,6 +30,7 @@ export const Button = styled("button", {
     color: "#D1CFD5",
     opacity: 0.5,
     cursor: "not-allowed",
+
   },
 
   variants: {
