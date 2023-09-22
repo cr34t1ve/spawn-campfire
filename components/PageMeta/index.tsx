@@ -5,78 +5,52 @@ import React from "react";
 
 export function PageMeta({
   title = "Spawn Campfire",
-  image = "https://uploads-ssl.webflow.com/629166b425175b832b8179fe/64f0beb4dd1075a0f4b7270c_OpenGraph.jpg",
-  gif = "https://media.giphy.com/media/I0eDKcJcs5KfdmXDot/giphy.gif",
-  gifPage = "https://giphy.com/gifs/POnf57xNb61o4WuoBm",
-  mp4 = "https://media.giphy.com/media/I0eDKcJcs5KfdmXDot/giphy.mp4",
-  description = "Promoting Esports as the future of competitive sports for the younger generation",
+  image = "https://uploads-ssl.webflow.com/6250fbc8391fc5310375f1da/650d020878b7863a0ae9508e_OpenGraph1.jpg",
+  description = "Bringing a new age of excitement to the younger generations of creatives, through gaming.",
   url = "https://www.scfaccra.com",
   themeColor = "#140A23",
+  keywords = "spawn campfire, scf, scfaccra, scf, gaming, espo, valorant, league of legends, ghana, accra, hyde gardens",
   children,
 }: {
   title?: string;
   image?: string;
-  gif?: string;
-  gifPage?: string;
-  mp4?: string;
+  description?: string;
   url?: string;
-  description?: string | undefined;
   themeColor?: string;
+  keywords?: string;
   children?: React.ReactNode;
 }) {
+  const siteName = "Spawn Campfire";
+
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <meta name="description" content={title} />
+        <title>
+          {title.includes(siteName) ? title : `${title} | ${siteName}`}
+        </title>
+        <meta name="description" content={description} />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1.0"
         />
-        <meta property="og:title" content={title} />
-        <meta property="og:site_name" content={title} />
-        <link rel="apple-touch-icon" href="/favicon192.png" />
+        {/* <meta charset="utf-8" /> */}
         <link rel="icon" href="/favicon32.png" />
         <meta name="theme-color" content={themeColor} />
-        {/* <meta charset="utf-8" /> */}
-        <meta property="og:url" content={url} />
-        <meta property="og:description" content={description} />
-
-        <meta property="og:type" content="video.other" />
-        <meta property="og:image" content={gif} />
-        <meta property="og:image:width" content="912" />
-        <meta property="og:image:height" content="382" />
-
-        <meta property="og:type" content="video" />
+        <link rel="apple-touch-icon" href="/favicon192.png" />
+        <meta name="keywords" content={keywords} />
         <meta property="og:image" content={image} />
-        <meta property="og:image:width" content="480" />
-        <meta property="og:image:height" content="270" />
-        <meta property="og:video" content={gif} />
-        <meta property="og:video:secure_url" content={gif} />
-        <meta
-          property="og:video:type"
-          content="application/x-shockwave-flash"
-        />
-        <meta property="og:video:width" content="470" />
-        <meta property="og:video:height" content="196" />
-
-        <meta name="twitter:card" content="player" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:creator" content="@raregoodsonly" />
-        <meta name="twitter:site" content="@raregoodsonly" />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image:src" content={image} />
-        <meta name="twitter:image" content={image} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:site_name" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="twitter:card" content={title} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
         <meta name="twitter:domain" content={url} />
-
-        <meta
-          name="twitter:player"
-          content="https://giphy.com/embed/47ymsVajD2CEN04m3w/twitter/iframe"
-        />
-        <meta name="twitter:player:width" content="435" />
-        <meta name="twitter:player:height" content="182" />
+        <meta property="twitter:image" content={image} />
       </Head>
-      <>{children}</>
+      {children}
     </>
   );
 }
