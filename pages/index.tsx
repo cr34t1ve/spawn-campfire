@@ -109,6 +109,8 @@ export default function Home() {
             width={123}
             height={123}
             style={{ marginInline: "auto", marginBottom: 50 }}
+            priority
+            draggable={false}
           />
           <Grid>
             {folders.map((folder, index) => (
@@ -120,6 +122,7 @@ export default function Home() {
                       alt={folder.title}
                       fill
                       priority
+                      draggable={false}
                     />
                   </Link>
                 </Row>

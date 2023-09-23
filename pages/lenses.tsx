@@ -28,7 +28,13 @@ export default function LensesPage() {
             <Column key={index} alignItems="center" css={{ gap: 20 }}>
               <Row wide css={{ position: "relative", aspectRatio: "1/1" }}>
                 <Link href={lens.link} target="_blank" prefetch>
-                  <Image src={lens.image} alt={lens.title} fill priority />
+                  <Image
+                    src={lens.image}
+                    alt={lens.title}
+                    fill
+                    priority
+                    draggable={false}
+                  />
                 </Link>
               </Row>
               <ForzaText>{lens.title}</ForzaText>
