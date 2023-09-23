@@ -3,7 +3,6 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import { getCssText } from "../stitches.config";
-import { helvetica, inter } from "@/fonts/fonts";
 
 export default class Document extends NextDocument {
   render() {

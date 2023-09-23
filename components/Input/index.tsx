@@ -5,21 +5,17 @@ import { styled } from "@/stitches.config";
 export const Input = styled("input", {
   $$offset: "14px",
   all: "unset",
-  borderRadius: 6,
-  height: "calc(100% - 28px)",
-  width: 519,
-  backgroundColor: "transparent",
-  border: "1px solid #D8D9DD",
-  paddingTop: 15,
-  paddingBottom: 20,
-  paddingLeft: 20,
-  paddingRight: 20,
-  fontSize: "$twenty",
-  fontWeight: "$medium",
-  color: "$primaryText",
-  marginTop: "5px",
+  borderRadius: 8,
+  height: "calc(100% - 40px)",
+  width: "100%",
+  maxWidth: 363,
+  backgroundColor: "#251B2F",
+  padding: "24px 16px",
+  fontSize: 16,
+  fontWeight: "$forzaMedium",
+  color: "#D1CFD5",
   "@xm": {
-    maxWidth: "calc(100% - 40px)",
+    maxWidth: "calc(100% - 34px)",
   },
   "&:read-only": {
     backgroundColor: "$secondaryButton",
@@ -29,9 +25,9 @@ export const Input = styled("input", {
   },
 
   "&::placeholder": {
-    fontSize: "$twenty",
-    fontWeight: "$regular",
-    color: "#A0A2A9",
+    fontSize: 16,
+    fontWeight: "$forzaMedium",
+    color: "#A89E90",
     letterSpacing: 0,
   },
 
@@ -40,16 +36,12 @@ export const Input = styled("input", {
     cursor: "pointer",
   },
 
-  "& input::before": {
-    content: "",
-  },
-
   "&:active": {
-    border: "1px solid $secondaryStroke",
+    border: "1px solid $blackPrimary",
   },
 
   "&:focus": {
-    border: "1px solid $secondaryStroke",
+    border: "1px solid $blackPrimary",
   },
 
   variants: {
