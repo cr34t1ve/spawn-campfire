@@ -4,11 +4,7 @@ import { styled } from "@/stitches.config";
 import { Forza } from "@/fonts/fonts";
 import { Column, PageMeta, Row } from "@/components";
 import Link from "next/link";
-import { Button } from "@/components/Button";
-import { ArrowDown2, ArrowLeft2 } from "iconsax-react";
 import Image from "next/image";
-import { useState } from "react";
-import { useRouter } from "next/router";
 
 const folders = [
   {
@@ -38,67 +34,6 @@ const folders = [
 ];
 
 export default function Home() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
-  const [page, setPage] = useState<"home" | "ticket">("home");
-  const [info, setInfo] = useState({
-    name: "",
-    social: "twitter",
-    handle: "",
-  });
-
-  function createSocialLink(social: string, handle: string) {
-    switch (social) {
-      case "twitter":
-        return `https://twitter.com/${handle}`;
-      case "instagram":
-        return `https://instagram.com/${handle}`;
-      case "snapchat":
-        return `https://snapchat.com/add/${handle}`;
-      default:
-        return "";
-    }
-  }
-
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    setStatus("loading");
-    const token = process.env.NEXT_PUBLIC_LOGSNAG_TOKEN;
-    const channel = process.env.NEXT_PUBLIC_LOGSNAG_CHANNEL;
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", `Bearer ${token}`);
-
-    var raw = JSON.stringify({
-      project: "spawn-campfire",
-      event: "Invitation",
-      user_id: info.handle,
-      icon: "👾",
-      description: "New invitation claimed",
-      tags: {
-        social: info.social,
-        handle: info.handle,
-        name: info.name,
-        link: createSocialLink(info.social, info.handle),
-      },
-      notify: true,
-      channel: channel,
-    });
-
-    fetch("https://api.logsnag.com/v1/log", {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    })
-      .then((response) => response.text())
-      .then((result) => {
-        setStatus("success");
-        setPage("ticket");
-      })
-      .catch((error) => console.log("error", error));
-  }
-
   return (
     <PageMeta>
       <>
