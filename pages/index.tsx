@@ -2,7 +2,7 @@
 
 import { styled } from "@/stitches.config";
 import { Forza } from "@/fonts/fonts";
-import { Column, PageMeta } from "@/components";
+import { Column, PageMeta, Row } from "@/components";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { ArrowDown2, ArrowLeft2 } from "iconsax-react";
@@ -113,9 +113,16 @@ export default function Home() {
           <Grid>
             {folders.map((folder, index) => (
               <Column key={index} alignItems="center" css={{ gap: 20 }}>
-                <Link href={folder.link} target={folder.target} prefetch>
-                  <img src={folder.image} alt={folder.title} />
-                </Link>
+                <Row wide css={{ position: "relative", height: 151 }}>
+                  <Link href={folder.link} target={folder.target}>
+                    <Image
+                      src={folder.image}
+                      alt={folder.title}
+                      fill
+                      priority
+                    />
+                  </Link>
+                </Row>
                 <ForzaText>{folder.title}</ForzaText>
               </Column>
             ))}

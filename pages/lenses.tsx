@@ -1,10 +1,11 @@
-import { Column, PageMeta } from "@/components";
+import { Column, PageMeta, Row } from "@/components";
 import { Button } from "@/components/Button";
 import { styled } from "@/stitches.config";
 import { ArrowLeft2 } from "iconsax-react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Forza } from "@/fonts/fonts";
+import Image from "next/image";
 
 const lenses = [
   {
@@ -25,9 +26,11 @@ export default function LensesPage() {
         <Grid>
           {lenses.map((lens, index) => (
             <Column key={index} alignItems="center" css={{ gap: 20 }}>
-              <Link href={lens.link} target="_blank" prefetch>
-                <img src={lens.image} alt={lens.title} />
-              </Link>
+              <Row wide css={{ position: "relative", aspectRatio: "1/1" }}>
+                <Link href={lens.link} target="_blank" prefetch>
+                  <Image src={lens.image} alt={lens.title} fill priority />
+                </Link>
+              </Row>
               <ForzaText>{lens.title}</ForzaText>
             </Column>
           ))}
