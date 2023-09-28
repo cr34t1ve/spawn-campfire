@@ -16,8 +16,8 @@ const folders = [
   {
     title: "Event Photos",
     image: "/folders/photos.svg",
-    link: "#",
-    target: "",
+    link: "https://www.dropbox.com/scl/fo/xmkt9a9rupwx29n6xxz0v/h?rlkey=e2kdrg7e1uccbcjtjzg0kvvds&dl=0",
+    target: "_blank",
   },
   {
     title: "Spotify Playlist",
