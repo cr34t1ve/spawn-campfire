@@ -117,6 +117,8 @@ export default function Select() {
               style={{
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20,
+                maxWidth: 400,
+                marginInline: "auto",
               }}
             >
               <SheetContainer
@@ -386,6 +388,7 @@ const SheetHeader = styled(Sheet.Header, {
   borderTopRightRadius: 20,
   boxShadow: "0px 4px 44px 0px rgba(81, 81, 81, 0.15)",
   height: 30,
+  cursor: "pointer",
 });
 
 const SheetContainer = styled(Sheet.Container, {
