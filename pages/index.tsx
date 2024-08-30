@@ -328,6 +328,7 @@ const ClaimTicketWrapper = styled("div", {
   borderRadius: 16,
   padding: "20px 16px",
   width: "calc(100% - 25px * 2)",
+  maxWidth: 340,
 
   "& h4": {
     color: "#AEAEAE",
