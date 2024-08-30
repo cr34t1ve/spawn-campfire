@@ -91,7 +91,8 @@ html {
 */
 body {
   -webkit-font-smoothing: antialiased;
-  background-color: #140a23;
+  background: linear-gradient(180deg, #2e66bc 0%, #7be0f4 100%);
+  color: white;
 }
 
 /*
@@ -134,7 +135,17 @@ h6 {
   font-stretch: condensed;
 }
 h1 {
-  font-size: 270px;
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 17px;
+}
+h4 {
+  font-size: 14px;
 }
 
 /*
