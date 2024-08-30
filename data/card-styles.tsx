@@ -13,7 +13,7 @@ export const CARD_VARIANTS = {
   },
 };
 
-export const COLOR_VARIANTS = {
+export const COLOR_VARIANTS: any = {
   blue: "#2034A5",
   violet: "#892BD3",
   green: "#2EBCA2",
@@ -48,8 +48,8 @@ function ClubIcon({
 }) {
   return (
     <svg
-      width={size === "sm" ? 16 : 95}
-      height={size === "sm" ? 16 : 95}
+      width={size === "sm" ? 16 : size === "md" ? 35 : 95}
+      height={size === "sm" ? 16 : size === "md" ? 34 : 95}
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +71,8 @@ function DiamondIcon({
 }) {
   return (
     <svg
-      width={size === "sm" ? 19 : 81}
-      height={size === "sm" ? 23 : 101}
+      width={size === "sm" ? 19 : size === "md" ? 37 : 81}
+      height={size === "sm" ? 23 : size === "md" ? 43 : 101}
       viewBox="0 0 19 23"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -96,8 +96,8 @@ function SpadeIcon({
 }) {
   return (
     <svg
-      width={size === "sm" ? 21 : 97}
-      height={size === "sm" ? 21 : 103}
+      width={size === "sm" ? 21 : size === "md" ? 33 : 97}
+      height={size === "sm" ? 21 : size === "md" ? 35 : 103}
       viewBox="0 0 21 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -119,8 +119,8 @@ function HeartIcon({
 }) {
   return (
     <svg
-      width={size === "sm" ? 18 : 91}
-      height={size === "sm" ? 17 : 86}
+      width={size === "sm" ? 18 : size === "md" ? 35 : 91}
+      height={size === "sm" ? 17 : size === "md" ? 34 : 86}
       viewBox="0 0 18 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
