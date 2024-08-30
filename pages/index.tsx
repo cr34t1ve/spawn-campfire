@@ -16,7 +16,7 @@ type ColorVariantI = "red" | "green" | "violet" | "blue";
 export default function Home() {
   return (
     <PageMeta>
-      {/* <Wrapper>
+      {/* <MaxWidthWrapper>
         <Image
           src="logo.svg"
           alt="scf logo"
@@ -31,24 +31,26 @@ export default function Home() {
           <br />
           Through Gaming
         </h2>
-      </Wrapper> */}
+      </MaxWidthWrapper> */}
       <Wrapper>
-        <Row css={{ position: "relative", width: "100%", height: 320 }}>
-          {LANDING_CARDS.map((card, index) => (
-            <Row
-              key={index}
-              justifyContent="center"
-              css={{ position: "absolute", inset: 0, width: "100%" }}
-            >
-              <Card
-                variant={card.variant as string}
-                color={card.color as ColorVariantI}
-                index={index}
-              />
-            </Row>
-          ))}
-        </Row>
-        <ClaimTicketBanner />
+        <MaxWidthWrapper>
+          <Row css={{ position: "relative", width: "100%", height: 320 }}>
+            {LANDING_CARDS.map((card, index) => (
+              <Row
+                key={index}
+                justifyContent="center"
+                css={{ position: "absolute", inset: 0, width: "100%" }}
+              >
+                <Card
+                  variant={card.variant as string}
+                  color={card.color as ColorVariantI}
+                  index={index}
+                />
+              </Row>
+            ))}
+          </Row>
+          <ClaimTicketBanner />
+        </MaxWidthWrapper>
       </Wrapper>
     </PageMeta>
   );
@@ -214,6 +216,11 @@ function ClaimTicketBanner() {
 }
 
 const Wrapper = styled("main", {
+  background: "linear-gradient(180deg, #2e66bc 0%, #7be0f4 100%)",
+  height: "100vh",
+});
+
+const MaxWidthWrapper = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
