@@ -6,7 +6,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function KYC() {
-  const { back } = useRouter();
+  const { back, push } = useRouter();
   const [userData, setUserData] = useState({
     firstname: "",
     phone: "",
@@ -19,12 +19,21 @@ export default function KYC() {
     }));
   }
 
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    push("/register/select");
+  }
+
   return (
     <PageMeta>
       <Wrapper>
         <MaxWidthWrapper>
           <Row alignItems="center">
-            <Row css={{ flex: 1 }} alignItems="center" onClick={back}>
+            <Row
+              css={{ flex: 1, cursor: "pointer" }}
+              alignItems="center"
+              onClick={back}
+            >
               <ArrowLeft2 />
             </Row>
             <Image
@@ -35,7 +44,7 @@ export default function KYC() {
             />
             <div style={{ flex: 1 }} />
           </Row>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <h1>Let&apos;s start with your name and number</h1>
             <Column css={{ gap: 16 }}>
               <Input
@@ -128,4 +137,5 @@ const Button = styled("button", {
   border: "none",
   borderRadius: 100,
   color: "White",
+  cursor: "pointer",
 });

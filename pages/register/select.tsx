@@ -77,7 +77,11 @@ export default function Select() {
                 color: "White",
               }}
             >
-              <Row css={{ flex: 1 }} alignItems="center" onClick={back}>
+              <Row
+                css={{ flex: 1, cursor: "pointer" }}
+                alignItems="center"
+                onClick={back}
+              >
                 <ArrowLeft2 />
               </Row>
               <p

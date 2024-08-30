@@ -210,7 +210,7 @@ function ClaimTicketBanner() {
           </Column>
         </Row>
       </Column>
-      <Button>Claim Your Ticket</Button>
+      <Button href="/register/kyc">Claim Your Ticket</Button>
     </ClaimTicketWrapper>
   );
 }
@@ -346,7 +346,7 @@ const ClaimTicketWrapper = styled("div", {
   },
 });
 
-const Button = styled("button", {
+const Button = styled(Link, {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
