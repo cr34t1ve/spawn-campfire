@@ -5,7 +5,6 @@ import {
   LANDING_CARDS,
 } from "@/data/card-styles";
 import { Forza } from "@/fonts/fonts";
-import * as Tabs from "@radix-ui/react-tabs";
 import { CardTemplateOptions } from "@/data/card-templates";
 import { styled } from "@/stitches.config";
 import Image from "next/image";
@@ -165,42 +164,33 @@ export default function Select() {
                       })}
                     </Row>
                     <Column alignItems="center">
-                      <TabsRoot defaultValue="games">
-                        <TabsList aria-label="Games list">
-                          <TabsTrigger value="games">Game</TabsTrigger>
-                          <TabsTrigger value="Anime">Anime</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="games">
-                          {" "}
-                          <ImagesGrid>
-                            {Object.values(CardTemplateOptions).map(
-                              (template, index) => (
-                                <ImageIconWrapper
-                                  key={index}
-                                  onClick={() => {
-                                    handleImageChange(template.image);
-                                    snapTo(1);
-                                  }}
-                                  css={{
-                                    borderColor:
-                                      template.image === selected.image
-                                        ? `${COLOR_VARIANTS[selected.color]}`
-                                        : "transparent",
-                                  }}
-                                >
-                                  <ImageIconImage
-                                    height={72}
-                                    width={72}
-                                    src={`/templates/icons/${template.icon}`}
-                                    alt="image"
-                                  />
-                                </ImageIconWrapper>
-                              )
-                            )}
-                          </ImagesGrid>
-                        </TabsContent>
-                        <TabsContent value="Anime">aa</TabsContent>
-                      </TabsRoot>
+                      {" "}
+                      <ImagesGrid>
+                        {Object.values(CardTemplateOptions).map(
+                          (template, index) => (
+                            <ImageIconWrapper
+                              key={index}
+                              onClick={() => {
+                                handleImageChange(template.image);
+                                snapTo(1);
+                              }}
+                              css={{
+                                borderColor:
+                                  template.image === selected.image
+                                    ? `${COLOR_VARIANTS[selected.color]}`
+                                    : "transparent",
+                              }}
+                            >
+                              <ImageIconImage
+                                height={72}
+                                width={72}
+                                src={`/templates/icons/${template.icon}`}
+                                alt="image"
+                              />
+                            </ImageIconWrapper>
+                          )
+                        )}
+                      </ImagesGrid>
                     </Column>
                   </Sheet.Scroller>
                 </SheetContent>
@@ -289,40 +279,6 @@ const Wrapper = styled("main", {
   background: "#EAEAEA",
   height: "100vh",
 });
-
-const TabsRoot = styled(Tabs.Root, {
-  //   fontFamily: "inherit",
-  all: "unset",
-  width: "100%",
-});
-const TabsList = styled(Tabs.List, {
-  display: "flex",
-  width: "calc(100% - 16px * 2)",
-  padding: 4,
-  borderRadius: 6,
-  border: "none",
-  backgroundColor: "#ECECEC",
-  marginBottom: 20,
-  marginInline: "auto",
-  transition: "all 200ms ease",
-});
-const TabsTrigger = styled(Tabs.Trigger, {
-  border: "none",
-  width: "100%",
-  borderRadius: 6,
-  fontSize: 14,
-  height: 41,
-  color: "#767676",
-  fontFamily: "Satoshi",
-  fontWeight: 500,
-  background: "transparent",
-
-  "&[data-state='active']": {
-    background: "linear-gradient(90deg, #1A69A2 0%, #3FAAF8 100%)",
-    color: "white",
-  },
-});
-const TabsContent = styled(Tabs.Content, {});
 
 const CenterImage = styled("div", {
   display: "flex",
