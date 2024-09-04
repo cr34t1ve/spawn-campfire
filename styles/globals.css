@@ -161,3 +161,62 @@ h4 {
   padding: 50px;
   background-color: greenyellow;
 }
+
+.mat-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: url(/noise.svg);
+  opacity: 0.75;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(/x33r.png);
+  background-size: 200%;
+  background-position: 0% 0%;
+  opacity: 0.3;
+  pointer-events: none;
+  mix-blend-mode: normal;
+  z-index: 10000;
+  background-repeat: no-repeat;
+  animation: window-shadow 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite
+    alternate;
+  user-select: none;
+}
+
+@keyframes window-shadow {
+  0% {
+    transform: translate(0px, 0px);
+    opacity: 0.5;
+    scale: 1.05;
+  }
+  50% {
+    transform: translate(20px, 10px);
+    opacity: 0.3;
+    scale: 1.05;
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 0.2;
+    scale: 1.05;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .window {
+    left: -30px;
+    transform: scale(1.2);
+    background-size: cover;
+    /* background-position: center; */
+  }
+}

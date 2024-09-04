@@ -132,37 +132,46 @@ export default function Select() {
                   boxShadow: "0px 4px 44px 0px rgba(81, 81, 81, 0.15)",
                 }}
               >
-                <SheetHeader
-                  onTap={() => (snapPoint === 1 ? snapTo(0) : snapTo(1))}
-                />
+                <SheetHeader>
+                  <Row
+                    css={{
+                      height: 4,
+                      width: 41,
+                      borderRadius: 50,
+                      backgroundColor: "#C0BFC0",
+                      marginInline: "auto",
+                      marginBottom: 32,
+                    }}
+                  />
+                  <Row
+                    justifyContent="spaceBetween"
+                    css={{ paddingInline: 15, marginBottom: 32 }}
+                  >
+                    {LANDING_CARDS.map((card, index) => {
+                      // @ts-ignore
+                      const VariantIcon = CARD_VARIANTS[card.variant].corner;
+                      return (
+                        <CardTypeButton
+                          key={index}
+                          onClick={() => {
+                            handleTypeChange(card.variant);
+                            handleColorChange(card.color);
+                          }}
+                          css={{
+                            borderColor:
+                              card.color === selected.color
+                                ? `${COLOR_VARIANTS[card.color]}`
+                                : "transparent",
+                          }}
+                        >
+                          <VariantIcon size="md" />
+                        </CardTypeButton>
+                      );
+                    })}
+                  </Row>
+                </SheetHeader>
                 <SheetContent>
                   <Sheet.Scroller style={{ paddingBottom: 60 }}>
-                    <Row
-                      justifyContent="spaceBetween"
-                      css={{ paddingInline: 15, marginBottom: 32 }}
-                    >
-                      {LANDING_CARDS.map((card, index) => {
-                        // @ts-ignore
-                        const VariantIcon = CARD_VARIANTS[card.variant].corner;
-                        return (
-                          <CardTypeButton
-                            key={index}
-                            onClick={() => {
-                              handleTypeChange(card.variant);
-                              handleColorChange(card.color);
-                            }}
-                            css={{
-                              borderColor:
-                                card.color === selected.color
-                                  ? `${COLOR_VARIANTS[card.color]}`
-                                  : "transparent",
-                            }}
-                          >
-                            <VariantIcon size="md" />
-                          </CardTypeButton>
-                        );
-                      })}
-                    </Row>
                     <Column alignItems="center">
                       {" "}
                       <ImagesGrid>
@@ -338,7 +347,8 @@ const CardTypeButton = styled("button", {
 const SheetContent = styled(Sheet.Content, {
   gap: 15,
   backgroundColor: "#FFFFFF",
-  padding: "20px 16px 0px 16px",
+  padding: "0px 16px 0px 16px",
+  overflowY: "auto",
 });
 
 const SheetHeader = styled(Sheet.Header, {
@@ -347,7 +357,8 @@ const SheetHeader = styled(Sheet.Header, {
   borderTopLeftRadius: 20,
   borderTopRightRadius: 20,
   boxShadow: "0px 4px 44px 0px rgba(81, 81, 81, 0.15)",
-  height: 30,
+  paddingTop: 16,
+  paddingInline: 16,
   cursor: "pointer",
 });
 
