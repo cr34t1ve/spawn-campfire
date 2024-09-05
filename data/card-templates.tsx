@@ -1,110 +1,110 @@
 export const CardTemplateOptions = {
-  AllMight: {
-    icon: "Allmight - icon.png",
-    image: "Allmight.png",
+  allmight: {
+    icon: "allmight-icon.png",
+    image: "allmight.png",
   },
-  Apex01: {
-    icon: "Apex - icon.png",
-    image: "Apex.png",
+  apex: {
+    icon: "apex-icon.png",
+    image: "apex.png",
   },
-  Astra: {
-    icon: "Astra - icon.png",
-    image: "Astra.png",
+  astra: {
+    icon: "astra-icon.png",
+    image: "astra.png",
   },
-  Brawl: {
-    icon: "Brawl - icon.png",
-    image: "Brawl.png",
+  brawl: {
+    icon: "brawl-icon.png",
+    image: "brawl.png",
   },
-  BrawlGreenGirl: {
-    icon: "Brawl green girl - icon.png",
-    image: "Brawl green girl.png",
+  brawlgirl: {
+    icon: "brawlgirl-icon.png",
+    image: "brawlgirl.png",
   },
-  Chibis: {
-    icon: "Chibis - icon.png",
-    image: "Chibis.png",
+  chibis: {
+    icon: "chibis-icon.png",
+    image: "chibis.png",
   },
-  Ekko: {
-    icon: "Ekko v- Icon.png",
+  ekko: {
+    icon: "ekko-Icon.png",
     image: "Ekko.png",
   },
-  Gojo: {
-    icon: "Gojo - icon.png",
-    image: "Gojo.png",
+  gojo: {
+    icon: "gojo-icon.png",
+    image: "gojo.png",
   },
-  Homelander: {
-    icon: "Homelander - Icon.png",
-    image: "Homelander.png",
+  homelander: {
+    icon: "homelander-icon.png",
+    image: "homelander.png",
   },
-  Igris: {
-    icon: "Igris - icon.png",
-    image: "Igris.png",
+  igris: {
+    icon: "igris-icon.png",
+    image: "igris.png",
   },
-  LeagueOfLegends: {
-    icon: "League of legends - icon.png",
-    image: "League of legends.png",
+  lol: {
+    icon: "lol-icon.png",
+    image: "lol.png",
   },
-  Loba: {
-    icon: "Loba - icon.png",
-    image: "Loba.png",
+  loba: {
+    icon: "loba-icon.png",
+    image: "loba.png",
   },
-  Luffy: {
-    icon: "Luffy - icon.png",
-    image: "Luffy.png",
+  luffy: {
+    icon: "luffy-icon.png",
+    image: "luffy.png",
   },
-  Minion: {
-    icon: "Minion - icon.png",
-    image: "Minion.png",
+  minion: {
+    icon: "minion-icon.png",
+    image: "minion.png",
   },
-  Omen: {
-    icon: "Omen - icon.png",
-    image: "Omen.png",
+  omen: {
+    icon: "omen-icon.png",
+    image: "omen.png",
   },
-  OOhWee: {
-    icon: "OOh wee - icon.png",
-    image: "OOh wee.png",
+  oohwee: {
+    icon: "oohwee-icon.png",
+    image: "oohwee.png",
   },
-  Panda: {
-    icon: "Panda-icon.png",
-    image: "Panda.png",
+  panda: {
+    icon: "panda-icon.png",
+    image: "panda.png",
   },
   Rick: {
-    icon: "Rick - icon.png",
-    image: "Rick.png",
+    icon: "rick-icon.png",
+    image: "rick.png",
   },
-  RickAndMorty: {
-    icon: "Rick & Morty - rick.png",
-    image: "Rick & Morty.png",
+  rickmorty: {
+    icon: "rickmorty-icon.png",
+    image: "rickmorty.png",
   },
-  SCF: {
-    icon: "SCF - icon.png",
-    image: "SCF.png",
+  scf: {
+    icon: "scf-icon.png",
+    image: "scf.png",
   },
-  SubZero: {
-    icon: "SubZero - icon.png",
-    image: "SubZero.png",
+  subzero: {
+    icon: "subzero-icon.png",
+    image: "subzero.png",
   },
-  SweaveLogo: {
-    icon: "Sweave logo icon.png",
-    image: "Sweave Logo.png",
+  sweavelogo: {
+    icon: "sweavelogo-icon.png",
+    image: "sweavelogo.png",
   },
-  SweaveMask: {
-    icon: "Sweave Mask - icon.png",
-    image: "Sweave Mask.png",
+  sweavemask: {
+    icon: "sweavemask-icon.png",
+    image: "sweavemask.png",
   },
-  Viego: {
-    icon: "Viego - icon.png",
-    image: "Viego.png",
+  viego: {
+    icon: "viego-icon.png",
+    image: "viego.png",
   },
-  WreckIt: {
-    icon: "Wreck It  - icon.png",
-    image: "Wreck It.png",
+  wreckit: {
+    icon: "wreckit-icon.png",
+    image: "wreckit.png",
   },
-  Wukong: {
-    icon: "Wukong - icon.png",
-    image: "Wukong.png",
+  wukong: {
+    icon: "wukong-icon.png",
+    image: "sukong.png",
   },
-  Yasuo: {
-    icon: "Yasuo - icon.png",
-    image: "Yasuo.png",
+  yasuo: {
+    icon: "yasuo-icon.png",
+    image: "yasuo.png",
   },
 };

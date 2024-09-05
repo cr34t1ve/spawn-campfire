@@ -55,11 +55,12 @@ export default function Select() {
   }
 
   async function handleCreateTicket() {
+    const image = selected?.image?.split(".");
     const res = await fetchWithBaseUrl("tickets", {
       body: JSON.stringify({
         type: selected?.type,
         color: selected?.color,
-        image: selected?.image,
+        image: image[0] || "",
         name: query?.name,
         phone: query?.phone,
       }),
@@ -75,7 +76,7 @@ export default function Select() {
 
     console.log(j);
 
-    push(`/s3/${j.id}`);
+    push(`/s3/${j.id}?type=${j.type}&image=${j?.image}`);
   }
 
   return (

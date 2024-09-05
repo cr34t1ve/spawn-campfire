@@ -536,6 +536,7 @@ const MapContainer = styled("div", {
   width: "100%",
   height: "100%",
   backdropFilter: "blur(10px)",
+  overflow: "hidden",
   boxShadow:
     "0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.2), 0 16px 32px rgba(0, 0, 0, 0.2)",
   background:

@@ -185,7 +185,7 @@ function Card({
             <Row css={{ position: "relative", width: "65%", height: "100%" }}>
               <Image
                 fill
-                src={`/templates/images/${image}`}
+                src={`/templates/images/${image}.png`}
                 alt=""
                 style={{
                   objectFit: "contain",
