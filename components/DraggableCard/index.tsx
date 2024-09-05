@@ -100,6 +100,8 @@ const CardWrapper = styled("div", {
   borderRadius: 10.6,
   border: "0.35px solid #2034A5",
   transform: "scale(0.7)",
+  boxShadow:
+    "0px 5.073200225830078px 30.43920135498047px 0px rgba(0, 0, 0, 25%)",
 });
 
 const NumberWrapper = styled("div", {

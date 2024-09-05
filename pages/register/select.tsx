@@ -4,7 +4,7 @@ import {
   COLOR_VARIANTS,
   LANDING_CARDS,
 } from "@/data/card-styles";
-import { Forza } from "@/fonts/fonts";
+import { Forza, DeadStock } from "@/fonts/fonts";
 import { CardTemplateOptions } from "@/data/card-templates";
 import { styled } from "@/stitches.config";
 import Image from "next/image";
@@ -12,12 +12,16 @@ import { useRef, useState } from "react";
 import { Sheet, SheetRef } from "react-modal-sheet";
 import { ArrowLeft2 } from "iconsax-react";
 import { useRouter } from "next/router";
+import { fetchWithBaseUrl } from "@/utils/fetch";
+import { ActionStatus } from "@/utils/types";
 
 const snapPoints = [-50, 135, 135];
 const initialSnap = 2; // Initial snap point when sheet is opened
 
 export default function Select() {
-  const { back } = useRouter();
+  const { back, query, push } = useRouter();
+  const [submitStatus, setSubmitStatus] = useState<ActionStatus>("idle");
+
   const ref = useRef<SheetRef>();
 
   const [snapPoint, setSnapPoint] = useState(initialSnap);
@@ -50,30 +54,93 @@ export default function Select() {
     }));
   }
 
+  async function handleCreateTicket() {
+    const res = await fetchWithBaseUrl("tickets", {
+      body: JSON.stringify({
+        type: selected?.type,
+        color: selected?.color,
+        image: selected?.image,
+        name: query?.name,
+        phone: query?.phone,
+      }),
+      method: "POST",
+    });
+
+    if (!res.ok) {
+      setSubmitStatus("failed");
+      return;
+    }
+
+    const j = await res.json();
+
+    console.log(j);
+
+    push(`/s3/${j.id}`);
+  }
+
   return (
     <PageMeta>
       <Wrapper
         css={{
-          backgroundImage: selected?.image
-            ? `url(/templates/images/${selected.image})`
-            : `url(/templates/types/${selected.type}.svg)`,
-          backgroundSize: "150%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "50% 10%",
+          background: "none",
+          "@sm": {
+            backgroundImage: selected?.image
+              ? `url(/templates/images/${selected.image})`
+              : `url(/templates/types/${selected.type}.svg)`,
+            backgroundSize: "150%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "50% 10%",
+          },
         }}
       >
+        <div className="mat-texture" />
+        <div className="window" />
         <Wrapper
           css={{
-            backdropFilter: "blur(30px)",
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            background: "none",
+            "@sm": {
+              backdropFilter: "blur(30px)",
+              backgroundColor: "rgba(0, 0, 0, 0.3)",
+            },
           }}
         >
+          <Row
+            css={{
+              display: "flex",
+              justifyContent: "flex-start",
+              maxWidth: 1168,
+              paddingInline: 16,
+              width: "100%",
+              marginInline: "auto",
+              paddingTop: 40,
+              marginBottom: 60,
+              "@sm": { display: "none" },
+            }}
+          >
+            <Button
+              css={{
+                display: "flex",
+                width: "max-content",
+                height: 35,
+                padding: "0px 20px",
+                borderRadius: 20,
+              }}
+              onClick={back}
+            >
+              home
+            </Button>
+          </Row>
           <MaxWidthWrapper>
             <Row
               alignItems="center"
               css={{
                 height: 56,
                 color: "White",
+                display: "none",
+
+                "@sm": {
+                  display: "flex",
+                },
               }}
             >
               <Row
@@ -94,6 +161,34 @@ export default function Select() {
               </p>
               <div style={{ flex: 1 }} />
             </Row>
+            <Column className="md-hide">
+              <ImagesGrid>
+                {Object.values(CardTemplateOptions)
+                  .slice(0, 15)
+                  .map((template, index) => (
+                    <ImageIconWrapper
+                      key={index}
+                      onClick={() => {
+                        handleImageChange(template.image);
+                        snapTo(1);
+                      }}
+                      css={{
+                        borderColor:
+                          template.image === selected.image
+                            ? `${COLOR_VARIANTS[selected.color]}`
+                            : "transparent",
+                      }}
+                    >
+                      <ImageIconImage
+                        height={72}
+                        width={72}
+                        src={`/templates/icons/${template.icon}`}
+                        alt="image"
+                      />
+                    </ImageIconWrapper>
+                  ))}
+              </ImagesGrid>
+            </Column>
             <Column
               alignItems="center"
               css={{
@@ -105,10 +200,46 @@ export default function Select() {
                 variant={selected.type}
                 color={selected.color}
                 image={selected.image}
+                name={(query?.name as string) || ""}
               />
-              <Button disabled={!selected.image}>Claim Ticket</Button>
+              <Button
+                onClick={handleCreateTicket}
+                disabled={submitStatus === "loading"}
+              >
+                {submitStatus === "loading"
+                  ? "Creating Ticket"
+                  : "Claim Ticket"}{" "}
+              </Button>
+              <Row className="md-hide">
+                <Row
+                  justifyContent="spaceBetween"
+                  css={{ paddingInline: 15, marginBottom: 32, gap: 16 }}
+                >
+                  {LANDING_CARDS.map((card, index) => {
+                    // @ts-ignore
+                    const VariantIcon = CARD_VARIANTS[card.variant].corner;
+                    return (
+                      <CardTypeButton
+                        key={index}
+                        onClick={() => {
+                          handleTypeChange(card.variant);
+                          handleColorChange(card.color);
+                        }}
+                        css={{
+                          borderColor:
+                            card.color === selected.color
+                              ? `${COLOR_VARIANTS[card.color]}`
+                              : "transparent",
+                        }}
+                      >
+                        <VariantIcon size="md" />
+                      </CardTypeButton>
+                    );
+                  })}
+                </Row>
+              </Row>
             </Column>
-            <Sheet
+            <StyledSheet
               rootId="root"
               ref={ref}
               isOpen={true}
@@ -204,7 +335,7 @@ export default function Select() {
                   </Sheet.Scroller>
                 </SheetContent>
               </SheetContainer>
-            </Sheet>
+            </StyledSheet>
           </MaxWidthWrapper>
         </Wrapper>
       </Wrapper>
@@ -216,10 +347,12 @@ function Card({
   variant,
   color,
   image,
+  name,
 }: {
   variant: string;
   color: any;
   image?: string;
+  name?: string;
 }) {
   // @ts-ignore
   const VariantIcon = CARD_VARIANTS[variant].corner;
@@ -256,6 +389,15 @@ function Card({
         )}
       </CenterImage>
 
+      <CardName
+        className={DeadStock.className}
+        css={{
+          color: `${COLOR_VARIANTS[color]} !important`,
+        }}
+      >
+        {name}
+      </CardName>
+
       <NumberWrapper placement="bottomRight">
         3
         <VariantIcon color={COLOR_VARIANTS[color]} />
@@ -264,9 +406,10 @@ function Card({
   );
 }
 
-const MaxWidthWrapper = styled("main", {
+const MaxWidthWrapper = styled("div", {
+  display: "flex",
+  justifyContent: "space-between",
   padding: "32px 16px 30px 16px",
-  maxWidth: 390,
   marginInline: "auto",
   color: "#131416",
 
@@ -282,11 +425,27 @@ const MaxWidthWrapper = styled("main", {
     maxWidth: "24ch",
     textAlign: "center",
   },
+
+  maxWidth: 820,
+  "@sm": {
+    display: "block",
+    maxWidth: 390,
+  },
 });
 
-const Wrapper = styled("main", {
+const Wrapper = styled("div", {
   background: "#EAEAEA",
   height: "100vh",
+
+  "& .mat-texture, .window": {
+    position: "fixed",
+  },
+
+  "@sm": {
+    "& .mat-texture, .window": {
+      display: "none",
+    },
+  },
 });
 
 const CenterImage = styled("div", {
@@ -306,6 +465,8 @@ const CardWrapper = styled("div", {
   height: 282,
   borderRadius: 10.6,
   border: "0.35px solid #2034A5",
+  boxShadow:
+    "0px 5.073200225830078px 30.43920135498047px 0px rgba(0, 0, 0, 25%)",
 });
 
 const NumberWrapper = styled("div", {
@@ -332,6 +493,19 @@ const NumberWrapper = styled("div", {
   },
 });
 
+const CardName = styled("p", {
+  display: "block",
+  position: "absolute",
+  bottom: 73,
+  left: 0,
+  right: 0,
+  marginInline: "auto",
+  fontSize: 20,
+  WebkitTextFillColor: "transparent",
+  WebkitTextStroke: "1.26px",
+  textTransform: "uppercase",
+});
+
 const CardTypeButton = styled("button", {
   display: "flex",
   justifyContent: "center",
@@ -342,6 +516,7 @@ const CardTypeButton = styled("button", {
   borderRadius: 20,
   backgroundColor: "rgba(217, 217, 217, 0.4)",
   transition: "all 250ms ease",
+  cursor: "pointer",
 });
 
 const SheetContent = styled(Sheet.Content, {
@@ -377,9 +552,10 @@ const ImagesGrid = styled("div", {
 });
 
 const ImageIconWrapper = styled(CardTypeButton, {
-  aspectRatio: "1/1",
-  height: "unset",
-  width: "unset",
+  position: "relative",
+  aspectRatio: "1 / 1",
+  height: 92,
+  width: 92,
 });
 
 const ImageIconImage = styled(Image, {
@@ -403,9 +579,17 @@ const Button = styled("button", {
   borderRadius: 100,
   color: "White",
   transition: "all 250ms ease",
+  cursor: "pointer",
 
   "&:disabled": {
     background: "rgba(0, 0, 0, 0.2)",
     color: "#87ACA5",
+  },
+});
+
+const StyledSheet = styled(Sheet, {
+  display: "none",
+  "@sm": {
+    display: "revert",
   },
 });

@@ -212,7 +212,14 @@ h4 {
   }
 }
 
-@media screen and (max-width: 600px) {
+.md-hide {
+  display: flex;
+}
+
+@media screen and (max-width: 734px) {
+  .md-hide {
+    display: none;
+  }
   .window {
     left: -30px;
     transform: scale(1.2);

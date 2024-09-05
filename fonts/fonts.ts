@@ -25,3 +25,13 @@ export const Forza = localFont({
   ],
   // fallback: ["system-ui"]
 });
+
+export const DeadStock = localFont({
+  src: [
+    {
+      path: "./DeadStock.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});

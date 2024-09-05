@@ -8,11 +8,14 @@ import Image from "next/image";
 export default function KYC() {
   const { back, push } = useRouter();
   const [userData, setUserData] = useState({
-    firstname: "",
+    name: "",
     phone: "",
   });
 
   function handleChange(e: any) {
+    if (e.target.name === "name" && e.target.value.length > 10) {
+      return;
+    }
     setUserData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -21,16 +24,56 @@ export default function KYC() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    push("/register/select");
+    push(`/register/select/?name=${userData.name}&phone=${userData.phone}`);
   }
 
   return (
     <PageMeta>
       <Wrapper>
+        <div className="mat-texture" />
+        <div className="window" />
+        <Row
+          css={{
+            display: "flex",
+            justifyContent: "flex-start",
+            maxWidth: 1168,
+            paddingInline: 16,
+            width: "100%",
+            marginInline: "auto",
+            paddingTop: 40,
+            "@sm": { display: "none" },
+          }}
+        >
+          <Button
+            css={{
+              display: "flex",
+              width: "max-content",
+              height: 35,
+              padding: "0px 20px",
+              borderRadius: 20,
+            }}
+            onClick={back}
+          >
+            home
+          </Button>
+        </Row>
         <MaxWidthWrapper>
-          <Row alignItems="center">
+          <Row
+            alignItems="center"
+            css={{
+              justifyContent: "center",
+              "@sm": {
+                justifyContent: "space-between",
+              },
+            }}
+          >
             <Row
-              css={{ flex: 1, cursor: "pointer" }}
+              css={{
+                flex: 1,
+                cursor: "pointer",
+                display: "none",
+                "@sm": { display: "flex" },
+              }}
               alignItems="center"
               onClick={back}
             >
@@ -42,17 +85,49 @@ export default function KYC() {
               alt="Spawn Campfire logo"
               src="/logoblue.svg"
             />
-            <div style={{ flex: 1 }} />
+            <Row
+              css={{ flex: 1, display: "none", "@sm": { display: "flex" } }}
+            />
           </Row>
           <Form onSubmit={handleSubmit}>
             <h1>Let&apos;s start with your name and number</h1>
             <Column css={{ gap: 16 }}>
-              <Input
-                name="firstname"
-                placeholder="First Name"
-                value={userData.firstname}
-                onChange={handleChange}
-              />
+              <Row
+                css={{
+                  position: "relative",
+                }}
+              >
+                <Input
+                  name="name"
+                  placeholder="First Name"
+                  value={userData.name}
+                  onChange={handleChange}
+                />
+                <Row
+                  css={{
+                    position: "absolute",
+                    right: 0,
+                    bottom: 0,
+                    top: 0,
+                    marginBlock: "auto",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    paddingRight: 12,
+                    fontSize: 12,
+                  }}
+                >
+                  <p
+                    style={{
+                      color:
+                        userData?.name?.length === 10 ? "#F04836" : "inherit",
+                    }}
+                  >
+                    {10 - userData?.name?.length}
+                  </p>
+                </Row>
+              </Row>
+
               <Input
                 name="phone"
                 placeholder="Phone Number"
@@ -61,7 +136,9 @@ export default function KYC() {
                 onChange={handleChange}
               />
             </Column>
-            <Button>Choose Ticket Type</Button>
+            <Button disabled={!userData.name || !userData.phone}>
+              Choose Ticket Type
+            </Button>
           </Form>
           <Column alignItems="center" css={{ gap: 8, marginTop: 162 }}>
             <svg
@@ -94,7 +171,7 @@ export default function KYC() {
 }
 
 const MaxWidthWrapper = styled("main", {
-  padding: "32px 16px 30px 16px",
+  padding: "60px 16px 30px 16px",
   maxWidth: 390,
   marginInline: "auto",
   color: "#131416",
@@ -111,11 +188,23 @@ const MaxWidthWrapper = styled("main", {
     maxWidth: "24ch",
     textAlign: "center",
   },
+  "@sm": {
+    paddingTop: 32,
+  },
 });
 
 const Wrapper = styled("main", {
   background: "#EAEAEA",
-  height: "100vh",
+  height: "100%",
+  "& .mat-texture, .window": {
+    position: "fixed",
+  },
+
+  "@sm": {
+    "& .mat-texture, .window": {
+      display: "none",
+    },
+  },
 });
 
 const Form = styled("form", {
@@ -138,4 +227,11 @@ const Button = styled("button", {
   borderRadius: 100,
   color: "White",
   cursor: "pointer",
+
+  "&:disabled": {
+    background: "#1A0F2B",
+    color: "#D1CFD5",
+    opacity: 0.5,
+    cursor: "not-allowed",
+  },
 });
