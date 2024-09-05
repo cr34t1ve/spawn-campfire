@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import { fetchWithBaseUrl } from "@/utils/fetch";
 import { Sheet, SheetRef } from "react-modal-sheet";
 import { Inter } from "next/font/google";
+import html2canvas from "html2canvas";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +30,7 @@ export default function TicketPage() {
   const open = () => setOpen(true);
   const close = () => setOpen(false);
   const { query, push } = useRouter();
+  const cardRef = useRef(null);
   const [selected, setSelected] = useState({
     color: "green",
     type: "spade",
@@ -52,6 +55,79 @@ export default function TicketPage() {
 
     fetchTicket();
   }, [query]);
+
+  const handleDownload = async () => {
+    if (cardRef.current) {
+      document
+        ?.getElementById("card-number")
+        ?.style?.setProperty("margin-bottom", "10px");
+      document
+        ?.getElementById("card-number-2")
+        ?.style?.setProperty("margin-bottom", "10px");
+      const styles = window.getComputedStyle(cardRef.current);
+
+      const canvas = await html2canvas(cardRef.current, {
+        backgroundColor: null,
+        scale: 2,
+        logging: false,
+        // @ts-ignore
+        width: cardRef.current.offsetWidth + 20,
+        // @ts-ignore
+        height: cardRef.current.offsetHeight + 20,
+      });
+
+      const finalCanvas = document.createElement("canvas");
+      const ctx = finalCanvas.getContext("2d");
+      finalCanvas.width = canvas.width;
+      finalCanvas.height = canvas.height;
+
+      if (ctx) {
+        ctx.beginPath();
+        ctx.moveTo(10, 0);
+        ctx.lineTo(canvas.width - 10, 0);
+        ctx.quadraticCurveTo(canvas.width, 0, canvas.width, 10);
+        ctx.lineTo(canvas.width, canvas.height - 10);
+        ctx.quadraticCurveTo(
+          canvas.width,
+          canvas.height,
+          canvas.width - 10,
+          canvas.height
+        );
+        ctx.lineTo(10, canvas.height);
+        ctx.quadraticCurveTo(0, canvas.height, 0, canvas.height - 10);
+        ctx.lineTo(0, 10);
+        ctx.quadraticCurveTo(0, 0, 10, 0);
+        ctx.closePath();
+        ctx.clip();
+
+        ctx.drawImage(canvas, 0, 0);
+
+        const image = finalCanvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = `${selected?.name || "card"}.png`;
+        link.click();
+      }
+    }
+
+    document
+      ?.getElementById("card-number")
+      ?.style?.setProperty("margin-bottom", "0px");
+    document
+      ?.getElementById("card-number-2")
+      ?.style?.setProperty("margin-bottom", "0px");
+  };
+
+  const host =
+    typeof window !== "undefined" && window.location.origin
+      ? window.location.origin
+      : "";
+  const ticketLink = `${host}/s3/${query.id}?type=${selected?.type}&image=${selected?.image}`;
+
+  async function handleCopyLink() {
+    navigator.clipboard.writeText(ticketLink);
+    setOpen(false);
+  }
 
   return (
     <PageMeta>
@@ -112,9 +188,16 @@ export default function TicketPage() {
                 gap: 40,
               }}
             >
-              <Card variant={selected.type} {...selected} />
+              <div
+                ref={cardRef}
+                style={{
+                  borderRadius: 10.6,
+                }}
+              >
+                <Card variant={selected.type} {...selected} />
+              </div>
               <Row css={{ gap: 16 }}>
-                <Button>
+                <Button onClick={handleDownload}>
                   Download
                   <svg
                     width="19"
@@ -188,7 +271,7 @@ export default function TicketPage() {
                         gap: 12,
                       }}
                     >
-                      <MenuItem blue>
+                      <MenuItem onClick={handleCopyLink} blue>
                         Copy link
                         <svg
                           width="29"
@@ -214,42 +297,22 @@ export default function TicketPage() {
                         </svg>
                       </MenuItem>
 
-                      <MenuItem>
-                        Instagram
+                      <MenuItem
+                        as={Link}
+                        href={`https://twitter.com/intent/tweet?url=${encodeURI(
+                          ticketLink
+                        )}&text=Check%20out%20my%20SCF%20ticket!`}
+                      >
+                        X
                         <svg
-                          width="29"
-                          height="28"
-                          viewBox="0 0 29 28"
+                          width="28"
+                          height="29"
+                          viewBox="0 0 28 29"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M3.41699 14C3.41699 8.77563 3.41699 6.16229 5.03983 4.53946C6.66266 2.91663 9.27483 2.91663 14.5003 2.91663C19.7247 2.91663 22.338 2.91663 23.9608 4.53946C25.5837 6.16229 25.5837 8.77446 25.5837 14C25.5837 19.2243 25.5837 21.8376 23.9608 23.4605C22.338 25.0833 19.7258 25.0833 14.5003 25.0833C9.27599 25.0833 6.66266 25.0833 5.03983 23.4605C3.41699 21.8376 3.41699 19.2255 3.41699 14Z"
-                            stroke="#0B6284"
-                            stroke-width="1.75"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M20.926 7.58325H20.9143M19.75 13.9999C19.75 15.3923 19.1969 16.7277 18.2123 17.7122C17.2277 18.6968 15.8924 19.2499 14.5 19.2499C13.1076 19.2499 11.7723 18.6968 10.7877 17.7122C9.80312 16.7277 9.25 15.3923 9.25 13.9999C9.25 12.6075 9.80312 11.2722 10.7877 10.2876C11.7723 9.30304 13.1076 8.74992 14.5 8.74992C15.8924 8.74992 17.2277 9.30304 18.2123 10.2876C19.1969 11.2722 19.75 12.6075 19.75 13.9999Z"
-                            stroke="#0B6284"
-                            stroke-width="1.75"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                      </MenuItem>
-                      <MenuItem>
-                        Whatsapp
-                        <svg
-                          width="29"
-                          height="28"
-                          viewBox="0 0 29 28"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M22.7249 5.72832C21.6553 4.6479 20.3813 3.79127 18.9772 3.20838C17.573 2.62549 16.0669 2.32803 14.5466 2.33332C8.1766 2.33332 2.98494 7.52499 2.98494 13.895C2.98494 15.9367 3.5216 17.92 4.52494 19.67L2.8916 25.6667L9.0166 24.0567C10.7083 24.9783 12.6099 25.4683 14.5466 25.4683C20.9166 25.4683 26.1083 20.2767 26.1083 13.9067C26.1083 10.815 24.9066 7.90999 22.7249 5.72832ZM14.5466 23.5083C12.8199 23.5083 11.1283 23.0417 9.6466 22.1667L9.2966 21.9567L5.6566 22.9133L6.62493 19.3667L6.3916 19.005C5.43231 17.4731 4.92293 15.7024 4.9216 13.895C4.9216 8.59832 9.23827 4.28165 14.5349 4.28165C17.1016 4.28165 19.5166 5.28499 21.3249 7.10499C22.2203 7.99628 22.9299 9.05643 23.4126 10.224C23.8952 11.3915 24.1413 12.6433 24.1366 13.9067C24.1599 19.2033 19.8433 23.5083 14.5466 23.5083ZM19.8199 16.3217C19.5283 16.1817 18.1049 15.4817 17.8483 15.3767C17.5799 15.2833 17.3933 15.2367 17.1949 15.5167C16.9966 15.8083 16.4483 16.4617 16.2849 16.6483C16.1216 16.8467 15.9466 16.87 15.6549 16.7183C15.3633 16.5783 14.4299 16.2633 13.3333 15.2833C12.4699 14.5133 11.8983 13.5683 11.7233 13.2767C11.5599 12.985 11.6999 12.8333 11.8516 12.6817C11.9799 12.5533 12.1433 12.3433 12.2833 12.18C12.4233 12.0167 12.4816 11.8883 12.5749 11.7017C12.6683 11.5033 12.6216 11.34 12.5516 11.2C12.4816 11.06 11.8983 9.63665 11.6649 9.05332C11.4316 8.49332 11.1866 8.56332 11.0116 8.55165H10.4516C10.2533 8.55165 9.94993 8.62165 9.6816 8.91332C9.42493 9.20499 8.67827 9.90499 8.67827 11.3283C8.67827 12.7517 9.7166 14.1283 9.8566 14.315C9.9966 14.5133 11.8983 17.43 14.7916 18.6783C15.4799 18.9817 16.0166 19.1567 16.4366 19.285C17.1249 19.5067 17.7549 19.4717 18.2566 19.4017C18.8166 19.32 19.9716 18.7017 20.2049 18.025C20.4499 17.3483 20.4499 16.7767 20.3683 16.6483C20.2866 16.52 20.1116 16.4617 19.8199 16.3217Z"
+                            d="M16.6985 12.35L26.8927 0.5H24.477L15.6254 10.7892L8.55555 0.5H0.401367L11.0923 16.0591L0.401367 28.4856H2.81722L12.1648 17.6199L19.631 28.4856H27.7852L16.6979 12.35H16.6985ZM13.3896 16.1962L12.3064 14.6468L3.68768 2.31862H7.39829L14.3537 12.2679L15.4369 13.8172L24.4782 26.7497H20.7676L13.3896 16.1967V16.1962Z"
                             fill="#0B6284"
                           />
                         </svg>
@@ -276,6 +339,7 @@ function Card({
   color: any;
   image?: string;
   name?: string;
+  ref?: any;
 }) {
   // @ts-ignore
   const VariantIcon = CARD_VARIANTS[variant].corner;
@@ -287,7 +351,9 @@ function Card({
       }}
     >
       <NumberWrapper placement="upperLeft">
-        3
+        <p id="card-number" style={{ color: "inherit", lineHeight: "normal" }}>
+          3
+        </p>
         <VariantIcon color={COLOR_VARIANTS[color]} />
       </NumberWrapper>
 
@@ -322,7 +388,12 @@ function Card({
       </CardName>
 
       <NumberWrapper placement="bottomRight">
-        3
+        <p
+          id="card-number-2"
+          style={{ color: "inherit", lineHeight: "normal" }}
+        >
+          3
+        </p>
         <VariantIcon color={COLOR_VARIANTS[color]} />
       </NumberWrapper>
     </CardWrapper>
@@ -490,10 +561,13 @@ const MenuItem = styled("button", {
   justifyContent: "space-between",
   alignItems: "center",
   backgroundColor: "white",
+  color: "#0B6284",
   borderRadius: 100,
   height: 54,
   border: "none",
   paddingInline: 24,
+  cursor: "pointer",
+  fontWeight: 600,
 
   variants: {
     blue: {

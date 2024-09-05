@@ -16,6 +16,7 @@
     "@vercel/og": "^0.6.2",
     "canvas": "^2.11.2",
     "framer-motion": "^11.3.31",
+    "html2canvas": "^1.4.1",
     "iconsax-react": "^0.0.8",
     "next": "^13.5.2",
     "react": "^18.2.0",
