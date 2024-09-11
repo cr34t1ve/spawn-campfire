@@ -2,28 +2,43 @@ import { Column, PageMeta, Row } from "@/components";
 import DraggableCard from "@/components/DraggableCard";
 import { styled } from "@/stitches.config";
 import Drag from "@/utils/drag";
+import { fetchWithBaseUrl } from "@/utils/fetch";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, Fragment } from "react";
-import useWebSocket from "react-use-websocket";
+
+async function getCards() {
+  const res = await fetchWithBaseUrl("tickets", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    return null;
+  }
+  return res.json();
+}
 
 export default function Home() {
-  const [messageHistory, setMessageHistory] = useState<any>(null);
+  const [tickets, setTickets] = useState<any>(null);
   const [isShowCards, setIsShowing] = useState<boolean>(false);
 
-  const { lastMessage } = useWebSocket("ws://localhost:8080/ws");
-
   useEffect(() => {
-    if (lastMessage !== null) {
-      const j = JSON.parse(lastMessage?.data);
-      if (!messageHistory) {
-        setMessageHistory(j);
-      } else {
-        setMessageHistory((prev: any) => prev?.concat(j));
+    async function fetchCards() {
+      const res = await getCards();
+
+      if (!res) {
+        return;
       }
+
+      setTickets(res);
     }
-  }, [lastMessage]);
+
+    fetchCards();
+  }, []);
 
   const list = {
     hidden: {
@@ -142,7 +157,7 @@ export default function Home() {
                 </Row>
               </>
               <Fragment>
-                {!!messageHistory && isShowCards && (
+                {!!tickets && isShowCards && (
                   <motion.div
                     initial="hidden"
                     animate="visible"
@@ -152,7 +167,7 @@ export default function Home() {
                       zIndex: 50,
                     }}
                   >
-                    {messageHistory?.map((ticket: any, index: number) => (
+                    {tickets?.map((ticket: any, index: number) => (
                       <motion.div
                         key={index}
                         variants={cardAnimation}
