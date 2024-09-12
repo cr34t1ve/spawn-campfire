@@ -35,9 +35,9 @@ export function PageMeta({
           content="width=device-width, initial-scale=1, maximum-scale=1.0"
         />
         {/* <meta charset="utf-8" /> */}
-        <link rel="icon" href="/favicon32.png" />
+        <link rel="icon" href="/favicon32.svg" />
         <meta name="theme-color" content={themeColor} />
-        <link rel="apple-touch-icon" href="/favicon192.png" />
+        <link rel="apple-touch-icon" href="/favicon192.svg" />
         <meta name="keywords" content={keywords} />
         <meta property="og:image" content={origin + encodeURI(image)} />
         <meta property="og:url" content={url} />
