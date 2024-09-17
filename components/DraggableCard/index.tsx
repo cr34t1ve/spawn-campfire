@@ -58,7 +58,7 @@ function Card({
             <Row css={{ position: "relative", width: "65%", height: "100%" }}>
               <Image
                 fill
-                src={`/templates/images/${image.toLowerCase()}.png`}
+                src={`/templates/images/${image?.toLowerCase()}.png`}
                 alt=""
                 draggable={false}
                 style={{
