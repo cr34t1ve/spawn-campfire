@@ -356,15 +356,35 @@ function Card({
         </p>
         <VariantIcon color={COLOR_VARIANTS[color]} />
       </NumberWrapper>
+      <NumberWrapper placement="upperRight">
+        <Image
+          width={41}
+          height={15}
+          src="/scf-black.svg"
+          alt=""
+          draggable={false}
+        />
+      </NumberWrapper>
+      <NumberWrapper placement="bottomLeft">
+        <CardName
+          className={DeadStock.className}
+          css={{
+            color: `${COLOR_VARIANTS[color]} !important`,
+          }}
+        >
+          {name}
+        </CardName>
+      </NumberWrapper>
 
       <CenterImage>
         {image ? (
           <>
             <Row css={{ position: "relative", width: "65%", height: "100%" }}>
-              <Image
-                fill
+              <img
+                // fill
                 src={`/templates/images/${image}.png`}
                 alt=""
+                draggable={false}
                 style={{
                   objectFit: "contain",
                 }}
@@ -377,15 +397,6 @@ function Card({
           </>
         )}
       </CenterImage>
-
-      <CardName
-        className={DeadStock.className}
-        css={{
-          color: `${COLOR_VARIANTS[color]} !important`,
-        }}
-      >
-        {name}
-      </CardName>
 
       <NumberWrapper placement="bottomRight">
         <p
@@ -484,21 +495,29 @@ const NumberWrapper = styled("div", {
         bottom: 8.5,
         transform: "scale(-1, -1)",
       },
+      upperRight: {
+        left: "unset",
+        top: 23.5,
+        right: 11.8,
+        bottom: "unset",
+      },
+      bottomLeft: {
+        left: 21.14,
+        top: "unset",
+        right: "unset",
+        bottom: 15.5,
+      },
     },
   },
 });
 
 const CardName = styled("p", {
   display: "block",
-  position: "absolute",
   bottom: 73,
   left: 0,
   right: 0,
   marginInline: "auto",
-  fontSize: 20,
-  textAlign: "center",
-  WebkitTextFillColor: "transparent",
-  WebkitTextStroke: "1.26px",
+  fontSize: 15,
   textTransform: "uppercase",
 });
 

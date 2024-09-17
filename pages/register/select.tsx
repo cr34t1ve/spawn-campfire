@@ -368,6 +368,19 @@ function Card({
         3
         <VariantIcon color={COLOR_VARIANTS[color]} />
       </NumberWrapper>
+      <NumberWrapper placement="upperRight">
+        <Image width={41} height={15} src="/scf-black.svg" alt="" />
+      </NumberWrapper>
+      <NumberWrapper placement="bottomLeft">
+        <CardName
+          className={DeadStock.className}
+          css={{
+            color: `${COLOR_VARIANTS[color]} !important`,
+          }}
+        >
+          {name}
+        </CardName>
+      </NumberWrapper>
 
       <CenterImage>
         {image ? (
@@ -377,6 +390,7 @@ function Card({
                 fill
                 src={`/templates/images/${image}`}
                 alt=""
+                draggable={false}
                 style={{
                   objectFit: "contain",
                 }}
@@ -389,15 +403,6 @@ function Card({
           </>
         )}
       </CenterImage>
-
-      <CardName
-        className={DeadStock.className}
-        css={{
-          color: `${COLOR_VARIANTS[color]} !important`,
-        }}
-      >
-        {name}
-      </CardName>
 
       <NumberWrapper placement="bottomRight">
         3
@@ -490,20 +495,29 @@ const NumberWrapper = styled("div", {
         bottom: 8.5,
         transform: "scale(-1, -1)",
       },
+      upperRight: {
+        left: "unset",
+        top: 23.5,
+        right: 11.8,
+        bottom: "unset",
+      },
+      bottomLeft: {
+        left: 21.14,
+        top: "unset",
+        right: "unset",
+        bottom: 15.5,
+      },
     },
   },
 });
 
 const CardName = styled("p", {
   display: "block",
-  position: "absolute",
   bottom: 73,
   left: 0,
   right: 0,
   marginInline: "auto",
-  fontSize: 20,
-  WebkitTextFillColor: "transparent",
-  WebkitTextStroke: "1.26px",
+  fontSize: 15,
   textTransform: "uppercase",
 });
 

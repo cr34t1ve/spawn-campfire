@@ -142,17 +142,53 @@ export default function Home() {
                     position: "absolute",
                     inset: 0,
                     margin: "auto",
-                    marginTop: 271,
+                    marginTop: 125,
                     userSelect: "none",
                     width: "fit-content",
                     height: "fit-content",
                   }}
                 >
                   <Image
-                    src="/stickers/download.svg"
+                    src="/stickers/scf-graffiti.svg"
                     alt="download sweave"
-                    height={250}
-                    width={387}
+                    height={469}
+                    width={459}
+                  />
+                </Row>
+                <Row
+                  css={{
+                    position: "absolute",
+                    left: 136,
+                    top: 806,
+                    margin: "auto",
+                    userSelect: "none",
+                    width: "fit-content",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/stickers/johnrhule.svg"
+                    alt="download sweave"
+                    width={121}
+                    height={138}
+                  />
+                </Row>
+                <Row
+                  css={{
+                    position: "absolute",
+                    left: 1234,
+                    top: 43,
+                    margin: "auto",
+                    userSelect: "none",
+                    width: "fit-content",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/stickers/osemuix.svg"
+                    alt="download sweave"
+                    width={110}
+                    height={157}
                   />
                 </Row>
               </>
