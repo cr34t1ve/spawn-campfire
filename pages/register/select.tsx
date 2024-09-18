@@ -181,6 +181,7 @@ export default function Select() {
                       }}
                     >
                       <ImageIconImage
+                        draggable={false}
                         height={72}
                         width={72}
                         src={`/templates/icons/${template.icon}`}
@@ -323,6 +324,7 @@ export default function Select() {
                               }}
                             >
                               <ImageIconImage
+                                draggable={false}
                                 height={72}
                                 width={72}
                                 src={`/templates/icons/${template.icon}`}
@@ -386,8 +388,8 @@ function Card({
         {image ? (
           <>
             <Row css={{ position: "relative", width: "65%", height: "100%" }}>
-              <Image
-                fill
+              <img
+                // fill
                 src={`/templates/images/${image}`}
                 alt=""
                 draggable={false}
