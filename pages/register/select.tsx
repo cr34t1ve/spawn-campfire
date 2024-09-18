@@ -388,8 +388,8 @@ function Card({
         {image ? (
           <>
             <Row css={{ position: "relative", width: "65%", height: "100%" }}>
-              <img
-                // fill
+              <Image
+                fill
                 src={`/templates/images/${image}`}
                 alt=""
                 draggable={false}
