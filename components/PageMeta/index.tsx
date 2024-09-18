@@ -5,7 +5,7 @@ import React from "react";
 
 export function PageMeta({
   title = "Spawn Campfire",
-  image = "https://uploads-ssl.webflow.com/6250fbc8391fc5310375f1da/650d020878b7863a0ae9508e_OpenGraph1.jpg",
+  image = "api/og",
   description = "Bringing a new age of excitement to the younger generations of creatives, through gaming.",
   url = "https://www.scfaccra.com",
   themeColor = "#140A23",
@@ -21,6 +21,7 @@ export function PageMeta({
   children?: React.ReactNode;
 }) {
   const siteName = "Spawn Campfire";
+  const origin = process.env.NEXT_PUBLIC_ORIGIN_URL;
 
   return (
     <>
@@ -34,11 +35,11 @@ export function PageMeta({
           content="width=device-width, initial-scale=1, maximum-scale=1.0"
         />
         {/* <meta charset="utf-8" /> */}
-        <link rel="icon" href="/favicon32.png" />
+        <link rel="icon" href="/favicon32.svg" />
         <meta name="theme-color" content={themeColor} />
-        <link rel="apple-touch-icon" href="/favicon192.png" />
+        <link rel="apple-touch-icon" href="/favicon192.svg" />
         <meta name="keywords" content={keywords} />
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={origin + encodeURI(image)} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
@@ -48,7 +49,7 @@ export function PageMeta({
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta name="twitter:domain" content={url} />
-        <meta property="twitter:image" content={image} />
+        <meta property="twitter:image" content={origin + encodeURI(image)} />
       </Head>
       {children}
     </>

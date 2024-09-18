@@ -9,15 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-select": "^1.2.2",
     "@stitches/react": "^1.2.8",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@vercel/og": "^0.6.2",
+    "canvas": "^2.11.2",
+    "framer-motion": "^11.3.31",
+    "html2canvas": "^1.4.1",
     "iconsax-react": "^0.0.8",
     "next": "^13.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal-sheet": "^3.1.0",
+    "react-use-websocket": "^4.8.1",
     "typescript": "4.9.5"
   },
   "devDependencies": {

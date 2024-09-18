@@ -3,20 +3,15 @@
 import { styled } from "@/stitches.config";
 
 export const Input = styled("input", {
-  $$offset: "14px",
-  all: "unset",
+  // all: "unset",
   borderRadius: 8,
-  height: "calc(100% - 40px)",
+  height: 50,
   width: "100%",
-  maxWidth: 363,
-  backgroundColor: "#251B2F",
+  backgroundColor: "transparent",
   padding: "24px 16px",
-  fontSize: 16,
-  fontWeight: "$forzaMedium",
-  color: "#D1CFD5",
-  "@xm": {
-    maxWidth: "calc(100% - 34px)",
-  },
+  fontSize: 14,
+  color: "#131416",
+  border: "1px solid #AEAEAE",
   "&:read-only": {
     backgroundColor: "$secondaryButton",
     overflow: "hidden",
@@ -25,10 +20,8 @@ export const Input = styled("input", {
   },
 
   "&::placeholder": {
-    fontSize: 16,
-    fontWeight: "$forzaMedium",
+    fontSize: 14,
     color: "#A89E90",
-    letterSpacing: 0,
   },
 
   "&[type='file']": {
@@ -40,32 +33,5 @@ export const Input = styled("input", {
     border: "1px solid $blackPrimary",
   },
 
-  "&:focus": {
-    border: "1px solid $blackPrimary",
-  },
-
-  variants: {
-    variant: {
-      underline: {
-        border: "none",
-        paddingLeft: 0,
-        borderBottom: "1px solid #D9D9D9",
-        borderRadius: "unset",
-        transition: "all 350ms ease",
-        "&:focus": {
-          border: "none",
-          borderBottom: "1px solid $primaryText",
-        },
-        "&:active": {
-          border: "none",
-          borderBottom: "1px solid $primaryText",
-        },
-      },
-    },
-    font: {
-      inter: {
-        fontFamily: "$inter",
-      },
-    },
-  },
+  "&:focus": {},
 });
