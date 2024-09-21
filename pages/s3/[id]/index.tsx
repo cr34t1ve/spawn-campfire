@@ -136,7 +136,7 @@ export default function TicketPage() {
           background: "none",
           "@sm": {
             backgroundImage: selected?.image
-              ? `url(/templates/images/${selected.image})`
+              ? `url(/templates/cover/${selected.image})`
               : `url(/templates/types/${selected.type}.svg)`,
             backgroundSize: "150%",
             backgroundRepeat: "no-repeat",
@@ -382,7 +382,7 @@ function Card({
             <Row css={{ position: "relative", width: "65%", height: "100%" }}>
               <img
                 // fill
-                src={`/templates/images/${image}.png`}
+                src={`/templates/cover/${image}.png`}
                 alt=""
                 draggable={false}
                 style={{
