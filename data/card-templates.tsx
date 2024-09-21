@@ -101,7 +101,7 @@ export const CardTemplateOptions = {
   },
   wukong: {
     icon: "wukong-icon.png",
-    image: "sukong.png",
+    image: "wukong.png",
   },
   yasuo: {
     icon: "yasuo-icon.png",
