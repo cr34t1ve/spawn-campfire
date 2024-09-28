@@ -1,4 +1,4 @@
-import { Column, PageMeta, Row } from "@/components";
+import { PageMeta, Row } from "@/components";
 import DraggableCard from "@/components/DraggableCard";
 import { styled } from "@/stitches.config";
 import Drag from "@/utils/drag";
@@ -233,7 +233,6 @@ export default function Home() {
             </Main>
           </div>
         </MapContainer>
-        <ClaimTicketBanner />
       </Wrapper>
     </PageMeta>
   );
@@ -268,129 +267,6 @@ function BoardElement({
         />
       </Drag>
     </motion.div>
-  );
-}
-
-function ClaimTicketBanner() {
-  return (
-    <ClaimTicketWrapper>
-      <h1>SCF Accra Season 03</h1>
-      <Column css={{ gap: 12 }}>
-        <Row css={{ gap: 10 }}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 2V5"
-              stroke="#AEAEAE"
-              stroke-width="1.2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M16 2V5"
-              stroke="#AEAEAE"
-              stroke-width="1.2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M3.5 9.09009H20.5"
-              stroke="#AEAEAE"
-              stroke-width="1.2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
-              stroke="#AEAEAE"
-              stroke-width="1.2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M15.6947 13.7H15.7037"
-              stroke="#AEAEAE"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M15.6947 16.7H15.7037"
-              stroke="#AEAEAE"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.9955 13.7H12.0045"
-              stroke="#AEAEAE"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.9955 16.7H12.0045"
-              stroke="#AEAEAE"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M8.29431 13.7H8.30329"
-              stroke="#AEAEAE"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M8.29431 16.7H8.30329"
-              stroke="#AEAEAE"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <Column>
-            <h4>Friday Sept 27th 2024</h4>
-            <p>2:00 PM GMT</p>
-          </Column>
-        </Row>
-        <Row css={{ gap: 10 }}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 13.43C13.7231 13.43 15.12 12.0331 15.12 10.31C15.12 8.58687 13.7231 7.19 12 7.19C10.2769 7.19 8.88 8.58687 8.88 10.31C8.88 12.0331 10.2769 13.43 12 13.43Z"
-              stroke="#AEAEAE"
-              stroke-width="1.2"
-            />
-            <path
-              d="M3.61995 8.49C5.58995 -0.169997 18.42 -0.159997 20.38 8.5C21.53 13.58 18.37 17.88 15.6 20.54C13.59 22.48 10.41 22.48 8.38995 20.54C5.62995 17.88 2.46995 13.57 3.61995 8.49Z"
-              stroke="#AEAEAE"
-              stroke-width="1.2"
-            />
-          </svg>
-          <Column>
-            <h4>LetiArts HQ</h4>
-            <p>Prestige Kente, Adenta Municipality</p>
-          </Column>
-        </Row>
-      </Column>
-      <Button href="/register/kyc">Claim Your Ticket</Button>
-    </ClaimTicketWrapper>
   );
 }
 
