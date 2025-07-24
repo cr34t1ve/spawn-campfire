@@ -24,7 +24,7 @@ const DUMMY_CARDS = [
     id: "b23c45d6",
     type: "diamond",
     color: "violet",
-    image: "allmight",
+    image: "Allmight",
     name: "Ama",
     phone: "233501234567",
     initx: "350.2",
