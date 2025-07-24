@@ -19,8 +19,9 @@
   width: 100vw;
   height: 100vh;
   z-index: 99999;
-  transition: trasnform 1.5s ease;
-  animation-duration: 1.5s;
+  transition: trasnform 2s ease-out;
+  animation-delay: 1ms;
+  animation-duration: 2s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.465, 1);
   background-color: #eb6a4b;
@@ -35,7 +36,8 @@
   height: 100vh;
   z-index: 99999;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation-duration: 1.5s;
+  animation-duration: 2s;
+  animation-delay: 1ms;
   animation-fill-mode: both;
   background-color: #e7e8e9;
 }
@@ -49,7 +51,8 @@
   height: 100vh;
   z-index: 99999;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.565, 1);
-  animation-duration: 1.5s;
+  animation-duration: 2s;
+  animation-delay: 1ms;
   animation-fill-mode: both;
   background-color: #589b9a;
 }

@@ -136,7 +136,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [processStep, setProcessStep] = useState<
     "landing" | "fullName" | "email" | "phone" | "submitted"
-  >("submitted");
+  >("landing");
 
   const [submissionState, setSubmissionState] = useState<
     "idle" | "submitting" | "submitted"
@@ -164,6 +164,9 @@ export default function Home() {
     if (!submissionForm.phone) {
       return;
     }
+    setSubmissionState("submitted");
+    setProcessStep("submitted");
+    return;
 
     setSubmissionState("submitting");
     request
@@ -322,6 +325,7 @@ function FullName({
             variant="underline"
             value={value}
             onChange={handleChange}
+            autoFocus
           />
           <Button type="submit" onClick={handleSubmit}>
             Next
@@ -357,6 +361,7 @@ function Email({
             variant="underline"
             value={value}
             onChange={handleChange}
+            autoFocus
           />
           <Button type="submit" onClick={handleSubmit}>
             Next
@@ -394,6 +399,7 @@ function Phone({
             variant="underline"
             value={value}
             onChange={handleChange}
+            autoFocus
           />
           <Button
             type="button"
