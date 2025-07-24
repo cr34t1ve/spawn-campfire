@@ -6,7 +6,142 @@ import { fetchWithBaseUrl } from "@/utils/fetch";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, Fragment } from "react";
+import { useState, Fragment } from "react";
+
+const DUMMY_CARDS = [
+  {
+    id: "a12b34c5",
+    type: "club",
+    color: "blue",
+    image: "chibis",
+    name: "Desmond",
+    phone: "233557113242",
+    initx: "100.5",
+    inity: "200.3",
+    created_at: "2024-06-01T10:00:00Z",
+  },
+  {
+    id: "b23c45d6",
+    type: "diamond",
+    color: "violet",
+    image: "allmight",
+    name: "Ama",
+    phone: "233501234567",
+    initx: "350.2",
+    inity: "400.1",
+    created_at: "2024-06-02T11:00:00Z",
+  },
+  {
+    id: "c34d56e7",
+    type: "spade",
+    color: "green",
+    image: "apex",
+    name: "Kwame",
+    phone: "233541234567",
+    initx: "700.0",
+    inity: "150.0",
+    created_at: "2024-06-03T12:00:00Z",
+  },
+  {
+    id: "d45e67f8",
+    type: "heart",
+    color: "red",
+    image: "astra",
+    name: "Esi",
+    phone: "233551234567",
+    initx: "1200.0",
+    inity: "900.0",
+    created_at: "2024-06-04T13:00:00Z",
+  },
+  {
+    id: "e56f78g9",
+    type: "club",
+    color: "blue",
+    image: "brawl",
+    name: "Kojo",
+    phone: "233561234567",
+    initx: "800.0",
+    inity: "600.0",
+    created_at: "2024-06-05T14:00:00Z",
+  },
+  {
+    id: "f67g89h0",
+    type: "diamond",
+    color: "violet",
+    image: "brawlgirl",
+    name: "Akua",
+    phone: "233571234567",
+    initx: "200.0",
+    inity: "800.0",
+    created_at: "2024-06-06T15:00:00Z",
+  },
+  {
+    id: "g78h90i1",
+    type: "spade",
+    color: "green",
+    image: "chibis",
+    name: "Yaw",
+    phone: "233581234567",
+    initx: "1100.0",
+    inity: "300.0",
+    created_at: "2024-06-07T16:00:00Z",
+  },
+  {
+    id: "h89i01j2",
+    type: "heart",
+    color: "red",
+    image: "Ekko",
+    name: "Afia",
+    phone: "233591234567",
+    initx: "950.0",
+    inity: "500.0",
+    created_at: "2024-06-08T17:00:00Z",
+  },
+  {
+    id: "i90j12k3",
+    type: "club",
+    color: "blue",
+    image: "gojo",
+    name: "Kofi",
+    phone: "233601234567",
+    initx: "400.0",
+    inity: "950.0",
+    created_at: "2024-06-09T18:00:00Z",
+  },
+  {
+    id: "j01k23l4",
+    type: "diamond",
+    color: "violet",
+    image: "homelander",
+    name: "Abena",
+    phone: "233611234567",
+    initx: "600.0",
+    inity: "700.0",
+    created_at: "2024-06-10T19:00:00Z",
+  },
+  {
+    id: "k12l34m5",
+    type: "spade",
+    color: "green",
+    image: "igris",
+    name: "Kwabena",
+    phone: "233621234567",
+    initx: "300.0",
+    inity: "250.0",
+    created_at: "2024-06-11T20:00:00Z",
+  },
+  {
+    id: "l23m45n6",
+    type: "heart",
+    color: "red",
+    image: "lol",
+    name: "Akosua",
+    phone: "233631234567",
+    initx: "50.0",
+    inity: "100.0",
+    created_at: "2024-06-12T21:00:00Z",
+  },
+];
 
 async function getCards() {
   const res = await fetchWithBaseUrl("tickets", {
@@ -23,22 +158,22 @@ async function getCards() {
 }
 
 export default function Home() {
-  const [tickets, setTickets] = useState<any>(null);
+  const [tickets, setTickets] = useState<any>(DUMMY_CARDS);
   const [isShowCards, setIsShowing] = useState<boolean>(false);
 
-  useEffect(() => {
-    async function fetchCards() {
-      const res = await getCards();
+  // useEffect(() => {
+  //   async function fetchCards() {
+  //     const res = await getCards();
 
-      if (!res) {
-        return;
-      }
+  //     if (!res) {
+  //       return;
+  //     }
 
-      setTickets(res);
-    }
+  //     setTickets(res);
+  //   }
 
-    fetchCards();
-  }, []);
+  //   fetchCards();
+  // }, []);
 
   const list = {
     hidden: {
@@ -153,6 +288,7 @@ export default function Home() {
                     alt="download sweave"
                     height={469}
                     width={459}
+                    draggable={false}
                   />
                 </Row>
                 <Row
@@ -171,6 +307,7 @@ export default function Home() {
                     alt="download sweave"
                     width={121}
                     height={138}
+                    draggable={false}
                   />
                 </Row>
                 <Row
@@ -189,6 +326,7 @@ export default function Home() {
                     alt="download sweave"
                     width={110}
                     height={157}
+                    draggable={false}
                   />
                 </Row>
               </>

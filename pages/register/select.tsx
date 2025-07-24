@@ -55,28 +55,18 @@ export default function Select() {
   }
 
   async function handleCreateTicket() {
-    const image = selected?.image?.split(".");
-    const res = await fetchWithBaseUrl("tickets", {
-      body: JSON.stringify({
-        type: selected?.type,
-        color: selected?.color,
-        image: image[0] || "",
-        name: query?.name,
-        phone: query?.phone,
-      }),
-      method: "POST",
+    // Instead of POST, just route with all details in the query string
+    const image = selected?.image?.split(".")[0] || "";
+    const id = Math.random().toString(36).substring(2, 10); // generate a random id
+    const params = new URLSearchParams({
+      id,
+      type: selected?.type,
+      color: selected?.color,
+      image,
+      name: query?.name as string,
+      phone: query?.phone as string,
     });
-
-    if (!res.ok) {
-      setSubmitStatus("failed");
-      return;
-    }
-
-    const j = await res.json();
-
-    console.log(j);
-
-    push(`/s3/${j.id}?type=${j.type}&image=${j?.image}`);
+    push(`/s3/${id}?${params.toString()}`);
   }
 
   return (

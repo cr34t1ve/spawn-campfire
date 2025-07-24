@@ -31,30 +31,18 @@ export default function TicketPage() {
   const close = () => setOpen(false);
   const { query, push } = useRouter();
   const cardRef = useRef(null);
-  const [selected, setSelected] = useState({
-    color: "green",
-    type: "spade",
-    image: "",
-    name: "",
-    id: "",
-  });
 
-  useEffect(() => {
-    if (!query?.id) {
-      return;
-    }
+  // Read ticket details from query string
+  const selected = {
+    color: (query.color as string) || "green",
+    type: (query.type as string) || "spade",
+    image: (query.image as string) || "",
+    name: (query.name as string) || "",
+    id: (query.id as string) || "",
+    phone: (query.phone as string) || "",
+  };
 
-    const fetchTicket = async () => {
-      const res = await getTicket(query.id as string);
-      if (!res) {
-        return;
-      }
-
-      setSelected(res);
-    };
-
-    fetchTicket();
-  }, [query]);
+  // Remove useEffect and getTicket fetch logic
 
   const handleDownload = async () => {
     if (cardRef.current) {
@@ -122,7 +110,7 @@ export default function TicketPage() {
     typeof window !== "undefined" && window.location.origin
       ? window.location.origin
       : "";
-  const ticketLink = `${host}/s3/${query.id}?type=${selected?.type}&image=${selected?.image}`;
+  const ticketLink = `${host}/s3/${selected.id}?type=${selected.type}&image=${selected.image}&color=${selected.color}&name=${selected.name}&phone=${selected.phone}`;
 
   async function handleCopyLink() {
     navigator.clipboard.writeText(ticketLink);
@@ -136,7 +124,7 @@ export default function TicketPage() {
           background: "none",
           "@sm": {
             backgroundImage: selected?.image
-              ? `url(/templates/images/${selected.image})`
+              ? `url(/templates/images/${selected.image}.png)`
               : `url(/templates/types/${selected.type}.svg)`,
             backgroundSize: "150%",
             backgroundRepeat: "no-repeat",
